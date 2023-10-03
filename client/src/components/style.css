@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+.hr{
+    position: relative;
+    left: 10%;
+    width: 80%;
+    background-color: #999;
+}
+
 /* plans component styling */
 
 .plans{
@@ -13,6 +20,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 3rem;
 }
 .plans .planHeading{
     margin-top: 1.5rem;
@@ -157,6 +165,227 @@
     border: 1px solid silver;
     background-color: rgb(219, 219, 219);
 }
-/* .planData .planButton:hover{
-    background-color: rgb(214, 212, 212);
-} */
+
+
+/* Footer component Styling */
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 6rem;
+    background-color: #333;
+    color: #fff;
+
+
+}
+.footer .topFooter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 3rem;
+    @media (max-width: 890px) {
+        flex-direction: column;
+    }
+}
+
+.footer .bottomFooter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+.topFooter .rightFooter{
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 512px) {
+        flex-direction: column;
+    }
+}
+.topFooter .logoFooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4rem;
+    @media (max-width: 890px) {
+        margin-right: 0;
+    }
+    @media (max-width: 512px) {
+        margin-right: 0;
+    }
+}
+.topFooter .logoFooter img{
+    height: 8rem;
+    width: 8rem;
+}
+.topFooter .logoFooter h2{
+    font-size: 1.3rem;
+    margin-top: -0.9rem;
+}
+.topFooter .logoFooter p{
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    color: #999;
+    text-align: center;
+}
+
+.topFooter .linkFooter{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin: 0 8rem;
+    @media (max-width: 1090px) {
+        margin: 0 5rem;
+    }
+    @media (max-width: 986px) {
+        margin: 0 2rem;
+    }
+    @media (max-width: 890px) {
+        margin-top: 3rem;
+    }
+}
+.topFooter .linkFooter .linkHeading{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    /* justify-content: center; */
+}
+.linkFooter .linkHeading h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.linkFooter .linkHeading i{
+    font-size: 1.3rem;
+    padding-top: 0.2rem;
+    padding-left: 0.4rem;
+}
+.topFooter .linkFooter .links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.3rem 0;
+    padding: 0.5rem;
+    padding-left: 0.4rem;
+    padding-right: 1.4rem;
+    border: 1px solid #333;
+    border-radius: 7px;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    
+    
+}
+.topFooter .linkFooter .links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.topFooter .linkFooter .links i{
+    visibility: hidden;
+    font-size: 1.3rem;
+    transition: all 0.3s ease-in-out;
+}
+.topFooter .linkFooter .links h2{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+.topFooter .linkFooter .links:hover{
+    /* border: 1px solid #666; */
+    color: #fff;
+}
+.topFooter .linkFooter .links:hover i{
+    visibility: visible;
+    transform: translateX(5px);
+    
+}
+.topFooter .linkFooter .links:hover h2{
+    transform: translateX(9px);
+}
+
+.underlin::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0074D9;
+    /* background-color: #fff; */
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  
+  @media (hover: hover) and (pointer: fine) {
+    .underlin:hover::before{
+      left: 0;
+      right: auto;
+      width: 100%;
+    }
+  }
+
+.topFooter .socialFooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4rem;
+    @media (max-width: 890px) {
+        margin-top: -2.5rem;
+    }
+    @media (max-width: 560px) {
+        margin-left: 1rem;
+    }
+    @media (max-width: 512px) {
+        margin-top: 2rem;
+        margin-left: 0;
+    }
+}
+.socialFooter .socialHeading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.socialFooter .socialHeading h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.socialFooter .socialHeading i{
+    font-size: 1.3rem;
+    padding-top: 0.2rem;
+    padding-left: 0.4rem;
+    margin-bottom: 1rem;
+}
+.socialFooter .socialLinks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.socialFooter .socialLinks .social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.socialLinks .social i{
+    color: #999;
+}
+.socialFooter .socialLinks .social:hover{
+    transform: translateY(-5px);
+}
+.socialFooter .socialLinks .social:hover i{
+    color: #fff;
+}
+
+
+  
