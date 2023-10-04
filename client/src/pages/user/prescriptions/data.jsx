@@ -1,0 +1,88 @@
+const transactionData = [
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Pending",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Done",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Done",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Done",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Done",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Pending",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Done",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Done",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Pending",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Done",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Pending",
+    amount: "- $2",
+  },
+  {
+    date: "29 July 2023",
+    bank: "SBI Bank",
+    description: "Refunded",
+    status: "Pending",
+    amount: "- $2",
+  },
+];
+
+export default transactionData;
