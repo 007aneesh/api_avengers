@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../../../images/logo.webp";
-import { AiOutlineClose, AiOutlineFileText } from "react-icons/ai";
-import { FaUserCircle, FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";
+import { AiOutlineClose, AiFillSetting } from "react-icons/ai";
+import { FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";
 import { MdDelete, MdSpaceDashboard } from "react-icons/md";
 import { BiMenuAltLeft, BiSolidReport } from "react-icons/bi";
+import {BsSearch} from "react-icons/bs";
 import { FiEdit3 } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import img from "../../../images/logo.webp";
-import Data from "../userData/userData";
-import Prescription from "../prescriptions/prescription";
-
-import Report from "../reports/report";
-import Profile from "../profile/profile";
+import Data from "./dashboardData";
+import Search from "../search/search";
+import List from "../list/list";
+import Settings from "../settings/setting";
 const UserDashboard = () => {
   const navigate = useNavigate();
-  const name = 'Aneesh';
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
   };
@@ -34,12 +33,12 @@ const UserDashboard = () => {
     switch (selectedButton) {
       case "Dashboard":
         return <Data />;
-      case "Prescriptions":
-        return <Prescription />;
-      case "My Reports":
-        return <Report />;
-      case "My Profile":
-        return <Profile />
+      case "Search Patient":
+        return <Search />;
+      case "Patient List":
+        return <List />;
+      case "Settings":
+        return <Settings />
       default:
         return <Data />;
     }
@@ -148,7 +147,11 @@ const UserDashboard = () => {
           <div className="py-2.5 mt-3 relative flex flex-col items-center justify-center text-xl font-sans font-bold rounded-md px-6">
             <div className="relative mb-1">
               <div className="relative rounded-full w-24 h-24">
-                <img src={img} alt="user" className="w-full h-full mb-2" />
+                <img
+                  src={img}
+                  alt="hospitalImage"
+                  className="w-full h-full mb-2"
+                />
               </div>
               <div
                 onClick={toggleImage}
@@ -158,20 +161,17 @@ const UserDashboard = () => {
               </div>
             </div>
             <div>
-              <h1>Hello, {name}</h1>
+              <h1>Welcome, Admin</h1>
             </div>
           </div>
           {[
             { text: "Dashboard", icon: <MdSpaceDashboard className="mr-3" /> },
             {
-              text: "Prescriptions",
-              icon: <AiOutlineFileText className="mr-3" />,
+              text: "Search Patient",
+              icon: <BsSearch className="mr-3" />,
             },
-            { text: "My Reports", icon: <BiSolidReport className="mr-3" /> },
-            {
-              text: "My Profile",
-              icon: <FaUserCircle className="mr-3" />,
-            },
+            { text: "Patient List", icon: <BiSolidReport className="mr-3" /> },
+            { text: "Settings", icon: <AiFillSetting className="mr-3" /> },
           ].map(({ icon, text }, index) => (
             <div
               onClick={() => handleButtonClick(text)}
