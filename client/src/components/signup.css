@@ -1,0 +1,98 @@
+.formOne{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    padding: 1rem;
+}
+.formOne .field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.formOne .leftformField{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+.formOne .rightformField{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+.formOne .formField{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.formField input{
+    width: 80%;
+    background: #fff;
+    /* color: #a3a3a3; */
+    font: inherit;
+    border-radius: 6px;
+    /* box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .5); */
+    border: 0;
+    outline: 0;
+    border: 3px solid #999;
+    padding: 1rem 1rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+    transition: all 0.1s ease-in-out;
+}
+.formField input:focus{
+    border-color: #3555ac;
+}
+
+.formButtons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.formButtons .buttonOne{
+    /* border: 1px solid #111; */
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #3555ac;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
+
+}
+.formButtons .buttonTwo{
+    /* border: 1px solid #111; */
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #3555ac;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
+
+}
+.buttonOne button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.buttonTwo button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.formButtons button i{
+    padding-top: 3px;
+}
