@@ -21,6 +21,7 @@ const Onboarding = () => {
     if (formNo === 1) navigate(-1);
     if (formNo >= 2) setFormNo(formNo - 1);
   };
+  
   const submit = () => {
     console.log("Submitted");
   };
