@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import Plans from './plans';
 import "./signup.css";
-import { Checkbox } from "@material-ui/core";
 import paytm from '../images/paytm.png';
 import gpay from '../images/gpay.jpg';
 import phonepe from '../images/phonepe.webp';
