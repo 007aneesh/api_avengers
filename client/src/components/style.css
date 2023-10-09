@@ -494,4 +494,115 @@
 }
 
 
+
+/* Solutions component styling */
+
+.solutions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.solutions .leftimgSol{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 2rem;
+    /* margin: 1rem 0; */
+    @media (max-width: 1255px) {
+        width: 94%;
+    }
+    @media (max-width: 1070px) {
+        flex-direction: column;
+    }
+}
+.leftimgSol img{
+    margin-right: 1rem;
+    width: 50%;
+    @media (max-width: 1070px) {
+        margin-right: 0;
+    }
+}
+.leftimgSol .text{
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 1070px) {
+        margin-left: 0;
+    }
+}
+.leftimgSol .text h2{
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.leftimgSol .text p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+    text-align: center;
+    @media (max-width: 390px) {
+        font-size: 1rem;
+    }
+}
+
+.solutions .rightimgSol{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 2rem;
+    /* margin: 1rem 0; */
+    @media (max-width: 1255px) {
+        width: 94%;
+    }
+    @media (max-width: 1070px) {
+        flex-direction: column-reverse;
+    }
+}
+.rightimgSol img{
+    margin-left: 1rem;
+    width: 50%;
+    @media (max-width: 1070px) {
+        margin-left: 0;
+    }
+}
+.rightimgSol .text{
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 1070px) {
+        margin-right: 0;
+    }
+}
+.rightimgSol .text h2{
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.rightimgSol .text p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+    text-align: center;
+    @media (max-width: 390px) {
+        font-size: 1rem;
+    }
+}
+
+
+/* Register Component Styling */
+
+
+
   

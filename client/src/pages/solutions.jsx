@@ -3,6 +3,7 @@ import img from '../images/logo.webp';
 import img2 from '../images/heroImg.webp';
 import '../components/style.css';
 
+
 const Solutions = () => {
     return (
         <div className='solutions'>
