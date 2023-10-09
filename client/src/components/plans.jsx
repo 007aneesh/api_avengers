@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css';
-const Plans = () => {
+const Plans = ({next}) => {
   return (
     <div className='plans'>
       <div className='planHeading'>
@@ -37,7 +37,7 @@ const Plans = () => {
               <p>Limited Basic App features</p>
             </div>
           </div>
-          <div className='planButton'>Learn More</div>
+          <div className='planButton' onClick={()=>next(3)}>Continue</div>
         </div>
         <div className='planData gold'>
         <div className='planBase'>Gold</div>
@@ -69,7 +69,7 @@ const Plans = () => {
               <p>Basic App features</p>
             </div>
           </div>
-          <div className='planButton'>Try for Free</div>
+          <div className='planButton' onClick={()=>next(3)}>Continue</div>
         </div>
         <div className='planData silver'>
         <div className='planBase'>Silver</div>
@@ -101,7 +101,7 @@ const Plans = () => {
               <p>Limited Basic App features</p>
             </div>
           </div>
-          <div className='planButton'>Learn More</div>
+          <div className='planButton' onClick={()=>next(3)}>Continue</div>
         </div>
       </div>
     </div>

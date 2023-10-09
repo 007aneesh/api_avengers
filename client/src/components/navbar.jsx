@@ -20,15 +20,12 @@ const Navbar = () => {
           <div
             className={`items-center gap-5 hidden md:flex font-semibold text-lg`}
           >
-            <a href="/" className="hover:underline">
+            <a href="/">
               <h1>About us</h1>
             </a>
-            <a href="/" className="hover:underline">
+            <a href="/">
               <h1>Solutions</h1>
             </a>
-            <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
-              <a href="/register">Register</a>
-            </button>
             <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
               <a href="/signin">Sign In</a>
             </button>
@@ -42,12 +39,16 @@ const Navbar = () => {
             </button>
             {showMenu && (
               <div className="absolute top-full right-0 w-auto bg-white px-10 py-3 mt-1 shadow-2xl rounded-md">
-                <a href="/" className="block mb-2 hover:underline">
+                <a href="/" className="block mb-2">
                   About us
                 </a>
-                <a href="/" className="block hover:underline">
+                <a href="/" className="block">
                   Solutions
                 </a>
+                
+                <button className="border-[#3555ac] rounded-md lg:text-base font-medium text-[0.9rem] mt-2 border-2 px-2 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
+                  <a href="/signin">Sign In</a>
+                </button>
               </div>
             )}
           </div>

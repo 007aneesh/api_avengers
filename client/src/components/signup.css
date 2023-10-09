@@ -1,39 +1,73 @@
-.formOne{
+
+/* Form One Styling */
+
+.formOne {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 70%;
     padding: 1rem;
-}
-.formOne .field{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-.formOne .leftformField{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-}
-.formOne .rightformField{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-}
-.formOne .formField{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+
+    @media (max-width: 1285px) {
+        width: 90%;
+    }
+
+    @media (max-width: 800px) {
+        width: 100%;
+    }
 }
 
-.formField input{
+.formOne .field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    @media (max-width: 680px) {
+        flex-direction: column;
+    }
+}
+
+.formOne .leftformField {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    @media (max-width: 680px) {
+        width: 70%;
+    }
+
+    @media (max-width: 430px) {
+        width: 90%;
+    }
+}
+
+.formOne .rightformField {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    @media (max-width: 680px) {
+        width: 70%;
+    }
+
+    @media (max-width: 430px) {
+        width: 90%;
+    }
+}
+
+.formOne .formField {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.formField input {
     width: 80%;
     background: #fff;
     /* color: #a3a3a3; */
@@ -44,6 +78,30 @@
     outline: 0;
     border: 3px solid #999;
     padding: 1rem 1rem;
+    
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+    transition: all 0.1s ease-in-out;
+}
+
+.formField input:focus {
+    border-color: #3555ac;
+}
+
+.formField label {
+    position: absolute;
+    top: -9px;
+    left: 45px;
+    /* Adjust the left position as needed */
+    background-color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #777;
+    /* Match the background color of the input */
+    padding: 0 5px;
+    /* Adjust padding as needed */
+}
+
+.formButtons {
     margin-bottom: 3rem;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
     transition: all 0.1s ease-in-out;
@@ -59,6 +117,14 @@
     justify-content: space-between;
     width: 100%;
 }
+changes{
+    justify-content: center;
+}
+
+.formFour {
+    width: 70%;
+}
+
 .formButtons .buttonOne{
     /* border: 1px solid #111; */
     padding: 0.5rem 2rem;
@@ -66,6 +132,16 @@
     font-weight: 500;
     background-color: #3555ac;
     color: #fff;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .6);
+
+}
+
+.buttonTwo {
+    /* border: 1px solid #111; */
+    /* padding: 0.5rem 2rem; */
+    padding: 0;
     cursor: pointer;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
 
@@ -78,20 +154,209 @@
     background-color: #3555ac;
     color: #fff;
     cursor: pointer;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .6);
 
 }
-.buttonOne button{
+
+.buttonOne button {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 0.5rem 2rem;
 }
+
+
 .buttonTwo button{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 0.5rem 2rem;
+}
+
+.formButtons button i {
+    padding-top: 3px;
+}
+
+/* Form Four Styling */
+
+.check {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* border: 1px solid #999; */
+    border-radius: 5px;
+    width: 70%;
+    height: 50vh;
+    overflow-y: scroll;
+    margin: 0 0 2rem 0;
+
+}
+
+.check p {
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    /* text-align: center; */
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: #666;
+    margin-bottom: 1rem;
+    user-select: none;
+}
+
+.check::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+}
+
+.box input {
+    height: 1.1rem;
+    width: 1.1rem;
+    cursor: pointer;
+}
+
+.box label {
+    padding: 0 0.4rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+/* Form Six Styling */
+
+.checkout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 1rem;
+    @media (max-width: 400px) {
+        width: 100%;
+    }
+}
+.checkout .checkDetails{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    
+}
+.checkDetails .leftDetails, .checkDetails .rightDetails{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+.checkDetails .leftDetails p, .checkDetails .rightDetails p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+    padding: 0.8rem 0;
+    @media (max-width: 580px) {
+        font-size: 1rem;
+    }
+    @media (max-width: 434px) {
+        font-size: 0.9rem;
+    }
+}
+.checkout .paymentDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.paymentDetails h1{
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #777;
+}
+.paymentDetails .upi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.paymentDetails .upi img{
+    height: 2.6rem;
+    width: 2.6rem;
+    border-radius: 50px;
+    object-fit: cover;
+    margin: 1.5rem 0.8rem;
+    /* margin-right: 0.7rem; */
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+}
+.paymentDetails .card{
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: center;
+    @media (max-width: 580px) {
+        flex-direction: column;
+    }
+}
+.card .debit, .card .credit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #111; */
+    margin: 0.4rem 1rem;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .2);
+}
+.card .debit p, .card .credit p{
+    font-size: 0.9rem;
+    padding: 0 0.4rem;
+    font-weight: 500;
+    color: #555;
+}
+
+
+/* Singin Component Styling */
+
+.formOne h1{
+    font-size: 2rem;
+    font-weight: 800;
+    color: #777;
+}
+.formOne .options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.options .orgOption, .options .patOption{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 3px solid #888;
+    padding: 0.8rem 1.2rem;
+    margin: 1.7rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.options .orgOption p, .options .patOption p{
+    font-size: 1.2rem;
+    font-weight: 700;
+    /* color: #555; */
 }
 .formButtons button i{
     padding-top: 3px;
