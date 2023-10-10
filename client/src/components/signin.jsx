@@ -80,7 +80,7 @@ const Signin = () => {
                                     {
                                         (formNo == 1) && (
                                             <div className="flex flex-col items-center justify-center text-center">
-                                                <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
+                                                <h1 className="text-3xl font-extrabold font-sans text-[#444] text-center md:text-5xl ">
                                                     Signin to your Managed Data
                                                 </h1>
                                                 {/* <h1 className="text-xl mt-2 md:mt-5 font-semibold">
@@ -133,7 +133,7 @@ const Signin = () => {
                                                 </button>
                                             </div> */}
                                             <div className="buttonTwo">
-                                                <button onClick={() => next(formNo)} disabled={dis()} className={`${(isorgChecked || ispatChecked) ? "" : "bg-gray-500"}`}>
+                                                <button onClick={() => next(formNo)} disabled={dis()} className={`${(isorgChecked || ispatChecked) ? "bg-[#3555ac] text-white" : "bg-gray-500"}`}>
                                                     <p>Next</p>
                                                     <i class="bx bx-right-arrow-alt"></i>
                                                 </button>
@@ -172,7 +172,7 @@ const Signin = () => {
                                                 </button>
                                             </div>
                                             <div className="buttonTwo">
-                                                <button onClick={() => next(formNo)}>
+                                                <button onClick={() => submit()}>
                                                     <p>Sign In</p>
                                                     <i class="bx bx-right-arrow-alt"></i>
                                                 </button>
@@ -210,7 +210,7 @@ const Signin = () => {
                                                 </button>
                                             </div>
                                             <div className="buttonTwo">
-                                                <button onClick={() => next(formNo)}>
+                                                <button onClick={() => submit()}>
                                                     <p>Sign In</p>
                                                     <i class="bx bx-right-arrow-alt"></i>
                                                 </button>
