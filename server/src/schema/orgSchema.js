@@ -41,7 +41,7 @@ const orgSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    district: {
+    city: {
         type: String,
         required: true
     },

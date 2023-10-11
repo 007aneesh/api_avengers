@@ -83,7 +83,6 @@ const getData = async () => {
     const response = await fetch(`http://localhost:8000/patient/${patientId}`);
     const user = await response.json();
     setData(user);
-    console.log("datattttt:", user);
     isDataFetched.current = true;
   } catch (error) {
     console.error("Error fetching data!");

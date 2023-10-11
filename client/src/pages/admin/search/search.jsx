@@ -1,7 +1,23 @@
 import React, { useState } from "react";
 
 const Search = () => {
-  const data = useState(null);
+  const [data, setData] = useState(null)
+  const [aadhar, setAadhar] = useState("");
+  const getData = async (aadharValue) => {
+    try {
+      const response = await fetch(
+        `http:localhost:8000/patient/${aadharValue}`
+      );
+      const patient = await response.json();
+      setData(patient);
+    } catch (err) {
+      console.error("Error fetching data!");
+    }
+  };
+  const search = () =>{
+    getData();
+    setAadhar("");
+  }
   return (
     <div className="p-5">
       <div className="search flex w-full justify-center  items-center mb-10">
@@ -12,9 +28,15 @@ const Search = () => {
           <div className="flex items-center w-full gap-5">
             <input
               type="text"
+              name="aadhar"
+              value={aadhar}
+              onChange={(e) => setAadhar(e.target.value)}
               className="outline-none rounded-lg w-2/4 px-3 py-2 border-2 bg-transparent border-black"
             ></input>
-            <button className="px-7 bg-[#662890]/80 text-white  py-2 text-lg rounded-lg">
+            <button
+              onClick={search}
+              className="px-7 bg-[#662890]/80 text-white  py-2 text-lg rounded-lg"
+            >
               Search
             </button>
           </div>
