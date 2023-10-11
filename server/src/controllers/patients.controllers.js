@@ -28,6 +28,7 @@ function getPatientByIAadhar(req, res) {
 
 
 module.exports = {
-    getAllPatients,
-    getPatientById
-}
+  getAllPatients,
+  getPatientById,
+  getPatientByIAadhar,
+};

@@ -1,4 +1,4 @@
-import image from "../../images/temp.jpg"
+// import image from "../../images/temp.jpg"
 const transactionData = [
   {
     patientId: 1,
