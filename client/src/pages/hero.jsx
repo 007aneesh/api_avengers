@@ -1,6 +1,6 @@
 import React from "react";
 import heroImg from '../images/heroImg.webp';
-
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div className="pt-20 lg:pt-0 lg:h-screen flex flex-col items-center justify-center">
@@ -24,7 +24,7 @@ const Hero = () => {
                 Explore our Solutions
               </button>
               <button className="border-[#3555ac] rounded-md lg:text-md font-medium border-2 px-4 py-2 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
-                Register
+                <Link to='/signup'>Register</Link>
               </button>
             </div>
           </div>

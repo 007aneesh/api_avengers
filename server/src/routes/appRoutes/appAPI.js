@@ -9,6 +9,7 @@ const patientsControllers = require("../../controllers/patients.controllers");
 
 // //_________________________________ API for patients______________________
 router.get("/getAllPatients", patientsControllers.getAllPatients);
-router.get('/')
+router.get("/patient/:patientId", patientsControllers.getPatientById);
+router.get("/patient/:aadhar", patientsControllers.getPatientById);
 
 module.exports = router;
