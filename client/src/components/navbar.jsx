@@ -26,7 +26,6 @@ const Navbar = () => {
             <Link to="/">
               <h1>Solutions</h1>
             </Link>
-            
             <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
               <a href="/signin">Sign In</a>
             </button>

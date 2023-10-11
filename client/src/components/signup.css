@@ -1,3 +1,4 @@
+
 /* Form One Styling */
 
 .formOne {
@@ -22,7 +23,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-
     @media (max-width: 680px) {
         flex-direction: column;
     }
@@ -34,7 +34,6 @@
     align-items: center;
     justify-content: center;
     width: 40%;
-
     @media (max-width: 680px) {
         width: 70%;
     }
@@ -50,7 +49,6 @@
     align-items: center;
     justify-content: center;
     width: 40%;
-
     @media (max-width: 680px) {
         width: 70%;
     }
@@ -103,14 +101,23 @@
     /* Adjust padding as needed */
 }
 
-.formButtons {
+/* .formButtons {
+    margin-bottom: 3rem;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+    transition: all 0.1s ease-in-out;
+} */
+.formField input:focus{
+    border-color: #3555ac;
+}
+
+.formButtons{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
-changes{
+.changes{
     justify-content: center;
 }
 
@@ -118,9 +125,9 @@ changes{
     width: 70%;
 }
 
-.formButtons .buttonOne {
+.formButtons .buttonOne{
     /* border: 1px solid #111; */
-    /* padding: 0.5rem 2rem; */
+    padding: 0.5rem 2rem;
     font-size: 1rem;
     font-weight: 500;
     background-color: #3555ac;
@@ -131,20 +138,28 @@ changes{
 
 }
 
-.buttonTwo {
-    /* border: 1px solid #111; */
-    /* padding: 0.5rem 2rem; */
+/* .buttonTwo {
+    
     padding: 0;
+    cursor: pointer;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
+
+} */
+.formButtons .buttonTwo{
+    /* border: 1px solid #111; */
+    padding: 0.5rem 2rem;
     font-size: 1rem;
     font-weight: 500;
     background-color: #3555ac;
     color: #fff;
+    padding: 0;
     cursor: pointer;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .6);
 
 }
 
 .buttonOne button {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -152,7 +167,9 @@ changes{
     padding: 0.5rem 2rem;
 }
 
-.buttonTwo button {
+
+.buttonTwo button{
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .6);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -341,4 +358,7 @@ changes{
     font-size: 1.2rem;
     font-weight: 700;
     /* color: #555; */
+}
+.formButtons button i{
+    padding-top: 3px;
 }
