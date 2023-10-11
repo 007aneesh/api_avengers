@@ -1,8 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Data from "../data"
 import {AiOutlineClose} from "react-icons/ai";
 const List = () => {
     const [selectedData, setSelectedData] = useState(null);
+    const [list, setList] = useState([]);
+    const getPatientList = async () =>{
+      try {
+        const response = await fetch("http://localhost:8000/getAllPatients");
+
+        const data = await response.json();
+
+        setList(data); 
+      } catch (error) {
+        console.error("Error fetching data!");
+      }
+    }
+    console.log('dd: ', list);
+    useEffect( () => {
+      getPatientList();
+    }, [])
     const handleTableRowClick = (data) => {
       setSelectedData(data);
     };
@@ -32,7 +48,7 @@ const List = () => {
              </tr>
            </thead>
            <tbody className="py-3">
-             {Data.map((data, index) => (
+             {list.map((data, index) => (
                <tr
                  key={index}
                  onClick={() => handleTableRowClick(data)}
