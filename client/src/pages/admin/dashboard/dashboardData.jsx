@@ -1,6 +1,6 @@
-import React from 'react';
-import { ColumnChart } from "eazychart-react";
-import "eazychart-css";
+import React from "react";
+// import { ColumnChart } from "eazychart-react";
+// import "eazychart-css";
 const DashboardData = () => {
   return (
     <div>
@@ -21,7 +21,7 @@ const DashboardData = () => {
         </div>
 
         <div className="p-5 rounded-lg md:w-4/6 overflow-hidden bg-[#ECECEC] flex items-center justify-center">
-          <ColumnChart
+          {/* <ColumnChart
             animationOptions={{
               delay: 0,
               duration: 400,
@@ -80,13 +80,77 @@ const DashboardData = () => {
             }}
             yAxis={{
               domainKey: "value",
-              nice: 5
+              nice: 5,
             }}
-          />
+          /> */}
+        </div>
+      </div>
+      <div className="flex flex-col py-8">
+        <div>
+          <h1 className="font-bold text-xl">Add new Patient:</h1>
+        </div>
+
+        <div className="grid grid-cols-1 p-5 md:grid-cols-2 justify-center items-center w-full gap-5 md:gap-10">
+          <input
+            type="text"
+            name="aadharNumber"
+            placeholder="Aadhar Number"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+          <input
+            type="text"
+            name="guardianName"
+            placeholder="Guardian Name"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+          <input
+            type="text"
+            name="emergencyContact"
+            placeholder="Emergency Contact"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+          <input
+            type="text"
+            name="gender"
+            placeholder="Gender"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+          <input
+            type="text"
+            name="contact"
+            placeholder="Contact"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+          <input
+            type="text"
+            name="password"
+            placeholder="Set Password"
+            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+          ></input>
+        </div>
+        <div className="flex items-center justify-center">
+          <button
+            onClick={() => {}}
+            className="p-5 bg-[#662890]/80 text-white w-1/3  py-2 text-lg rounded-lg"
+          >
+            Add
+          </button>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default DashboardData
+export default DashboardData;
