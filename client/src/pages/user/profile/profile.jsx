@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsPencilFill } from "react-icons/bs";
-const UserData = () => {
+const UserData = ({data}) => {
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -30,45 +30,46 @@ const UserData = () => {
             <input
               readOnly={!isEditing}
               name="full_name"
+              value={data?.name}
               type="text"
               className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
             ></input>
           </div>
-          <div key="visits" className="flex flex-col gap-y-1 w-full">
+          <div key="patientId" className="flex flex-col gap-y-1 w-full">
             <label className="">Patient Id:</label>
             <div className="flex flex-row border-black border-2 rounded-lg px-3">
               <input
-                name="visits"
+                name="patientId"
                 type="text"
                 readOnly
-                value={4972395734}
-                id="visitsInput"
+                value={data?.patientId}
+                id="patientId_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
               ></input>
             </div>
           </div>
-          <div key="visits" className="flex flex-col gap-y-1 w-full">
+          <div key="guardian_name" className="flex flex-col gap-y-1 w-full">
             <label className="">Guardian name:</label>
             <div className="flex flex-row border-black border-2 rounded-lg px-3">
               <input
-                name="visits"
+                name="guardian_name"
                 type="text"
                 readOnly
                 value="Monkey D. Luffy"
-                id="visitsInput"
+                id="guardian_name_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
               ></input>
             </div>
           </div>
-          <div key="visits" className="flex flex-col gap-y-1 w-full">
+          <div key="emergency_contact" className="flex flex-col gap-y-1 w-full">
             <label className="">Guardian contact:</label>
             <div className="flex flex-row border-black border-2 rounded-lg px-3">
               <input
-                name="visits"
+                name="emergency_contact"
                 type="text"
                 readOnly
                 value="8934257932"
-                id="visitsInput"
+                id="emergency_contact_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
               ></input>
             </div>
@@ -98,6 +99,7 @@ const UserData = () => {
                 readOnly
                 name="phone"
                 type="text"
+                value={data?.contact}
                 className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
               ></input>
             </div>

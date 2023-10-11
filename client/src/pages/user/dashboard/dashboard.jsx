@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../../images/logo.webp";
 import { AiOutlineClose, AiOutlineFileText } from "react-icons/ai";
 import { FaUserCircle, FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";
 import { MdDelete, MdSpaceDashboard } from "react-icons/md";
 import { BiMenuAltLeft, BiSolidReport } from "react-icons/bi";
 import { FiEdit3 } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import img from "../../../images/logo.webp";
 import Data from "../userData/userData";
 import Prescription from "../prescriptions/prescription";
-
 import Report from "../reports/report";
 import Profile from "../profile/profile";
 const UserDashboard = () => {
   const navigate = useNavigate();
-  const name = 'Aneesh';
+  const {patientId} = useParams();
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
   };
   const [selectedButton, setSelectedButton] = React.useState("Dashboard");
+
 
   const [imgDialog, setImgDialog] = useState(false);
 
@@ -39,7 +39,7 @@ const UserDashboard = () => {
       case "My Reports":
         return <Report />;
       case "My Profile":
-        return <Profile />
+        return <Profile data={data} />
       default:
         return <Data />;
     }
@@ -72,9 +72,29 @@ const UserDashboard = () => {
       const formData = new FormData();
       formData.append("image", selectedFile);
       // const apiUrl = "https://example.com/api/upload";
-      
     }
   };
+
+const [data, setData] = useState(null);
+const isDataFetched = useRef(false); 
+
+const getData = async () => {
+  try {
+    const response = await fetch(`http://localhost:8000/patient/${patientId}`);
+    const user = await response.json();
+    setData(user);
+    console.log("datattttt:", user);
+    isDataFetched.current = true;
+  } catch (error) {
+    console.error("Error fetching data!");
+  }
+};
+
+useEffect(() => {
+  if (!isDataFetched.current) {
+    getData();
+  }
+});
 
   return (
     <>
@@ -158,7 +178,7 @@ const UserDashboard = () => {
               </div>
             </div>
             <div>
-              <h1>Hello, {name}</h1>
+              <h1>Hello, {data?.name}</h1>
             </div>
           </div>
           {[
@@ -175,6 +195,7 @@ const UserDashboard = () => {
           ].map(({ icon, text }, index) => (
             <div
               onClick={() => handleButtonClick(text)}
+              key={index}
               className={`${
                 selectedButton === text
                   ? "border-b-2 text-black"

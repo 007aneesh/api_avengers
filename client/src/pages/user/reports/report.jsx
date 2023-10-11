@@ -38,7 +38,7 @@ const Report = () => {
                 className="py-2 border-y-2 font-semibold border-black/10 cursor-pointer"
               >
                 <td className="py-3 text-center flex items-center justify-center text-xs md:text-sm text-black/60">
-                  <img src={data.img} alt="img" className="w-14 h-16" />
+                  <img src={data.img} alt="img" className="w-14 h-16 object-cover" />
                 </td>
                 <td className="py-3 flex-wrap">
                   <h1 className="text-center text-base truncate md:text-lg font-semibold text-black/60">

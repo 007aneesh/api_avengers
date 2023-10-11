@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../images/logo.webp";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -20,12 +20,12 @@ const Navbar = () => {
           <div
             className={`items-center gap-5 hidden md:flex font-semibold text-lg`}
           >
-            <a href="/">
+            <Link to="/">
               <h1>About us</h1>
-            </a>
-            <a href="/">
+            </Link>
+            <Link to="/">
               <h1>Solutions</h1>
-            </a>
+            </Link>
             <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
               <a href="/signin">Sign In</a>
             </button>
@@ -47,7 +47,7 @@ const Navbar = () => {
                 </a>
                 
                 <button className="border-[#3555ac] rounded-md lg:text-base font-medium text-[0.9rem] mt-2 border-2 px-2 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
-                  <a href="/signin">Sign In</a>
+                  <Link to="/signin">Sign In</Link>
                 </button>
               </div>
             )}

@@ -175,6 +175,7 @@ const UserDashboard = () => {
           ].map(({ icon, text }, index) => (
             <div
               onClick={() => handleButtonClick(text)}
+              key={index}
               className={`${
                 selectedButton === text
                   ? "border-b-2 text-black"
