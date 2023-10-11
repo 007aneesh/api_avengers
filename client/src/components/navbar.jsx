@@ -26,9 +26,11 @@ const Navbar = () => {
             <Link to="/">
               <h1>Solutions</h1>
             </Link>
-            <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
-              <a href="/signin">Sign In</a>
-            </button>
+            <Link to="/signin">
+              <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
+                Sign In
+              </button>
+            </Link>
           </div>
           <div className="flex items-center relative">
             <button
@@ -39,16 +41,17 @@ const Navbar = () => {
             </button>
             {showMenu && (
               <div className="absolute top-full right-0 w-auto bg-white px-10 py-3 mt-1 shadow-2xl rounded-md">
-                <a href="/" className="block mb-2">
+                <Link to="/" className="block mb-2">
                   About us
-                </a>
-                <a href="/" className="block">
+                </Link>
+                <Link to="/" className="block">
                   Solutions
-                </a>
-                
-                <button className="border-[#3555ac] rounded-md lg:text-base font-medium text-[0.9rem] mt-2 border-2 px-2 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
-                  <Link to="/signin">Sign In</Link>
-                </button>
+                </Link>
+                <Link to="/signin">
+                  <button className="border-[#3555ac] rounded-md lg:text-base font-medium text-[0.9rem] mt-2 border-2 px-2 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
+                    Sign In
+                  </button>
+                </Link>
               </div>
             )}
           </div>

@@ -14,7 +14,7 @@ const Hero = () => {
               Healthcare
             </h1>
             <h1 className="font-bold text-2xl uppercase md:text-3xl lg:text-6xl text-[#3555ac]">
-               Data Solutions
+              Data Solutions
             </h1>
             <p className="font-bold text-lg lg:text-xl text-[#555] py-4">
               Unlocking Insights, Driving Innovation
@@ -23,9 +23,11 @@ const Hero = () => {
               <button className="border-[#3555ac] rounded-md lg:text-md font-medium border-2 px-4 py-2 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
                 Explore our Solutions
               </button>
-              <button className="border-[#3555ac] rounded-md lg:text-md font-medium border-2 px-4 py-2 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
-                <Link to='/signup'>Register</Link>
-              </button>
+              <Link to="/signup">
+                <button className="border-[#3555ac] rounded-md lg:text-md font-medium border-2 px-4 py-2 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
+                  Register
+                </button>
+              </Link>
             </div>
           </div>
           <div className="md:w-1/2">
@@ -36,7 +38,7 @@ const Hero = () => {
             />
           </div>
         </div>
-      </div>      
+      </div>
     </div>
   );
 };
