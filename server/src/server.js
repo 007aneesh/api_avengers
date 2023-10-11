@@ -104,9 +104,9 @@ app.post('/patLogin', async (req, res) => {
 
 app.post('/orgRegister', async (req, res) => {
 
-  const { userName, email, contactNo, secContact, password, cpassword, orgName, registrationNo, address, pinCode, district, state, planSelected } = req.body;
+  const { userName, email, contactNo, secContact, password, cpassword, orgName, registrationNo, address, pinCode, city, state, planSelected } = req.body;
 
-  if (!userName || !email || !contactNo || !secContact || !password || !cpassword || !orgName || !registrationNo || !address || !pinCode || !district || !state || !planSelected) {
+  if (!userName || !email || !contactNo || !secContact || !password || !cpassword || !orgName || !registrationNo || !address || !pinCode || !city || !state || !planSelected) {
     return res.status(422).json({ error: "plzz fill the fields properly" });
   }
 
@@ -121,7 +121,7 @@ app.post('/orgRegister', async (req, res) => {
       return res.status(422).json({ error: "password are not matching" });
     }
     else {
-      const orgUser = new OrgUser({ userName, email, contactNo, secContact, password, cpassword, orgName, registrationNo, address, pinCode, district, state, planSelected });
+      const orgUser = new OrgUser({ userName, email, contactNo, secContact, password, cpassword, orgName, registrationNo, address, pinCode, city, state, planSelected });
 
       const orgRegister = await orgUser.save();
 

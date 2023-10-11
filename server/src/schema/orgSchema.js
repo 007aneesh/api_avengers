@@ -18,11 +18,11 @@ const orgSchema = mongoose.Schema({
         required: true
     },
     password: {
-        type: Number,
+        type: String,
         required: true
     },
     cpassword: {
-        type: Number,
+        type: String,
         required: true
     },
     orgName: {
@@ -41,7 +41,7 @@ const orgSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    district: {
+    city: {
         type: String,
         required: true
     },

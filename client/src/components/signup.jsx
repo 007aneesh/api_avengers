@@ -121,61 +121,55 @@ const Onboarding = () => {
                         <div className="formField">
                           <input
                             type="text"
-                            placeholder="Your Name"
+                            name="userName"
+                            placeholder="User Name"
                             required=""
                           />
                         </div>
                         <div className="formField">
                           <input
                             type="email"
-                            placeholder="Your E-Mail"
+                            name="email"
+                            placeholder="Organisation E-Mail"
                             required=""
                           />
                         </div>
                         <div className="formField">
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="number"
+                            name="contactNo"
+                            placeholder="Contact Number"
                             required=""
                           />
                         </div>
-                        <div className="formField">
-                          <input
-                            type="email"
-                            placeholder="Your E-Mail"
-                            required=""
-                          />
-                        </div>
+                        
                       </div>
                       <div className="rightformField">
-                        <div className="formField">
+                      <div className="formField">
                           <input
-                            type="text"
-                            placeholder="Your Name"
+                            type="number"
+                            name="secContact"
+                            placeholder="secondary Contact Number"
                             required=""
                           />
                         </div>
                         <div className="formField">
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
                             required=""
                           />
                         </div>
                         <div className="formField">
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="password"
+                            name="cpassword"
+                            placeholder="Confirm Password"
                             required=""
                           />
                         </div>
-                        <div className="formField">
-                          <input
-                            type="email"
-                            placeholder="Your E-Mail"
-                            required=""
-                          />
-                        </div>
+                        
                       </div>
                     </div>
                     <div className="formButtons">
@@ -202,58 +196,52 @@ const Onboarding = () => {
                         <div className="formField">
                           <input
                             type="text"
-                            placeholder="Your Name"
+                            name="orgName"
+                            placeholder="Organisation Name"
                             required=""
                           />
                         </div>
                         <div className="formField">
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="number"
+                            name="registrationNo"
+                            placeholder="Registration Number"
                             required=""
                           />
                         </div>
-                        <div className="formField">
-                          <input
-                            type="email"
-                            placeholder="Your E-Mail"
-                            required=""
-                          />
-                        </div>
-                        <div className="formField">
-                          <input
-                            type="email"
-                            placeholder="Your E-Mail"
-                            required=""
-                          />
-                        </div>
-                      </div>
-                      <div className="rightformField">
                         <div className="formField">
                           <input
                             type="text"
-                            placeholder="Your Name"
+                            name="address"
+                            placeholder="Address"
+                            required=""
+                          />
+                        </div>
+                        
+                      </div>
+                      <div className="rightformField">
+                        
+                        <div className="formField">
+                          <input
+                            type="text"
+                            name="city"
+                            placeholder="City"
                             required=""
                           />
                         </div>
                         <div className="formField">
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="text"
+                            name="state"
+                            placeholder="State"
                             required=""
                           />
                         </div>
                         <div className="formField">
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
-                            required=""
-                          />
-                        </div>
-                        <div className="formField">
-                          <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="number"
+                            name="pinCode"
+                            placeholder="Pin Code"
                             required=""
                           />
                         </div>
@@ -515,7 +503,7 @@ const Onboarding = () => {
                     <div className="field">
                       <div className="leftformField">
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">User Name</label>
                           <input
                             type="text"
                             placeholder="ABC Hospital"
@@ -524,7 +512,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Organisation E-Mail</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -532,7 +520,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Contact Number</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -540,7 +528,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Secondary Contact Number</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -559,7 +547,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Registration Number</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -567,7 +555,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Address</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -575,7 +563,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">City</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -586,7 +574,7 @@ const Onboarding = () => {
 
                       <div className="leftformField">
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">State</label>
                           <input
                             type="text"
                             placeholder="Your Name"
@@ -594,7 +582,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Pin Code</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -602,7 +590,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Plan Selected</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
@@ -610,7 +598,7 @@ const Onboarding = () => {
                           />
                         </div>
                         <div className="formField">
-                          <label htmlFor="orgName">Organisation Name</label>
+                          <label htmlFor="orgName">Terms and Conditions</label>
                           <input
                             type="email"
                             placeholder="Your E-Mail"
