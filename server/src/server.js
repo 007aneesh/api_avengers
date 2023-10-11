@@ -82,6 +82,8 @@ app.post("/patRegister", async (req, res) => {
       image,
     });
 
+    
+
     const patRegister = await patUser.save();
 
     if (patRegister) {
