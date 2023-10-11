@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Data from "../data"
 import {AiOutlineClose} from "react-icons/ai";
 const List = () => {
     const [selectedData, setSelectedData] = useState(null);

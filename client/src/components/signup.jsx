@@ -22,9 +22,9 @@ const Onboarding = () => {
     if (formNo >= 2) setFormNo(formNo - 1);
   };
   
-  const submit = () => {
-    console.log("Submitted");
-  };
+  // const submit = () => {
+  //   console.log("Submitted");
+  // };
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -51,7 +51,7 @@ const Onboarding = () => {
               <div className="my-5 w-screen flex flex-col items-center justify-center">
                 <div className="flex flex-col justify-center items-center mb-8">
                   {
-                    (formNo == 1) && (
+                    (formNo === 1) && (
                       <div className="flex flex-col items-center justify-center text-center">
                         <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                           Ready to Manage Your Health Data?
@@ -63,7 +63,7 @@ const Onboarding = () => {
                     )
                   }
                   {
-                    (formNo == 2) && (
+                    (formNo === 2) && (
                       <div className="flex flex-col items-center justify-center text-center">
                         <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                           Organisation Details
@@ -75,7 +75,7 @@ const Onboarding = () => {
                     )
                   }
                   {
-                    (formNo == 4) && (
+                    (formNo === 4) && (
                       <div className="flex flex-col items-center justify-center text-center">
                         <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                           Terms and Conditions
@@ -87,7 +87,7 @@ const Onboarding = () => {
                     )
                   }
                   {
-                    (formNo == 5) && (
+                    (formNo === 5) && (
                       <div className="flex flex-col items-center justify-center text-center">
                         <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                           Review your Details
@@ -99,7 +99,7 @@ const Onboarding = () => {
                     )
                   }
                   {
-                    (formNo == 6) && (
+                    (formNo === 6) && (
                       <div className="flex flex-col items-center justify-center text-center">
                         <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                           Checkout Details
@@ -657,10 +657,10 @@ const Onboarding = () => {
                       
                         <h1>Payment Options:</h1>
                         <div className="upi">
-                          <img src={paytm}/>
-                          <img src={gpay}/>
-                          <img src={phonepe}/>
-                          <img src={bhimupi}/>
+                          <img src={paytm} alt="paytm"/>
+                          <img src={gpay} alt='gpay'/>
+                          <img src={phonepe} alt="phonePe"/>
+                          <img src={bhimupi} alt="bhimupi"/>
                         </div>
                         <div className="card">
                           <div className="debit">

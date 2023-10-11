@@ -3,7 +3,6 @@ import logo from "../images/logo.webp";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import Plans from './plans';
 import "./signup.css";
 
 const Signin = () => {
@@ -16,11 +15,11 @@ const Signin = () => {
         { 
             navigate(-1);
         }
-        else if (formNo == 2)
+        else if (formNo === 2)
         {
              setFormNo(formNo - 1);
         }
-        else if (formNo == 3)
+        else if (formNo === 3)
         {
              setFormNo(formNo - 2);
         }
@@ -44,10 +43,10 @@ const Signin = () => {
         setIsorgChecked(false);
     }
     const next = (form) => {
-        if (isorgChecked == true) {
+        if (isorgChecked === true) {
             setFormNo(form + 1);
         }
-        else if (ispatChecked == true) {
+        else if (ispatChecked === true) {
             setFormNo(form + 2);
         }
     };
@@ -78,7 +77,7 @@ const Signin = () => {
                             <div className="my-5 w-screen flex flex-col items-center justify-center">
                                 <div className="flex flex-col justify-center items-center mb-8">
                                     {
-                                        (formNo == 1) && (
+                                        (formNo === 1) && (
                                             <div className="flex flex-col items-center justify-center text-center">
                                                 <h1 className="text-3xl font-extrabold font-sans text-[#444] text-center md:text-5xl ">
                                                     Signin to your Managed Data
@@ -90,7 +89,7 @@ const Signin = () => {
                                         )
                                     }
                                     {
-                                        (formNo == 2) && (
+                                        (formNo === 2) && (
                                             <div className="flex flex-col items-center justify-center text-center">
                                                 <h1 className="text-3xl font-extrabold font-sans text-[#666] mt-6 mb-6 text-center md:text-5xl ">
                                                     Sign in as an Organisation
@@ -100,7 +99,7 @@ const Signin = () => {
                                         )
                                     }
                                     {
-                                        (formNo == 3) && (
+                                        (formNo === 3) && (
                                             <div className="flex flex-col items-center justify-center text-center">
                                                 <h1 className="text-3xl font-extrabold font-sans text-[#666] mt-6 mb-6 text-center md:text-5xl ">
                                                     Sign in as a Patient
