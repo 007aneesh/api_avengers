@@ -4,9 +4,7 @@ const PatUser = require("./schema/patientSchema");
 const OrgUser = require("./schema/orgSchema");
 const bcrypt = require("bcryptjs");
 // patient register route
-router.get("/", (req, res)=>{
-  console.log(req.oidc.isAuthenticated());
-})
+
 router.post("/patRegister", async (req, res) => {
   const {
     patientId,
@@ -22,7 +20,6 @@ router.post("/patRegister", async (req, res) => {
   } = req.body;
 
   if (
-    !patientId ||
     !aadharNumber ||
     !email ||
     !guardianName ||

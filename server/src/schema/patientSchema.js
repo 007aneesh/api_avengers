@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const patientSchema = new mongoose.Schema({
     patientId: {
         type: Number,
-        required: true
+        required: false
     },
     aadharNumber: {
         type: Number,

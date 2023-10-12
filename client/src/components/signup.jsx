@@ -32,6 +32,54 @@ const Onboarding = () => {
     setIsChecked(!isChecked);
   }
 
+  // handling data entry state
+  const serverUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000/orgRegister';
+
+  const [orgData, setOrgData] = useState({
+    userName: "",email:"",contactNo:"",secContact:"",password:"",cpassword:"",orgName:"",registrationNo:"",address:"",pinCode:"",city:"",state:"",planSelected:""
+  });
+
+
+  let name, value;
+  const handleOrgData = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+    setOrgData({...orgData, [name]:value})
+  }
+
+  const updateOrgValue = (newValue) => {
+    setOrgData({...orgData, planSelected: newValue});
+  };
+
+  const sendOrgData = async (e) => {
+    e.preventDefault();
+
+    const {userName,email,contactNo,secContact,password,cpassword,orgName,registrationNo,address,pinCode,city,state,planSelected} = orgData;
+
+    const res = await fetch(serverUrl,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({
+        userName,email,contactNo,secContact,password,cpassword,orgName,registrationNo,address,pinCode,city,state,planSelected
+      })
+    });
+
+    const data = await res.json();
+
+    if(res.status === 422 || !data){
+      window.alert("Invalid Registration");
+      console.log("Invalid Registration");
+    }
+    else{
+      window.alert("Registration Successful");
+      console.log("Registration Successful");
+
+      navigate("/admin", {state: orgData});
+    }
+  }
+
   return (
     <>
       <div className="px-6 py-3  lg:px-20 flex justify-between items-center mb-4 md:mb-1">
@@ -44,7 +92,7 @@ const Onboarding = () => {
       </div>
       <div className="px-16 mt-3">
         <div className="flex justify-center items-center">
-          <form>
+          <form method="POST">
             <div className="">
 
 
@@ -122,6 +170,8 @@ const Onboarding = () => {
                           <input
                             type="text"
                             name="userName"
+                            value={orgData.userName}
+                            onChange={handleOrgData}
                             placeholder="User Name"
                             required=""
                           />
@@ -130,6 +180,8 @@ const Onboarding = () => {
                           <input
                             type="email"
                             name="email"
+                            value={orgData.email}
+                            onChange={handleOrgData}
                             placeholder="Organisation E-Mail"
                             required=""
                           />
@@ -138,6 +190,8 @@ const Onboarding = () => {
                           <input
                             type="number"
                             name="contactNo"
+                            value={orgData.contactNo}
+                            onChange={handleOrgData}
                             placeholder="Contact Number"
                             required=""
                           />
@@ -149,6 +203,8 @@ const Onboarding = () => {
                           <input
                             type="number"
                             name="secContact"
+                            value={orgData.secContact}
+                            onChange={handleOrgData}
                             placeholder="secondary Contact Number"
                             required=""
                           />
@@ -157,6 +213,8 @@ const Onboarding = () => {
                           <input
                             type="password"
                             name="password"
+                            value={orgData.password}
+                            onChange={handleOrgData}
                             placeholder="Password"
                             required=""
                           />
@@ -165,6 +223,8 @@ const Onboarding = () => {
                           <input
                             type="password"
                             name="cpassword"
+                            value={orgData.cpassword}
+                            onChange={handleOrgData}
                             placeholder="Confirm Password"
                             required=""
                           />
@@ -197,6 +257,8 @@ const Onboarding = () => {
                           <input
                             type="text"
                             name="orgName"
+                            value={orgData.orgName}
+                            onChange={handleOrgData}
                             placeholder="Organisation Name"
                             required=""
                           />
@@ -205,6 +267,8 @@ const Onboarding = () => {
                           <input
                             type="number"
                             name="registrationNo"
+                            value={orgData.registrationNo}
+                            onChange={handleOrgData}
                             placeholder="Registration Number"
                             required=""
                           />
@@ -213,6 +277,8 @@ const Onboarding = () => {
                           <input
                             type="text"
                             name="address"
+                            value={orgData.address}
+                            onChange={handleOrgData}
                             placeholder="Address"
                             required=""
                           />
@@ -225,6 +291,8 @@ const Onboarding = () => {
                           <input
                             type="text"
                             name="city"
+                            value={orgData.city}
+                            onChange={handleOrgData}
                             placeholder="City"
                             required=""
                           />
@@ -233,6 +301,8 @@ const Onboarding = () => {
                           <input
                             type="text"
                             name="state"
+                            value={orgData.state}
+                            onChange={handleOrgData}
                             placeholder="State"
                             required=""
                           />
@@ -241,6 +311,8 @@ const Onboarding = () => {
                           <input
                             type="number"
                             name="pinCode"
+                            value={orgData.pinCode}
+                            onChange={handleOrgData}
                             placeholder="Pin Code"
                             required=""
                           />
@@ -265,7 +337,7 @@ const Onboarding = () => {
                 )}
                 {formNo === 3 && (
                   <div>
-                    <Plans next={next} />
+                    <Plans next={next} orgData={orgData} updateOrgValue={updateOrgValue} />
                   </div>
                 )}
                 {formNo === 4 && (
@@ -506,7 +578,7 @@ const Onboarding = () => {
                           <label htmlFor="orgName">User Name</label>
                           <input
                             type="text"
-                            placeholder="ABC Hospital"
+                            placeholder={orgData.userName}
                             id="orgName"
                             required="" readOnly
                           />
@@ -515,23 +587,23 @@ const Onboarding = () => {
                           <label htmlFor="orgName">Organisation E-Mail</label>
                           <input
                             type="email"
-                            placeholder="Your E-Mail"
+                            placeholder={orgData.email}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">Contact Number</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="number"
+                            placeholder={orgData.contactNo}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">Secondary Contact Number</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="number"
+                            placeholder={orgData.secContact}
                             required="" readOnly
                           />
                         </div>
@@ -542,31 +614,31 @@ const Onboarding = () => {
                           <label htmlFor="orgName">Organisation Name</label>
                           <input
                             type="text"
-                            placeholder="Your Name"
+                            placeholder={orgData.orgName}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">Registration Number</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="number"
+                            placeholder={orgData.registrationNo}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">Address</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="text"
+                            placeholder={orgData.address}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">City</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="text"
+                            placeholder={orgData.city}
                             required="" readOnly
                           />
                         </div>
@@ -577,31 +649,31 @@ const Onboarding = () => {
                           <label htmlFor="orgName">State</label>
                           <input
                             type="text"
-                            placeholder="Your Name"
+                            placeholder={orgData.state}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">Pin Code</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="number"
+                            placeholder={orgData.pinCode}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">Plan Selected</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="text"
+                            placeholder={orgData.planSelected}
                             required="" readOnly
                           />
                         </div>
                         <div className="formField">
                           <label htmlFor="orgName">Terms and Conditions</label>
                           <input
-                            type="email"
-                            placeholder="Your E-Mail"
+                            type="text"
+                            placeholder="Accepted"
                             required="" readOnly
                           />
                         </div>
@@ -672,7 +744,7 @@ const Onboarding = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => next(formNo)}>
+                        <button onClick={sendOrgData}>
                           <p>Proceed</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>

@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css';
-const Plans = ({next}) => {
+const Plans = ({next,orgdata, updateOrgValue}) => {
   return (
     <div className='plans'>
       <div className='planHeading'>
@@ -37,7 +37,7 @@ const Plans = ({next}) => {
               <p>Limited Basic App features</p>
             </div>
           </div>
-          <div className='planButton' onClick={()=>next(3)}>Continue</div>
+          <div className='planButton' onClick={()=>{next(3); updateOrgValue("Basic")}}>Continue</div>
         </div>
         <div className='planData gold'>
         <div className='planBase'>Gold</div>
@@ -69,7 +69,7 @@ const Plans = ({next}) => {
               <p>Basic App features</p>
             </div>
           </div>
-          <div className='planButton' onClick={()=>next(3)}>Continue</div>
+          <div className='planButton' onClick={()=>{next(3); updateOrgValue("Gold")}}>Continue</div>
         </div>
         <div className='planData silver'>
         <div className='planBase'>Silver</div>
@@ -101,7 +101,7 @@ const Plans = ({next}) => {
               <p>Limited Basic App features</p>
             </div>
           </div>
-          <div className='planButton' onClick={()=>next(3)}>Continue</div>
+          <div className='planButton' onClick={()=>{next(3); updateOrgValue("Silver")}}>Continue</div>
         </div>
       </div>
     </div>
