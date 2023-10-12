@@ -6,7 +6,7 @@ import { MdDelete, MdSpaceDashboard } from "react-icons/md";
 import { BiMenuAltLeft, BiSolidReport } from "react-icons/bi";
 import {BsSearch} from "react-icons/bs";
 import { FiEdit3 } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../../images/logo.webp";
 import Data from "./dashboardData";
 import Search from "../search/search";
@@ -14,6 +14,10 @@ import List from "../list/list";
 import Settings from "../settings/setting";
 const UserDashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const dataReceived  = location.state;
+
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
   };
@@ -161,7 +165,7 @@ const UserDashboard = () => {
               </div>
             </div>
             <div>
-              <h1>Welcome, Admin</h1>
+              <h1>Welcome, {dataReceived.userName}</h1>
             </div>
           </div>
           {[

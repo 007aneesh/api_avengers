@@ -1,7 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 // import { ColumnChart } from "eazychart-react";
 // import "eazychart-css";
 const DashboardData = () => {
+  const serverUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000/patRegister';
+
+  const [patData, setPatData] = useState({
+    aadharNumber: "", name: "", email: "", guardianName: "", emergencyContact: "", gender: "", contact: "", password: ""
+  });
+
+  let name, value;
+  const handlePatData = (e) => {
+
+    name = e.target.name;
+    value = e.target.value;
+    setPatData({ ...patData, [name]: value });
+  }
+
+  const sendPatData = async (e) => {
+    e.preventDefault();
+
+    let { aadharNumber, name, email, guardianName, emergencyContact, gender, contact, password } = patData;
+
+    const res1 = await fetch(serverUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        aadharNumber, name, email, guardianName, emergencyContact, gender, contact, password
+      })
+    });
+
+    const data = await res1.json();
+
+    if (res1.status === 422 || !data) {
+      window.alert("Invalid Patient Registration");
+      console.log("Invalid Patient Registration");
+    }
+    else {
+      window.alert("Patient Registration Successful");
+      console.log("Patient Registration Successful");
+
+    }
+  }
+
+
+
+
   return (
     <div>
       <div className="flex flex-col md:flex-row w-full gap-4">
@@ -85,70 +130,91 @@ const DashboardData = () => {
           /> */}
         </div>
       </div>
+      <form method="POST">
       <div className="flex flex-col py-8">
         <div>
           <h1 className="font-bold text-xl">Add new Patient:</h1>
         </div>
-
+        
         <div className="grid grid-cols-1 p-5 md:grid-cols-2 justify-center items-center w-full gap-5 md:gap-10">
+
           <input
-            type="text"
+            type="number"
             name="aadharNumber"
+            value={patData.aadharNumber}
+            onChange={handlePatData}
             placeholder="Aadhar Number"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
           <input
             type="text"
             name="name"
+            value={patData.name}
+            onChange={handlePatData}
             placeholder="Name"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
           <input
-            type="text"
+            type="email"
             name="email"
+            value={patData.email}
+            onChange={handlePatData}
             placeholder="Email"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
           <input
             type="text"
             name="guardianName"
+            value={patData.guardianName}
+            onChange={handlePatData}
             placeholder="Guardian Name"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
           <input
-            type="text"
+            type="number"
             name="emergencyContact"
+            value={patData.emergencyContact}
+            onChange={handlePatData}
             placeholder="Emergency Contact"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
           <input
             type="text"
             name="gender"
+            value={patData.gender}
+            onChange={handlePatData}
             placeholder="Gender"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
           <input
-            type="text"
+            type="number"
             name="contact"
+            value={patData.contact}
+            onChange={handlePatData}
             placeholder="Contact"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
           <input
-            type="text"
+            type="password"
             name="password"
+            value={patData.password}
+            onChange={handlePatData}
+            autoComplete="off"
             placeholder="Set Password"
             className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
           ></input>
+
         </div>
         <div className="flex items-center justify-center">
           <button
-            onClick={() => {}}
+            onClick={sendPatData}
             className="p-5 bg-[#662890]/80 text-white w-1/3  py-2 text-lg rounded-lg"
           >
             Add
           </button>
         </div>
       </div>
+      </form>
     </div>
   );
 };

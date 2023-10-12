@@ -3,7 +3,9 @@ const router = express.Router();
 const PatUser = require("./schema/patientSchema");
 const OrgUser = require("./schema/orgSchema");
 
+
 // patient register route
+
 
 router.post("/patRegister", async (req, res) => {
   const {
@@ -20,7 +22,6 @@ router.post("/patRegister", async (req, res) => {
   } = req.body;
 
   if (
-    !patientId ||
     !aadharNumber ||
     !email ||
     !guardianName ||
