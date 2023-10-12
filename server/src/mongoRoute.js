@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const PatUser = require("./schema/patientSchema");
 const OrgUser = require("./schema/orgSchema");
-
+const bcrypt = require("bcryptjs");
 // patient register route
-
+router.get("/", (req, res)=>{
+  console.log(req.oidc.isAuthenticated());
+})
 router.post("/patRegister", async (req, res) => {
   const {
     patientId,
@@ -77,11 +79,19 @@ router.post("/patLogin", async (req, res) => {
 
     const patientLogin = await PatUser.findOne({ aadharNumber: aadharNumber });
 
-    if (!patientLogin) {
-      res.status(400).json({ error: "some error occured" });
-    } else {
-      res.json({ message: "patient login successfully" });
+    if(patientLogin){
+      const isMatch = await bcrypt.compare(password, patientLogin.password);
+
+      if (!isMatch) {
+        res.status(400).json({ error: "Invalid Credentials" });
+      } else {
+        res.json({ message: "Patient login successfully" });
+      }
+    }else{
+      res.json({message: "User not found!!"});
     }
+
+    
   } catch (err) {
     console.log(err);
   }
