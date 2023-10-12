@@ -165,7 +165,7 @@ const UserDashboard = () => {
               </div>
             </div>
             <div>
-              <h1>Welcome, {dataReceived.userName}</h1>
+              <h1>Welcome, {dataReceived?.userName}</h1>
             </div>
           </div>
           {[
