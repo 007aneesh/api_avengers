@@ -235,14 +235,14 @@ const Onboarding = () => {
                     <div className="formButtons">
                       <div className="buttonOne invisible">
                         <button onClick={() => pre()}>
-                          <i class="bx bx-left-arrow-alt"></i>
+                          <i className="bx bx-left-arrow-alt"></i>
                           <p>Back</p>
                         </button>
                       </div>
                       <div className="buttonTwo">
                         <button onClick={() => next(formNo)}>
                           <p>Next</p>
-                          <i class="bx bx-right-arrow-alt"></i>
+                          <i className="bx bx-right-arrow-alt"></i>
                         </button>
                       </div>
                     </div>
@@ -322,14 +322,14 @@ const Onboarding = () => {
                     <div className="formButtons">
                       <div className="buttonOne">
                         <button onClick={() => pre()}>
-                          <i class="bx bx-left-arrow-alt"></i>
+                          <i className="bx bx-left-arrow-alt"></i>
                           <p>Back</p>
                         </button>
                       </div>
                       <div className="buttonTwo">
                         <button onClick={() => next(formNo)}>
                           <p>Next</p>
-                          <i class="bx bx-right-arrow-alt"></i>
+                          <i className="bx bx-right-arrow-alt"></i>
                         </button>
                       </div>
                     </div>
@@ -557,14 +557,14 @@ const Onboarding = () => {
                     <div className="formButtons formFour">
                       <div className="buttonOne">
                         <button onClick={() => pre()}>
-                          <i class="bx bx-left-arrow-alt"></i>
+                          <i className="bx bx-left-arrow-alt"></i>
                           <p>Back</p>
                         </button>
                       </div>
                       <div className={`buttonTwo`}>
                         <button onClick={() => { next(formNo); handleCheck() }} disabled={!isChecked} className={`${isChecked ? "" : "bg-gray-500"}`}>
                           <p>Next</p>
-                          <i class="bx bx-right-arrow-alt"></i>
+                          <i className="bx bx-right-arrow-alt"></i>
                         </button>
                       </div>
                     </div>
@@ -683,14 +683,14 @@ const Onboarding = () => {
                     <div className="formButtons">
                       <div className="buttonOne">
                         <button onClick={() => pre()}>
-                          <i class="bx bx-left-arrow-alt"></i>
+                          <i className="bx bx-left-arrow-alt"></i>
                           <p>Back</p>
                         </button>
                       </div>
                       <div className="buttonTwo">
                         <button onClick={() => next(formNo)}>
                           <p>Next</p>
-                          <i class="bx bx-right-arrow-alt"></i>
+                          <i className="bx bx-right-arrow-alt"></i>
                         </button>
                       </div>
                     </div>
@@ -724,11 +724,11 @@ const Onboarding = () => {
                         </div>
                         <div className="card">
                           <div className="debit">
-                            <i class='bx bx-plus-circle'></i>
+                            <i className='bx bx-plus-circle'></i>
                             <p>Add new Debit Card</p>
                           </div>
                           <div className="credit">
-                            <i class='bx bx-plus-circle'></i>
+                            <i className='bx bx-plus-circle'></i>
                             <p>Add new Credit Card</p>
                           </div>
                         </div>
@@ -739,14 +739,14 @@ const Onboarding = () => {
                     <div className="formButtons">
                       <div className="buttonOne">
                         <button onClick={() => pre()}>
-                          <i class="bx bx-left-arrow-alt"></i>
+                          <i className="bx bx-left-arrow-alt"></i>
                           <p>Back</p>
                         </button>
                       </div>
                       <div className="buttonTwo">
                         <button onClick={sendOrgData}>
                           <p>Proceed</p>
-                          <i class="bx bx-right-arrow-alt"></i>
+                          <i className="bx bx-right-arrow-alt"></i>
                         </button>
                       </div>
                     </div>

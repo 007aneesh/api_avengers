@@ -2,7 +2,8 @@ const http = require("http");
 const app = require("./app");
 const mongoose = require("mongoose");
 
-const auth = require("./auth");
+const mongoRoute = require("./mongoRoute");
+
 
 //require dotenv
 require("dotenv").config();
@@ -23,7 +24,8 @@ db.once("open", () => {
   console.log("Connected to MongoDB successfully!");
 });
 
-app.use(auth);
+app.use(mongoRoute);
+
 
 // create server
 const server = http.createServer(app);

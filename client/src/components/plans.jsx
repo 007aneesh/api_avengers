@@ -13,27 +13,27 @@ const Plans = ({next,orgdata, updateOrgValue}) => {
           <p>To discover our products and its fearures</p>
           <div className='planFeatures'>
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>File Storage upto 500 MB</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Limited sharing upto 10 Documents</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Limited Viewing</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>No access to Specialist Doctors</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Limited Basic App features</p>
             </div>
           </div>
@@ -45,27 +45,27 @@ const Plans = ({next,orgdata, updateOrgValue}) => {
           <p>Best Option for Individual Users</p>
           <div className='planFeatures'>
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>File Storage upto 3 GB</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>sharing upto 500 Documents</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Upto 10% Discounts</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Limited access to Specialist Doctors</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Basic App features</p>
             </div>
           </div>
@@ -77,27 +77,27 @@ const Plans = ({next,orgdata, updateOrgValue}) => {
           <p>Best suited for larger Organisations</p>
           <div className='planFeatures'>
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>File Storage upto 500 MB</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Limited sharing upto 10 Documents</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Limited Viewing</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>No access to Specialist Doctors</p>
             </div>
 
             <div className='features'>
-              <i class='bx bx-check-circle'></i>
+              <i className='bx bx-check-circle'></i>
               <p>Limited Basic App features</p>
             </div>
           </div>

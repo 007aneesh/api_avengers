@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const bcrypt = require("bcryptjs");
 const patientSchema = new mongoose.Schema({
     patientId: {
         type: Number,
@@ -43,6 +43,15 @@ const patientSchema = new mongoose.Schema({
     }
 })
 
+patientSchema.pre("save", async function (next) {
+  if (this.isModified("aadharNumber")) {
+    this.aadharNumber = await bcrypt.hash(this.aadharNumber, 12);
+  }
+  next();
+});
+
+
 const PatUser = mongoose.model('PATIENT',patientSchema);
 
 module.exports = PatUser;
+
