@@ -706,9 +706,9 @@ const Onboarding = () => {
                         <p>Total Amount Payable</p>
                       </div>
                       <div className="rightDetails">
-                        <p>ABC Hospital</p>
-                        <p>AIS3536SJS</p>
-                        <p>Basic</p>
+                        <p>{orgData.orgName}</p>
+                        <p>{orgData.registrationNo}</p>
+                        <p>{orgData.planSelected}</p>
                         <p>Rs. 0</p>
                       </div>
 
