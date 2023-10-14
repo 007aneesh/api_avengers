@@ -68,6 +68,7 @@ router.post("/patRegister", async (req, res) => {
 
 router.post("/patLogin", async (req, res) => {
   try {
+    let token;
     const { aadharNumber, password } = req.body;
 
     if (!aadharNumber || !password) {
@@ -78,6 +79,14 @@ router.post("/patLogin", async (req, res) => {
 
     if(patientLogin){
       const isMatch = await bcrypt.compare(password, patientLogin.password);
+
+      console.log("match: ", isMatch);
+      console.log("myp: ", password);
+      console.log('bp: ', patientLogin.password);
+
+      token = await patientLogin.generateAuthToken();
+
+      console.log(token);
 
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" });
@@ -184,10 +193,16 @@ router.post("/orgLogin", async (req, res) => {
       registrationNo: registrationNo,
     });
 
-    if (!organisationLogin) {
-      res.status(400).json({ error: "some error occured" });
+    if (organisationLogin) {
+      const isMatch = await bcrypt.compare(password, organisationLogin.password);
+
+      if (!isMatch) {
+        res.status(400).json({ error: "Invalid Credentials" });
+      } else {
+        res.json({ message: "Organisation login successfully" });
+      }
     } else {
-      res.json({ message: "Organisation login successfully" });
+      res.json({ message: "ORG not found!!" });
     }
   } catch (err) {
     console.log(err);
