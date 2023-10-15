@@ -165,7 +165,7 @@ const UserDashboard = () => {
               </div>
             </div>
             <div>
-              <h1>Welcome, {dataReceived?.userName}</h1>
+              <h1>Welcome, {dataReceived?.userName ? dataReceived?.userName : "Admin"} </h1>
             </div>
           </div>
           {[
@@ -195,7 +195,7 @@ const UserDashboard = () => {
             className="py-3 mt-1 flex text-black/60 items-center mx-4 text-lg hover:text-red-500 rounded-md pl-8 cursor-pointer hover:border-b-2 border-b-[#662890]/60"
           >
             <FaPowerOff className="mr-3 " />
-            <h1 className=" md:text-base hover:text-black/60">Log Out</h1>
+            <h1 className=" md:text-base">Log Out</h1>
           </div>
         </div>
         <div

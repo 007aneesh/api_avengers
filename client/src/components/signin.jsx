@@ -98,7 +98,8 @@ const Signin = () => {
     password: "",
   });
 
-  const serverUrl = "http://localhost:8000/patLogin";
+  const serverUrl =
+    process.env.REACT_APP_API_URL || "http://localhost:8000/patLogin";
 
   // const sendOrgData = async () => {
 
@@ -139,7 +140,7 @@ const Signin = () => {
       body: JSON.stringify({
         aadharNumber,
         password,
-      }),
+      })
     });
 
     const data = await res.json();
@@ -149,9 +150,11 @@ const Signin = () => {
       window.alert("Invalid Credentials");
     } else {
       window.alert("LOGIN Successful");
-      // navigate("/dashboard/patient/1", { state: patientData });
+      navigate("/dashboard/patient/1", { state: patientData });
     }
   };
+
+  
 
   return (
     <>
@@ -165,7 +168,7 @@ const Signin = () => {
       </div>
       <div className="px-16 mt-3">
         <div className="flex justify-center items-center">
-          <form method="POST">
+          <form method="POST" action={serverUrl}>
             <div className="">
               <div className="my-5 w-screen flex flex-col items-center justify-center">
                 <div className="flex flex-col justify-center items-center mb-8">
@@ -292,7 +295,7 @@ const Signin = () => {
                       <div className="leftformField mb-6">
                         <div className="formField">
                           <input
-                            type="text"
+                            type="number"
                             name="aadharNumber"
                             value={patientData?.aadharNumber}
                             onChange={handleChange}
@@ -326,7 +329,7 @@ const Signin = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => sendPatData()}>
+                        <button onClick={(e) => sendPatData(e)}>
                           <p>Get OTP</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>
@@ -334,7 +337,7 @@ const Signin = () => {
                     </div>
                   </div>
                 )}
-                {formNo === 4 && (
+                {/* {formNo === 4 && (
                   <div className="formOne">
                     <div className="field">
                       <div className="leftformField mb-6">
@@ -372,7 +375,7 @@ const Signin = () => {
                       </div>
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </form>
