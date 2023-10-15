@@ -77,27 +77,27 @@ router.post("/patLogin", async (req, res) => {
 
     const patientLogin = await PatUser.findOne({ aadharNumber: aadharNumber });
 
-    if(patientLogin){
+    if (patientLogin) {
       const isMatch = await bcrypt.compare(password, patientLogin.password);
-
-      console.log("match: ", isMatch);
-      console.log("myp: ", password);
-      console.log('bp: ', patientLogin.password);
 
       token = await patientLogin.generateAuthToken();
 
-      console.log(token);
+      const eightHours = 8 * 60 * 60 * 1000;
+      const expirationTime = new Date(Date.now() + eightHours);
+
+      res.cookie("jwtoken", token, {
+        expires: expirationTime,
+        httpOnly: true,
+      });
 
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" });
       } else {
         res.json({ message: "Patient login successfully" });
       }
-    }else{
-      res.json({message: "User not found!!"});
+    } else {
+      res.json({ message: "User not found!!" });
     }
-
-    
   } catch (err) {
     console.log(err);
   }
@@ -194,7 +194,10 @@ router.post("/orgLogin", async (req, res) => {
     });
 
     if (organisationLogin) {
-      const isMatch = await bcrypt.compare(password, organisationLogin.password);
+      const isMatch = await bcrypt.compare(
+        password,
+        organisationLogin.password
+      );
 
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" });
