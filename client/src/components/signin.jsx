@@ -119,7 +119,6 @@ const Signin = () => {
     });
 
     const data = await res.json();
-    console.log("OrgData: ", data);
 
     if (res.status === 400 || !data) {
       window.alert("Invalid Credentials");
