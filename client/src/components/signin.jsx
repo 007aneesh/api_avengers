@@ -105,7 +105,7 @@ const Signin = () => {
 
   const sendOrgData = async () => {
 
-    const { password, registrationNo } = orgData;
+    const { registrationNo, password } = orgData;
 
     const res = await fetch(adminUrl, {
       method: "POST",
@@ -125,12 +125,11 @@ const Signin = () => {
       window.alert("Invalid Credentials");
     } else {
       window.alert("LOGIN Successful");
-      navigate("/admin", { state: orgData });
+      navigate("/admin", { state: data.registrationNo });
     }
   };
 
-  const sendPatData = async (e) => {
-    e.preventDefault();
+  const sendPatData = async () => {
     const { aadharNumber, password } = patientData;
 
     const res = await fetch(patientUrl, {
@@ -331,7 +330,7 @@ const Signin = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={(e) => getOTP(e)}>
+                        <button onClick={() => getOTP()}>
                           <p>Get OTP</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>
@@ -370,7 +369,7 @@ const Signin = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => submit()}>
+                        <button onClick={(e) => submit(e)}>
                           <p>Submit</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>

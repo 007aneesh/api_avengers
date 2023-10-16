@@ -173,7 +173,7 @@ router.post("/orgRegister", async (req, res) => {
       const orgRegister = await orgUser.save();
 
       if (orgRegister) {
-        res.status(201).json({ message: "organisation register successfully" });
+        res.status(201).json({ message: "organisation register successfully", registrationNo: orgExists.registrationNo });
       } else {
         res.status(500).json({ error: "failed to register" });
       }
