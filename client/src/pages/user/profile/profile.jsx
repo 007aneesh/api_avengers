@@ -1,12 +1,44 @@
 import React, { useState } from "react";
 import { BsPencilFill } from "react-icons/bs";
-const UserData = ({data}) => {
-
+import { useParams } from "react-router";
+const UserData = ({data, setData}) => {
+  const { patientId } = useParams();
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClick = () => {
     setIsEditing((prev) => !prev);
   };
+
+  const updateData = () =>{
+
+    const updatedData = {
+
+    };
+
+    setData({ ...data});
+
+    
+
+    fetch(`http://localhost:8000/patient/${patientId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Patient data updated:");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 
   return (
     <div className="p-2 flex flex-col">
@@ -37,7 +69,7 @@ const UserData = ({data}) => {
           </div>
           <div key="patientId" className="flex flex-col gap-y-1 w-full">
             <label className="">Patient Id:</label>
-            <div className="flex flex-row border-black border-2 rounded-lg px-3">
+            <div className="flex flex-row border-black border-2 rounded-lg ">
               <input
                 name="patientId"
                 type="text"
@@ -50,12 +82,12 @@ const UserData = ({data}) => {
           </div>
           <div key="guardian_name" className="flex flex-col gap-y-1 w-full">
             <label className="">Guardian name:</label>
-            <div className="flex flex-row border-black border-2 rounded-lg px-3">
+            <div className="flex flex-row border-black border-2 rounded-lg">
               <input
                 name="guardian_name"
                 type="text"
-                readOnly
-                value="Monkey D. Luffy"
+                readOnly={!isEditing}
+                value={data?.guardianName}
                 id="guardian_name_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
               ></input>
@@ -63,12 +95,12 @@ const UserData = ({data}) => {
           </div>
           <div key="emergency_contact" className="flex flex-col gap-y-1 w-full">
             <label className="">Guardian contact:</label>
-            <div className="flex flex-row border-black border-2 rounded-lg px-3">
+            <div className="flex flex-row border-black border-2 rounded-lg">
               <input
                 name="emergency_contact"
                 type="text"
-                readOnly
-                value="8934257932"
+                readOnly={!isEditing}
+                value={data?.emergencyContact}
                 id="emergency_contact_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
               ></input>
@@ -87,8 +119,9 @@ const UserData = ({data}) => {
             <div className="flex flex-col my-2 gap-y-1">
               <label className="">Email:</label>
               <input
-                readOnly
+                readOnly={!isEditing}
                 name="email"
+                value={data?.email}
                 type="text"
                 className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
               ></input>
@@ -109,6 +142,7 @@ const UserData = ({data}) => {
         <div className="flex w-full items-center justify-center mt-2">
           <button
             type="button"
+            onClick={()=>updateData()}
             className="px-7 bg-[#662890]/80 text-white  py-2 text-lg rounded-lg"
           >
             Save

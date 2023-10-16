@@ -40,7 +40,7 @@ const UserDashboard = () => {
       case "My Reports":
         return <Report />;
       case "My Profile":
-        return <Profile data={data} />;
+        return <Profile data={data} setData={setData} />;
       default:
         return <Data />;
     }
@@ -76,22 +76,46 @@ const UserDashboard = () => {
     // Pack files into a CAR and send to web3.storage
     const rootCid = await client.put(fileInput.files); // Promise<CIDString>
 
-    setData({...data, image: `https://dweb.link/ipfs/${rootCid}`});
+    // Fetch and verify files from web3.storage
+    const res = await client.get(rootCid); // Promise<Web3Response | null>
+    const files = await res.files();
+    const imgLoc = files[0].name;
 
-    console.log("di", data?.image);
+    setData({ ...data, image: `https://dweb.link/ipfs/${rootCid}/${imgLoc}` });
+
+    // updating in the db
+
+    const updatedData = {
+      image: `https://dweb.link/ipfs/${rootCid}/${imgLoc}`,
+    };
+
+    fetch(`http://localhost:8000/patient/${patientId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Patient data updated:");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
     // const image = await fetch(`https://dweb.link/ipfs/${rootCid}`);
-    // console.log(image); 
+    // console.log(image);
 
     // Get info on the Filecoin deals that the CID is stored in
     // const info = await client.status(rootCid); // Promise<Status | undefined>
 
-    // Fetch and verify files from web3.storage
-    // const res = await client.get(rootCid); // Promise<Web3Response | null>
-    // const files = await res.files();
     // console.log("rootcid: "+rootCid+" info: "+info+" res: "+res+" files: "+files);
-
-    
   };
 
   const [data, setData] = useState(null);
@@ -109,8 +133,6 @@ const UserDashboard = () => {
       console.error("Error fetching data!");
     }
   };
-
-  console.log("d1m", data?.image);
 
   useEffect(() => {
     if (!isDataFetched.current) {
@@ -144,7 +166,7 @@ const UserDashboard = () => {
                 <img
                   src={data?.image || img}
                   alt="user"
-                  className="h-32 w-32 rounded-full p-2 md:w-36 md:h-36 mb-2"
+                  className="h-32 w-32 rounded-full object-contain p-2 md:w-36 md:h-36 mb-2"
                 />
               </div>
               <div className="mt-2 text-white w-full flex px-5 py-1 justify-between items-center">
@@ -189,8 +211,12 @@ const UserDashboard = () => {
           </div>
           <div className="py-2.5 mt-3 relative flex flex-col items-center justify-center text-xl font-sans font-bold rounded-md px-6">
             <div className="relative mb-1">
-              <div className="relative rounded-full w-24 h-24 p-2 flex items-center justify-center">
-                <img src={data?.image || img} alt="user" className="w-full object-cover h-full mb-2" />
+              <div className="relative rounded-full w-24 h-24 p-1 flex items-center justify-center">
+                <img
+                  src={data?.image || img}
+                  alt="user"
+                  className="w-full object-contain rounded-full h-full mb-2"
+                />
               </div>
               <div
                 onClick={toggleImage}

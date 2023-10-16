@@ -28,9 +28,30 @@ async function getPatientByIAadhar(req, res) {
   return res.status(200).json(patient);
 }
 
+async function updatePatientById(req, res) {
+  const patientId = req.params.patientId;
+  const updates = req.body;
+  try {
+    // Use of findOneAndUpdate method to find and update the patient
+    const patient = await PatUser.findOneAndUpdate(
+      { patientId: patientId },
+      updates,
+      { new: true } // To return the updated patient
+    );
+
+    if (!patient) {
+      return res.status(404).json({ message: "Patient not found" });
+    }
+
+    return res.status(200).json(patient);
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
 
 module.exports = {
   getAllPatients,
   getPatientById,
   getPatientByIAadhar,
+  updatePatientById,
 };

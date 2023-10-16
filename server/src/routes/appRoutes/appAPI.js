@@ -11,5 +11,6 @@ const patientsControllers = require("../../controllers/patients.controllers");
 router.get("/getAllPatients", patientsControllers.getAllPatients);
 router.get("/patient/:patientId", patientsControllers.getPatientById);
 router.get("/patient/:aadhar", patientsControllers.getPatientByIAadhar);
+router.patch("/patient/:patientId", patientsControllers.updatePatientById);
 
 module.exports = router;

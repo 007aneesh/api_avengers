@@ -29,8 +29,7 @@ const Signin = () => {
   const submit = (e) => {
     e.preventDefault();
     if (isorgChecked === true) {
-      // sendOrgData();
-      return;
+      sendOrgData();
     } else if (ispatChecked === true) {
       sendPatData();
     }
@@ -98,41 +97,43 @@ const Signin = () => {
     password: "",
   });
 
-  const serverUrl =
-    process.env.REACT_APP_API_URL || "http://localhost:8000/patLogin";
+  const patientUrl =
+    process.env.REACT_APP_PATIENT_URL || "http://localhost:8000/patLogin";
 
-  // const sendOrgData = async () => {
+  const adminUrl =
+    process.env.REACT_APP_ADMIN_URL || "http://localhost:8000/orgLogin";
 
-  //   const { password, registrationNo, verified } = orgData;
+  const sendOrgData = async () => {
 
-  //   const res = await fetch(serverUrl, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       password,
-  //       registrationNo,
-  //       verified,
-  //     }),
-  //   });
+    const { password, registrationNo } = orgData;
 
-  //   const data = await res.json();
-  //   console.log("OrgData: ", data);
+    const res = await fetch(adminUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        registrationNo,
+        password,
+      }),
+    });
 
-  //   if (res.status === 400 || !data) {
-  //     window.alert("Invalid Credentials");
-  //   } else {
-  //     window.alert("LOGIN Successful");
-  //     navigate("/admin", { state: orgData });
-  //   }
-  // };
+    const data = await res.json();
+    console.log("OrgData: ", data);
+
+    if (res.status === 400 || !data) {
+      window.alert("Invalid Credentials");
+    } else {
+      window.alert("LOGIN Successful");
+      navigate("/admin", { state: orgData });
+    }
+  };
 
   const sendPatData = async (e) => {
     e.preventDefault();
     const { aadharNumber, password } = patientData;
 
-    const res = await fetch(serverUrl, {
+    const res = await fetch(patientUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -140,7 +141,7 @@ const Signin = () => {
       body: JSON.stringify({
         aadharNumber,
         password,
-      })
+      }),
     });
 
     const data = await res.json();
@@ -169,7 +170,7 @@ const Signin = () => {
       </div>
       <div className="px-16 mt-3">
         <div className="flex justify-center items-center">
-          <form method="POST" action={serverUrl}>
+          <form method="POST" action={adminUrl}>
             <div className="">
               <div className="my-5 w-screen flex flex-col items-center justify-center">
                 <div className="flex flex-col justify-center items-center mb-8">
@@ -248,7 +249,7 @@ const Signin = () => {
                       <div className="leftformField mb-6">
                         <div className="formField">
                           <input
-                            type="text"
+                            type="number"
                             name="registrationNo"
                             value={orgData?.registrationNo}
                             onChange={handleChange}
@@ -330,7 +331,7 @@ const Signin = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={(e) => sendPatData(e)}>
+                        <button onClick={(e) => getOTP(e)}>
                           <p>Get OTP</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>
@@ -338,7 +339,7 @@ const Signin = () => {
                     </div>
                   </div>
                 )}
-                {/* {formNo === 4 && (
+                {formNo === 4 && (
                   <div className="formOne">
                     <div className="field">
                       <div className="leftformField mb-6">
@@ -376,7 +377,7 @@ const Signin = () => {
                       </div>
                     </div>
                   </div>
-                )} */}
+                )}
               </div>
             </div>
           </form>
