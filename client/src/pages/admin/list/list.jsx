@@ -54,7 +54,7 @@ const List = () => {
                >
                  <td className="py-3 text-center flex items-center justify-center text-xs md:text-sm text-black/60">
                    <h1 className="text-center text-base truncate md:text-lg font-semibold text-black/60">
-                     {data.patientId}
+                     {data._id}
                    </h1>
                  </td>
                  <td className="py-3 flex-wrap">
