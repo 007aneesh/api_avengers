@@ -74,7 +74,7 @@ const UserData = ({data, setData}) => {
                 name="patientId"
                 type="text"
                 readOnly
-                value={data?.patientId}
+                value={data?._id}
                 id="patientId_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
               ></input>

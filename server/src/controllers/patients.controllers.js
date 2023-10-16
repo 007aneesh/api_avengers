@@ -7,7 +7,7 @@ async function getAllPatients(req, res){
 
 async function getPatientById(req, res) {
   const patientId = req.params.patientId;
-  const patient = await PatUser.findOne({ patientId: patientId });
+  const patient = await PatUser.findOne({ _id: patientId });
 
   if (!patient) {
     return res.status(404).json({ message: "Patient not found" });

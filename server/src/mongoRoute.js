@@ -96,7 +96,7 @@ router.post("/patLogin", async (req, res) => {
       } else {
         res.json({
           message: "Patient login successfully",
-          patientId: patientLogin.patientId,
+          patientId: patientLogin._id,
         });
       }
     } else {
