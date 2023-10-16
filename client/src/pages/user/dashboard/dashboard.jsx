@@ -5,7 +5,7 @@ import { FaUserCircle, FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";
 import { MdDelete, MdSpaceDashboard } from "react-icons/md";
 import { BiMenuAltLeft, BiSolidReport } from "react-icons/bi";
 import { FiEdit3 } from "react-icons/fi";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import img from "../../../images/user.webp";
 import Data from "../userData/userData";
 import Prescription from "../prescriptions/prescription";
@@ -14,7 +14,10 @@ import Profile from "../profile/profile";
 import { Web3Storage } from "web3.storage";
 const UserDashboard = () => {
   const navigate = useNavigate();
-  const { patientId } = useParams();
+  // const { patientId } = useParams();
+  const location = useLocation();
+
+  const patientId = location.state;
 
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
@@ -130,7 +133,7 @@ const UserDashboard = () => {
       setData(user);
       isDataFetched.current = true;
     } catch (error) {
-      console.error("Error fetching data!");
+      console.log("Error fetching data!");
     }
   };
 
