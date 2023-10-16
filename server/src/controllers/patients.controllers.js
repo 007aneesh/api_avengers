@@ -1,12 +1,13 @@
-const patients = require('../models/patients.model');
+const PatUser = require('../schema/patientSchema');
 
-function getAllPatients(req, res){
-    return res.status(200).json(patients);
+async function getAllPatients(req, res){
+    const users = await PatUser.find();
+    return res.status(200).json(users);
 }
 
-function getPatientById(req, res) {
-  const patientId = req.params.patientId; 
-  const patient = patients.find((p) => p.patientId.toString() === patientId);
+async function getPatientById(req, res) {
+  const patientId = req.params.patientId;
+  const patient = await PatUser.findOne({ patientId: patientId });
 
   if (!patient) {
     return res.status(404).json({ message: "Patient not found" });
@@ -15,9 +16,10 @@ function getPatientById(req, res) {
   return res.status(200).json(patient);
 }
 
-function getPatientByIAadhar(req, res) {
+async function getPatientByIAadhar(req, res) {
   const aadhar = req.params.aadhar;
-  const patient = patients.find((p) => p.aadharNumber.toString() === aadhar);
+
+  const patient = await PatUser.findOne({ aadharNumber: aadhar });
 
   if (!patient) {
     return res.status(404).json({ message: "Patient not found" });

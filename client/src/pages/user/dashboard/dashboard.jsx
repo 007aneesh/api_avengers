@@ -6,19 +6,20 @@ import { MdDelete, MdSpaceDashboard } from "react-icons/md";
 import { BiMenuAltLeft, BiSolidReport } from "react-icons/bi";
 import { FiEdit3 } from "react-icons/fi";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import img from "../../../images/logo.webp";
+import img from "../../../images/user.webp";
 import Data from "../userData/userData";
 import Prescription from "../prescriptions/prescription";
 import Report from "../reports/report";
 import Profile from "../profile/profile";
+import { Web3Storage } from "web3.storage";
 const UserDashboard = () => {
   const navigate = useNavigate();
-  const {patientId} = useParams();
+  const { patientId } = useParams();
+
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
   };
   const [selectedButton, setSelectedButton] = React.useState("Dashboard");
-
 
   const [imgDialog, setImgDialog] = useState(false);
 
@@ -39,7 +40,7 @@ const UserDashboard = () => {
       case "My Reports":
         return <Report />;
       case "My Profile":
-        return <Profile data={data} />
+        return <Profile data={data} />;
       default:
         return <Data />;
     }
@@ -61,39 +62,61 @@ const UserDashboard = () => {
     };
   }, [imgDialog]);
 
+  const client = new Web3Storage({
+    token: process.env.REACT_APP_WEBSTORAGETOKEN,
+  });
+
   const openFileInput = () => {
     const fileInput = document.getElementById("fileInput");
     fileInput.click();
   };
+  const handleFileSelect = async (e) => {
+    const fileInput = document.querySelector('input[type="file"]');
 
-  const handleFileSelect = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append("image", selectedFile);
-      // const apiUrl = "https://example.com/api/upload";
+    // Pack files into a CAR and send to web3.storage
+    const rootCid = await client.put(fileInput.files); // Promise<CIDString>
+
+    setData({...data, image: `https://dweb.link/ipfs/${rootCid}`});
+
+    console.log("di", data?.image);
+
+    // const image = await fetch(`https://dweb.link/ipfs/${rootCid}`);
+    // console.log(image); 
+
+    // Get info on the Filecoin deals that the CID is stored in
+    // const info = await client.status(rootCid); // Promise<Status | undefined>
+
+    // Fetch and verify files from web3.storage
+    // const res = await client.get(rootCid); // Promise<Web3Response | null>
+    // const files = await res.files();
+    // console.log("rootcid: "+rootCid+" info: "+info+" res: "+res+" files: "+files);
+
+    
+  };
+
+  const [data, setData] = useState(null);
+  const isDataFetched = useRef(false);
+
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/patient/${patientId}`
+      );
+      const user = await response.json();
+      setData(user);
+      isDataFetched.current = true;
+    } catch (error) {
+      console.error("Error fetching data!");
     }
   };
 
-const [data, setData] = useState(null);
-const isDataFetched = useRef(false); 
+  console.log("d1m", data?.image);
 
-const getData = async () => {
-  try {
-    const response = await fetch(`http://localhost:8000/patient/${patientId}`);
-    const user = await response.json();
-    setData(user);
-    isDataFetched.current = true;
-  } catch (error) {
-    console.error("Error fetching data!");
-  }
-};
-
-useEffect(() => {
-  if (!isDataFetched.current) {
-    getData();
-  }
-});
+  useEffect(() => {
+    if (!isDataFetched.current) {
+      getData();
+    }
+  });
 
   return (
     <>
@@ -119,7 +142,7 @@ useEffect(() => {
               </div>
               <div className="w-full flex justify-center items-center py-3 border-gray-700 border-b-2">
                 <img
-                  src={img}
+                  src={data?.image || img}
                   alt="user"
                   className="h-32 w-32 rounded-full p-2 md:w-36 md:h-36 mb-2"
                 />
@@ -166,8 +189,8 @@ useEffect(() => {
           </div>
           <div className="py-2.5 mt-3 relative flex flex-col items-center justify-center text-xl font-sans font-bold rounded-md px-6">
             <div className="relative mb-1">
-              <div className="relative rounded-full w-24 h-24">
-                <img src={img} alt="user" className="w-full h-full mb-2" />
+              <div className="relative rounded-full w-24 h-24 p-2 flex items-center justify-center">
+                <img src={data?.image || img} alt="user" className="w-full object-cover h-full mb-2" />
               </div>
               <div
                 onClick={toggleImage}

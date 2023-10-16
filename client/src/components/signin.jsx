@@ -144,13 +144,14 @@ const Signin = () => {
     });
 
     const data = await res.json();
-    console.log("patData: ", data);
 
     if (res.status === 400 || !data) {
       window.alert("Invalid Credentials");
     } else {
       window.alert("LOGIN Successful");
-      navigate("/dashboard/patient/1", { state: patientData });
+      navigate(`/dashboard/patient/${data.patientId}`, {
+        state: data.patientId,
+      });
     }
   };
 

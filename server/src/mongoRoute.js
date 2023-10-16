@@ -3,6 +3,7 @@ const router = express.Router();
 const PatUser = require("./schema/patientSchema");
 const OrgUser = require("./schema/orgSchema");
 const bcrypt = require("bcryptjs");
+const authenticate = require("./middlewares/authenticate");
 // patient register route
 
 router.post("/patRegister", async (req, res) => {
@@ -93,7 +94,10 @@ router.post("/patLogin", async (req, res) => {
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" });
       } else {
-        res.json({ message: "Patient login successfully" });
+        res.json({
+          message: "Patient login successfully",
+          patientId: patientLogin.patientId,
+        });
       }
     } else {
       res.json({ message: "User not found!!" });
@@ -211,5 +215,9 @@ router.post("/orgLogin", async (req, res) => {
     console.log(err);
   }
 });
+
+router.get("/dashboard/patient/:patientId", authenticate, (req, res)=>{
+  res.send(req.rootUser);
+})
 
 module.exports = router;
