@@ -78,7 +78,7 @@ const UserData = ({data, setData}) => {
             <div className="flex flex-row border-black border-2 rounded-lg ">
               <input
                 name="patientId"
-                type="number"
+                type="text"
                 readOnly
                 value={data?._id}
                 id="patientId_input"

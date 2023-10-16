@@ -173,7 +173,10 @@ router.post("/orgRegister", async (req, res) => {
       const orgRegister = await orgUser.save();
 
       if (orgRegister) {
-        res.status(201).json({ message: "organisation register successfully", registrationNo: orgExists.registrationNo });
+        res.status(201).json({
+          message: "organisation register successfully",
+          registrationNo: orgExists.registrationNo,
+        });
       } else {
         res.status(500).json({ error: "failed to register" });
       }
@@ -216,8 +219,8 @@ router.post("/orgLogin", async (req, res) => {
   }
 });
 
-router.get("/dashboard/patient/:patientId", authenticate, (req, res)=>{
+router.get("/dashboard/patient/:patientId", authenticate, (req, res) => {
   res.send(req.rootUser);
-})
+});
 
 module.exports = router;
