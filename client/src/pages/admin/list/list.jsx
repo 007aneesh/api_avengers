@@ -92,16 +92,16 @@ const List = () => {
            <div className="w-full p-3">
              <div className="py-4">
                <img
-                 src={selectedData.img}
+                 src={selectedData.image}
                  alt="selectedImg"
-                 className="h-auto w-full"
+                 className="h-auto w-full px-10"
                />
              </div>
              <div className="flex flex-col">
                <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
                  {selectedData.description}
                </h1>
-               <p>Date Uploaded: {selectedData.date}</p>
+               <p>Date Uploaded: {selectedData.updatedAt}</p>
                <p>Uploaded by: {selectedData.doctor}</p>
              </div>
            </div>
