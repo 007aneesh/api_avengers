@@ -14,7 +14,6 @@ const List = () => {
         console.error("Error fetching data!");
       }
     }
-    console.log('dd: ', list);
     useEffect( () => {
       getPatientList();
     }, [])
