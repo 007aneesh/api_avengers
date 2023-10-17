@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import img from "../../../images/user.webp"
 const Search = () => {
+
   const [data, setData] = useState(null)
-  
+
   const [aadharNo, setAadhar] = useState("");
   const getData = async (aadharValue) => {
 
-    if(!aadharValue){
+    if (!aadharValue) {
       setData(null);
       return;
     }
@@ -20,16 +22,85 @@ const Search = () => {
       );
       const patient = await response.json();
       setData(patient);
-      console.log("data: ", patient);
     } catch (err) {
       console.error("Error fetching data!");
     }
   };
-  const search = () =>{
+  const search = () => {
 
     getData(aadharNo);
     setAadhar("");
   }
+
+  // Add Report
+
+  const reportUrl =
+    process.env.REACT_APP_REPORT_URL || "http://localhost:8000/addReport";
+
+  // const [repImg, setRepImg] = useState();
+  const patId = data?._id;
+  let aadharNum = data?.aadharNumber;
+  const [repData, setRepData] = useState({
+    patientId: patId ,
+    aadharNumber: aadharNum ,
+    image: "",
+    description: "",
+    dataType: "",
+    signedBy: "",
+    orgName: "ABC",
+  });
+  console.log("repData: "+repData);
+
+  let name, value;
+  const handleRepData = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+    setRepData({ ...repData, [name]: value });
+  };
+
+  // Send Report
+
+  const sendReport = async (e) => {
+    e.preventDefault();
+
+    const {
+      patientId,
+      aadharNumber,
+      image,
+      description,
+      dataType,
+      signedBy,
+      orgName,
+    } = repData;
+
+    const res = await fetch(reportUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        patientId,
+        aadharNumber,
+        image,
+        description,
+        dataType,
+        signedBy,
+        orgName,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!data) {
+      window.alert("Invalid data");
+    } else {
+      window.alert("report added Successful");
+      // navigate("/admin", { state: orgData });
+    }
+  };
+
+
+
   return (
     <div className="p-5">
       <div className="search flex w-full justify-center  items-center mb-10">
@@ -203,11 +274,75 @@ const Search = () => {
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div className="py-7">
-                <h1>Place to Add new reports fields</h1>
+                <h1 className="font-semibold">Add new Report:</h1>
+                <div className="flex flex-col md:flex-row gap-y-3 lg:gap-14 md:gap-8 w-full md:w-auto px-4 py-4">
+                  <div className="flex flex-col w-full gap-y-1">
+                    <label className="">Report Type:</label>
+                    <select
+                      name="dataType"
+                      value={repData.dataType}
+                      onChange={handleRepData}
+                      type="text"
+                      className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black cursor-pointer"
+                    >
+                      <option value="prescription">Prescription</option>
+                      <option value="MRI">MRI</option>
+                      <option value="CT Scan">CT Scan</option>
+                      <option value="Blood Pressure">Blood Pressure</option>
+                      <option value="Covid-19">Covid-19</option>
+                    </select>
+                  </div>
+
+                  <div className="flex flex-col w-full gap-y-1">
+                    <label className="">Description:</label>
+                    <input
+                      name="description"
+                      placeholder="Add a description for the Report"
+                      value={repData.description}
+                      onChange={handleRepData}
+                      type="text"
+                      className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
+                    ></input>
+                  </div>
+
+                  <div className="flex flex-col w-full gap-y-1">
+                    <label className="">Signed By:</label>
+                    <input
+                      name="signedBy"
+                      placeholder="Name of the Doctor"
+                      value={repData.signedBy}
+                      onChange={handleRepData}
+                      type="text"
+                      className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
+                    ></input>
+                  </div>
+
+                  {/* <div className="flex flex-col w-full gap-y-1">
+                    <label className="">Image:</label>
+                    <input
+                      name="image"
+                      type="file"
+                      value={repData.image}
+                      onChange={handleRepData}
+                      className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-none cursor-pointer"
+                    ></input>
+                  </div> */}
+
+
+
+                </div>
+                <div className="flex justify-center items-center w-full gap-5 py-4">
+                  <button
+                    onClick={sendReport}
+                    className="px-7 bg-[#662890]/80 text-white  py-2 text-lg rounded-lg"
+                  >
+                    Add Report
+                  </button>
+                </div>
               </div>
-              <hr/>
+              <hr />
               <div className="py-7">
                 <h1>Place to display previous reports</h1>
               </div>

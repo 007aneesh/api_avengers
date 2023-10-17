@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const reportSchema = mongoose.Schema({
     patientId: {
-        type: Number,
+        type: String,
         required: false
     },
     aadharNumber: {
@@ -11,7 +11,7 @@ const reportSchema = mongoose.Schema({
     },
     image: {
         type: String,
-        required: true
+        required: false
     },
     description: {
         type: String,

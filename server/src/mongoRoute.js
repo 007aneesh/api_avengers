@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const PatUser = require("./schema/patientSchema");
 const OrgUser = require("./schema/orgSchema");
+const Report = require("./schema/reportSchema");
 const bcrypt = require("bcryptjs");
 const authenticate = require("./middlewares/authenticate");
 // patient register route
@@ -224,3 +225,63 @@ router.get("/dashboard/patient/:patientId", authenticate, (req, res) => {
 });
 
 module.exports = router;
+
+
+// Adding Report
+
+router.post("/addReport", async (req, res) => {
+  const {
+    patientId,
+    aadharNumber,
+    image,
+    description,
+    dataType,
+    signedBy,
+    orgName,
+
+  } = req.body;
+
+  if (
+    !patientId ||
+    !aadharNumber ||
+    !description ||
+    !dataType ||
+    !signedBy ||
+    !orgName
+  ) {
+    return res.status(422).json({ error: "plzz fill the fields properly" });
+  }
+
+  try {
+    const imgExists = await Report.findOne({ image: image });
+
+    if (imgExists) {
+      return res
+        .status(422)
+        .json({ error: "Same report already Exists" });
+    }
+    else {
+      const report = new Report({
+        patientId,
+        aadharNumber,
+        image,
+        description,
+        dataType,
+        signedBy,
+        orgName,
+      });
+
+      const addReport = await report.save();
+
+      if (addReport) {
+        res.status(201).json({
+          message: "report added successfully",
+        });
+      } else {
+        res.status(500).json({ error: "failed to add report" });
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
