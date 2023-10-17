@@ -145,7 +145,7 @@ const Signin = () => {
         theme: "light",
       });
       setTimeout(() => {
-        navigate("/admin", { state: data.registrationNo });
+        navigate("/admin", { state: data });
       }, 1000);
       
     }

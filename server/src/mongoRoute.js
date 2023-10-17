@@ -206,7 +206,10 @@ router.post("/orgLogin", async (req, res) => {
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" });
       } else {
-        res.json({ message: "Organisation login successfully" });
+        res.json({
+          message: "Organisation login successfully",
+          data: organisationLogin,
+        });
       }
     } else {
       res.json({ message: "ORG not found!!" });
@@ -222,7 +225,6 @@ router.get("/dashboard/patient/:patientId", authenticate, (req, res) => {
 
 module.exports = router;
 
-
 // Adding Report
 
 router.post("/addReport", async (req, res) => {
@@ -234,7 +236,6 @@ router.post("/addReport", async (req, res) => {
     dataType,
     signedBy,
     orgName,
-
   } = req.body;
 
   if (
@@ -257,25 +258,25 @@ router.post("/addReport", async (req, res) => {
     //     .json({ error: "Same report already Exists" });
     // }
     // else {
-      const report = new Report({
-        patientId,
-        aadharNumber,
-        image,
-        description,
-        dataType,
-        signedBy,
-        orgName,
+    const report = new Report({
+      patientId,
+      aadharNumber,
+      image,
+      description,
+      dataType,
+      signedBy,
+      orgName,
+    });
+
+    const addReport = await report.save();
+
+    if (addReport) {
+      res.status(201).json({
+        message: "report added successfully",
       });
-
-      const addReport = await report.save();
-
-      if (addReport) {
-        res.status(201).json({
-          message: "report added successfully",
-        });
-      } else {
-        res.status(500).json({ error: "failed to add report" });
-      }
+    } else {
+      res.status(500).json({ error: "failed to add report" });
+    }
     // }
   } catch (err) {
     console.log(err);

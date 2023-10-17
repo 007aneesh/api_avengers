@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import img from "../../../images/user.webp";
 import Reports from "./reports";
-const Search = () => {
-
-  const [data, setData] = useState(null)
+const Search = ({ dataReceived }) => {
+  const [data, setData] = useState(null);
 
   const [aadharNo, setAadhar] = useState("");
-
   const [repData, setRepData] = useState({
     patientId: "",
     aadharNumber: "",
@@ -18,7 +16,6 @@ const Search = () => {
   });
 
   const getData = async (aadharValue) => {
-
     if (!aadharValue) {
       setData(null);
       setRepData({
@@ -35,19 +32,17 @@ const Search = () => {
 
     const aadhar = parseInt(aadharValue, 10);
 
-    
-
     try {
       const response = await fetch(
         `http://localhost:8000/patientbyaadhar/${aadhar}`
-
       );
       const patient = await response.json();
       setData(patient);
       setRepData({
         ...repData,
         patientId: patient?._id,
-        aadharNumber: patient?.aadharNumber
+        aadharNumber: patient?.aadharNumber,
+        orgName: dataReceived.data.orgName,
       });
     } catch (err) {
       console.error("Error fetching data!");
@@ -65,22 +60,15 @@ const Search = () => {
     }
   };
   const search = () => {
-
     getData(aadharNo);
     setAadhar("");
-
-  }
-
+  };
 
   // Add Report
-  
-  const reportUrl =
-    `${process.env.REACT_APP_BASEURL}/addReport`;
+
+  const reportUrl = `${process.env.REACT_APP_BASEURL}/addReport`;
 
   // const [repImg, setRepImg] = useState();
-  
-
-  
 
   let name, value;
   const handleRepData = (e) => {
@@ -130,8 +118,6 @@ const Search = () => {
     }
   };
 
-
-
   return (
     <div className="p-5">
       <div className="search flex w-full justify-center  items-center mb-10">
@@ -163,7 +149,9 @@ const Search = () => {
         <div className="flex items-center justify-center">
           {data == null ? (
             <div>
-              <h1 className="font-medium text-lg">Nothing to show!! | Please enter valid Aadhar Number!!</h1>
+              <h1 className="font-medium text-lg">
+                Nothing to show!! | Please enter valid Aadhar Number!!
+              </h1>
             </div>
           ) : (
             <div className="flex flex-col w-full">
@@ -255,10 +243,7 @@ const Search = () => {
                         className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
                       ></input>
                     </div>
-                    <div
-                      key="gender"
-                      className="flex flex-col gap-y-1 w-full"
-                    >
+                    <div key="gender" className="flex flex-col gap-y-1 w-full">
                       <label className="">Gender:</label>
                       <div className="flex flex-row border-black border-2 rounded-lg ">
                         <input
@@ -271,10 +256,7 @@ const Search = () => {
                         ></input>
                       </div>
                     </div>
-                    <div
-                      key="email"
-                      className="flex flex-col gap-y-1 w-full"
-                    >
+                    <div key="email" className="flex flex-col gap-y-1 w-full">
                       <label className="">Email:</label>
                       <div className="flex flex-row border-black border-2 rounded-lg">
                         <input
@@ -361,9 +343,6 @@ const Search = () => {
                       className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-none cursor-pointer"
                     ></input>
                   </div> */}
-
-
-
                 </div>
                 <div className="flex justify-center items-center w-full gap-5 py-4">
                   <button
@@ -376,7 +355,7 @@ const Search = () => {
               </div>
               <hr />
               <div className="py-7">
-                <Reports user={data}/>
+                <Reports user={data} />
               </div>
             </div>
           )}

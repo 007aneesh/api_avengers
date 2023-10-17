@@ -19,7 +19,7 @@ const Reports = ({user}) => {
         }
       }
       getReports();
-    }, [aadharNumber]);
+    }, [aadharNumber, user]);
 
 
   return (
