@@ -3,19 +3,21 @@ import React, { useState } from "react";
 const Search = () => {
   const [data, setData] = useState(null)
   const [aadhar, setAadhar] = useState("");
-  const getData = async (aadharValue) => {
+  const getData = async (aadhar) => {
+    console.log("aadhar: "+ typeof(aadhar));
     try {
       const response = await fetch(
-        `http:localhost:8000/patient/${aadharValue}`
+        `http:localhost:8000/patient/${aadhar}`
       );
       const patient = await response.json();
       setData(patient);
+      console.log("data: ", patient);
     } catch (err) {
       console.error("Error fetching data!");
     }
   };
   const search = () =>{
-    getData();
+    getData(aadhar);
     setAadhar("");
   }
   return (
