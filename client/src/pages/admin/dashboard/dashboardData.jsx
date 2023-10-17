@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllPatients } from "../../../services/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import { ColumnChart } from "eazychart-react";
 // import "eazychart-css";
 const DashboardData = () => {
@@ -58,9 +60,27 @@ const DashboardData = () => {
     const data = await res1.json();
 
     if (res1.status === 422 || !data) {
-      window.alert("Invalid Patient Registration");
+      toast.error("Invalid Registration", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
-      window.alert("Patient Registration Successful");
+      toast.success("Registration Successful", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
       setPatData({
         aadharNumber: "",
         name: "",
@@ -120,6 +140,19 @@ const DashboardData = () => {
 
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
       <div className="flex flex-col md:flex-row w-full gap-4">
         <div className="flex flex-col gap-4 md:w-2/6 h-auto">
           <div className=" rounded-lg p-5 h-2/6 bg-[#ECECEC] flex flex-col items-center justify-center text-center gap-3">
