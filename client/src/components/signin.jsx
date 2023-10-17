@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import OtpInput from "react-otp-input";
 import "./signup.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -121,10 +123,31 @@ const Signin = () => {
     const data = await res.json();
 
     if (res.status === 400 || !data) {
-      window.alert("Invalid Credentials");
+      toast.error("Invalid Credentials", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
-      window.alert("LOGIN Successful");
-      navigate("/admin", { state: data.registrationNo });
+      toast.success("LOGIN Successful", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(() => {
+        navigate("/admin", { state: data.registrationNo });
+      }, 1000);
+      
     }
   };
 
@@ -147,12 +170,34 @@ const Signin = () => {
 
 
     if (res.status === 400 || !data) {
-      window.alert("Invalid Credentials");
-    } else {
-      window.alert("LOGIN Successful");
-      navigate(`/dashboard/patient/${patientId}`, {
-        state: patientId,
+      toast.error("Invalid Credentials", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
       });
+    } else {
+      toast.success("LOGIN Successful", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(()=>{
+         navigate(`/dashboard/patient/${patientId}`, {
+           state: patientId,
+         });
+      }, 1000);
+      
+     
     
 
     }
@@ -162,6 +207,19 @@ const Signin = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
       <div className="px-6 py-3  lg:px-20 flex justify-between items-center mb-4 md:mb-1">
         <Link to="/">
           <img src={logo} alt="logo" className="w-20" />

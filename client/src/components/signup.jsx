@@ -9,6 +9,9 @@ import paytm from "../images/paytm.png";
 import gpay from "../images/gpay.jpg";
 import phonepe from "../images/phonepe.webp";
 import bhimupi from "../images/bhimupi.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Onboarding = () => {
   const navigate = useNavigate();
   const formArray = [1, 2, 3, 4, 5];
@@ -20,10 +23,6 @@ const Onboarding = () => {
     if (formNo === 1) navigate(-1);
     if (formNo >= 2) setFormNo(formNo - 1);
   };
-
-  // const submit = () => {
-  //   console.log("Submitted");
-  // };
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -105,15 +104,48 @@ const Onboarding = () => {
     const data = await res.json();
 
     if (res.status === 422 || !data) {
-      window.alert("Invalid Registration");
+      toast.error("Invalid Registration", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
-      window.alert("Registration Successful");
-      navigate("/admin", { state: orgData });
+      toast.success("Registration Successful", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(() => {
+        navigate("/admin", { state: orgData });
+      }, 1000);
     }
   };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
       <div className="px-6 py-3  lg:px-20 flex justify-between items-center mb-4 md:mb-1">
         <Link to="/">
           <img src={logo} alt="logo" className="w-20" />

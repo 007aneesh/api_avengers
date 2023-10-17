@@ -192,10 +192,6 @@ router.post("/orgLogin", async (req, res) => {
   try {
     const { registrationNo, password } = req.body;
 
-    if (!registrationNo || !password) {
-      return res.status(400).json({ error: "plz fill data" });
-    }
-
     const organisationLogin = await OrgUser.findOne({
       registrationNo: registrationNo,
     });

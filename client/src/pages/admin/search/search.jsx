@@ -39,6 +39,7 @@ const Search = () => {
               name="aadhar"
               value={aadharNo}
               onChange={(e) => setAadhar(e.target.value)}
+              placeholder="Patient Aadhar No."
               className="outline-none rounded-lg w-2/4 px-3 py-2 border-2 bg-transparent border-black"
             ></input>
             <button
