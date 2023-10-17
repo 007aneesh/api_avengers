@@ -53,22 +53,22 @@ const List = () => {
                  className="py-2 border-y-2 font-semibold border-black/10 cursor-pointer"
                >
                  <td className="py-3 text-center flex items-center justify-center text-xs md:text-sm text-black/60">
-                   <h1 className="text-center text-base truncate md:text-lg font-semibold text-black/60">
+                   <h1 className="text-center text-base truncate md:text-base font-medium text-black/60">
                      {data._id}
                    </h1>
                  </td>
                  <td className="py-3 flex-wrap">
-                   <h1 className="text-center text-base truncate md:text-lg font-semibold text-black/60">
+                   <h1 className="text-center text-base truncate md:text-base font-medium text-black/60">
                      {data.name}
                    </h1>
                  </td>
                  <td className="py-3 flex-wrap">
-                   <h1 className="text-center text-sm truncate md:text-base font-semibold text-black/60">
+                   <h1 className="text-center text-sm truncate md:text-base font-medium text-black/60">
                      {data.gender}
                    </h1>
                  </td>
                  <td className="py-3 flex-wrap">
-                   <h1 className="text-center text-sm truncate md:text-base font-semibold text-black/60">
+                   <h1 className="text-center text-sm truncate md:text-sm font-medium text-black/60">
                      {data.contact}
                    </h1>
                  </td>
