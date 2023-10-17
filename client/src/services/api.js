@@ -6,3 +6,14 @@ export async function getAllPatients(){
     return data;
 }
 
+export async function getAllReports(aadharNumber){
+    const response = await fetch(`${baseurl}/getAllReports`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ aadharNumber: aadharNumber }),
+    });
+    const data = await response.json();
+    return data;
+}

@@ -33,7 +33,7 @@ const reportSchema = mongoose.Schema({
         type: Boolean,
         required: false
     }
-})
+}, {timestamps: true})
 
 const reportData = mongoose.model("REPORT", reportSchema);
 

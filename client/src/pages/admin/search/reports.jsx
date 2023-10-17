@@ -1,11 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
-
-const Reports = () => {
+import { getAllReports } from '../../../services/api';
+const Reports = ({user}) => {
     const [selectedData, setSelectedData] = useState(null);
     const handleTableRowClick = (data) => {
       setSelectedData(data);
     };
+    const aadharNumber = user?.aadharNumber;
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+      async function getReports() {
+        try {
+          const reports = await getAllReports(aadharNumber);
+          setData(reports);
+        } catch (error) {
+          console.error("Error fetching reports: ", error);
+        }
+      }
+      getReports();
+    }, [aadharNumber]);
+
+
   return (
     <>
       <div className="flex flex-col">
@@ -19,7 +35,7 @@ const Reports = () => {
             </tr>
           </thead>
           <tbody className="py-3">
-            {Data.map((data, index) => (
+            {data.map((data, index) => (
               <tr
                 key={index}
                 onClick={() => handleTableRowClick(data)}
@@ -35,11 +51,11 @@ const Reports = () => {
                 </td>
                 <td className="py-3 flex-wrap">
                   <h1 className="text-center text-sm truncate md:text-base font-semibold text-black/60">
-                    {data.type}
+                    {data.dataType}
                   </h1>
                 </td>
                 <td className={`py-3 text-center text-black/60 font-semibold`}>
-                  {data.date}
+                  {data?.updatedAt.substring(0, 10)}
                 </td>
               </tr>
             ))}

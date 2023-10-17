@@ -1,19 +1,41 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import img from "../../../images/user.webp"
+import img from "../../../images/user.webp";
+import Reports from "./reports";
 const Search = () => {
 
   const [data, setData] = useState(null)
 
   const [aadharNo, setAadhar] = useState("");
+
+  const [repData, setRepData] = useState({
+    patientId: "",
+    aadharNumber: "",
+    image: "",
+    description: "",
+    dataType: "",
+    signedBy: "",
+    orgName: "",
+  });
+
   const getData = async (aadharValue) => {
 
     if (!aadharValue) {
       setData(null);
+      setRepData({
+        patientId: "",
+        aadharNumber: "",
+        image: "",
+        description: "",
+        dataType: "",
+        signedBy: "",
+        orgName: "",
+      });
       return;
     }
 
     const aadhar = parseInt(aadharValue, 10);
+
+    
 
     try {
       const response = await fetch(
@@ -22,34 +44,43 @@ const Search = () => {
       );
       const patient = await response.json();
       setData(patient);
+      setRepData({
+        ...repData,
+        patientId: patient?._id,
+        aadharNumber: patient?.aadharNumber
+      });
     } catch (err) {
       console.error("Error fetching data!");
+      setData(null);
+      setRepData({
+        patientId: "",
+        aadharNumber: "",
+        image: "",
+        description: "",
+        dataType: "",
+        signedBy: "",
+        orgName: "",
+      });
+      return;
     }
   };
   const search = () => {
 
     getData(aadharNo);
     setAadhar("");
+
   }
 
-  // Add Report
 
+  // Add Report
+  
   const reportUrl =
-    process.env.REACT_APP_REPORT_URL || "http://localhost:8000/addReport";
+    `${process.env.REACT_APP_BASEURL}/addReport`;
 
   // const [repImg, setRepImg] = useState();
-  const patId = data?._id;
-  let aadharNum = data?.aadharNumber;
-  const [repData, setRepData] = useState({
-    patientId: patId ,
-    aadharNumber: aadharNum ,
-    image: "",
-    description: "",
-    dataType: "",
-    signedBy: "",
-    orgName: "ABC",
-  });
-  console.log("repData: "+repData);
+  
+
+  
 
   let name, value;
   const handleRepData = (e) => {
@@ -345,7 +376,7 @@ const Search = () => {
               </div>
               <hr />
               <div className="py-7">
-                <h1>Place to display previous reports</h1>
+                <Reports user={data}/>
               </div>
             </div>
           )}
