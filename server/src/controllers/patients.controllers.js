@@ -17,7 +17,7 @@ async function getPatientById(req, res) {
 }
 
 async function getPatientByIAadhar(req, res) {
-  const aadhar = req.params.aadhar;
+  const aadhar = req.params.aadharNumber;
 
   const patient = await PatUser.findOne({ aadharNumber: aadhar });
 
@@ -34,7 +34,7 @@ async function updatePatientById(req, res) {
   try {
     // Use of findOneAndUpdate method to find and update the patient
     const patient = await PatUser.findOneAndUpdate(
-      { patientId: patientId },
+      { _id: patientId },
       updates,
       { new: true } // To return the updated patient
     );

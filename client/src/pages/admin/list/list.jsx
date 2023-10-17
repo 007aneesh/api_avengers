@@ -14,7 +14,6 @@ const List = () => {
         console.error("Error fetching data!");
       }
     }
-    console.log('dd: ', list);
     useEffect( () => {
       getPatientList();
     }, [])
@@ -55,7 +54,7 @@ const List = () => {
                >
                  <td className="py-3 text-center flex items-center justify-center text-xs md:text-sm text-black/60">
                    <h1 className="text-center text-base truncate md:text-lg font-semibold text-black/60">
-                     {data.patientId}
+                     {data._id}
                    </h1>
                  </td>
                  <td className="py-3 flex-wrap">
@@ -93,16 +92,16 @@ const List = () => {
            <div className="w-full p-3">
              <div className="py-4">
                <img
-                 src={selectedData.img}
+                 src={selectedData.image}
                  alt="selectedImg"
-                 className="h-auto w-full"
+                 className="h-auto w-full px-10"
                />
              </div>
              <div className="flex flex-col">
                <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
                  {selectedData.description}
                </h1>
-               <p>Date Uploaded: {selectedData.date}</p>
+               <p>Date Uploaded: {selectedData.updatedAt}</p>
                <p>Uploaded by: {selectedData.doctor}</p>
              </div>
            </div>

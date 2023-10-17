@@ -9,15 +9,20 @@ const UserData = ({data, setData}) => {
     setIsEditing((prev) => !prev);
   };
 
-  const updateData = () =>{
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
+
+  const updateData = (e) =>{
+    e.preventDefault();
 
     const updatedData = {
-
+      ...data
     };
-
-    setData({ ...data});
-
-    
 
     fetch(`http://localhost:8000/patient/${patientId}`, {
       method: "PATCH",
@@ -61,8 +66,9 @@ const UserData = ({data, setData}) => {
             <label className="">Name:</label>
             <input
               readOnly={!isEditing}
-              name="full_name"
+              name="name"
               value={data?.name}
+              onChange={handleChange}
               type="text"
               className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
             ></input>
@@ -84,10 +90,11 @@ const UserData = ({data, setData}) => {
             <label className="">Guardian name:</label>
             <div className="flex flex-row border-black border-2 rounded-lg">
               <input
-                name="guardian_name"
+                name="guardianName"
                 type="text"
                 readOnly={!isEditing}
                 value={data?.guardianName}
+                onChange={handleChange}
                 id="guardian_name_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
               ></input>
@@ -97,9 +104,10 @@ const UserData = ({data, setData}) => {
             <label className="">Guardian contact:</label>
             <div className="flex flex-row border-black border-2 rounded-lg">
               <input
-                name="emergency_contact"
-                type="text"
+                name="emergencyContact"
+                type="number"
                 readOnly={!isEditing}
+                onChange={handleChange}
                 value={data?.emergencyContact}
                 id="emergency_contact_input"
                 className="outline-none  w-full px-3 py-2 bg-transparent"
@@ -120,6 +128,7 @@ const UserData = ({data, setData}) => {
               <label className="">Email:</label>
               <input
                 readOnly={!isEditing}
+                onChange={handleChange}
                 name="email"
                 value={data?.email}
                 type="text"
@@ -130,8 +139,8 @@ const UserData = ({data, setData}) => {
               <label className="">Phone number:</label>
               <input
                 readOnly
-                name="phone"
-                type="text"
+                name="contact"
+                type="number"
                 value={data?.contact}
                 className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
               ></input>
@@ -142,7 +151,7 @@ const UserData = ({data, setData}) => {
         <div className="flex w-full items-center justify-center mt-2">
           <button
             type="button"
-            onClick={()=>updateData()}
+            onClick={() => updateData()}
             className="px-7 bg-[#662890]/80 text-white  py-2 text-lg rounded-lg"
           >
             Save

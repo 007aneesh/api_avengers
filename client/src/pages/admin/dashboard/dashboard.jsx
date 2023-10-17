@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Logo from "../../../images/logo.webp";
 import { AiOutlineClose, AiFillSetting } from "react-icons/ai";
 import { FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";

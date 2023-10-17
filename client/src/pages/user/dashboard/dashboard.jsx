@@ -5,7 +5,7 @@ import { FaUserCircle, FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";
 import { MdDelete, MdSpaceDashboard } from "react-icons/md";
 import { BiMenuAltLeft, BiSolidReport } from "react-icons/bi";
 import { FiEdit3 } from "react-icons/fi";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../../images/user.webp";
 import Data from "../userData/userData";
 import Prescription from "../prescriptions/prescription";

@@ -1,67 +1,138 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getAllPatients } from "../../../services/api";
 // import { ColumnChart } from "eazychart-react";
 // import "eazychart-css";
 const DashboardData = () => {
-  const serverUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000/patRegister';
+  const serverUrl =
+    `${process.env.REACT_APP_BASEURL}/patRegister`;
 
   const [patData, setPatData] = useState({
-    aadharNumber: "", name: "", email: "", guardianName: "", emergencyContact: "", gender: "", contact: "", password: ""
+    aadharNumber: "",
+    name: "",
+    email: "",
+    guardianName: "",
+    emergencyContact: "",
+    gender: "",
+    contact: "",
+    password: "",
   });
 
   let name, value;
   const handlePatData = (e) => {
-
     name = e.target.name;
     value = e.target.value;
     setPatData({ ...patData, [name]: value });
-  }
+  };
 
   const sendPatData = async (e) => {
     e.preventDefault();
 
-    let { aadharNumber, name, email, guardianName, emergencyContact, gender, contact, password } = patData;
+    let {
+      aadharNumber,
+      name,
+      email,
+      guardianName,
+      emergencyContact,
+      gender,
+      contact,
+      password,
+    } = patData;
 
     const res1 = await fetch(serverUrl, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        aadharNumber, name, email, guardianName, emergencyContact, gender, contact, password
-      })
+        aadharNumber,
+        name,
+        email,
+        guardianName,
+        emergencyContact,
+        gender,
+        contact,
+        password,
+      }),
     });
 
     const data = await res1.json();
 
     if (res1.status === 422 || !data) {
       window.alert("Invalid Patient Registration");
-      console.log("Invalid Patient Registration");
-    }
-    else {
+    } else {
       window.alert("Patient Registration Successful");
-      console.log("Patient Registration Successful");
-
+      setPatData({
+        aadharNumber: "",
+        name: "",
+        email: "",
+        guardianName: "",
+        emergencyContact: "",
+        gender: "",
+        contact: "",
+        password: "",
+      });
     }
+  };
+
+  const [patients, setPatients] = useState([]);
+  const [todayCount, setTodayCount] = useState(0);
+  const [yesterdayCount, setYesterdayCount] = useState(0);
+
+  function isYesterday(date) {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    return (
+      date.getDate() === yesterday.getDate() &&
+      date.getMonth() === yesterday.getMonth() &&
+      date.getFullYear() === yesterday.getFullYear()
+    );
   }
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const patients = await getAllPatients();
+        setPatients(patients);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    }
+    fetchData();
+  }, [patData]);
 
-
+  useEffect(() => {
+    let today = 0;
+    let yesterday = 0;
+    patients.forEach((patient) => {
+      const updatedAt = new Date(patient.updatedAt);
+      if (isYesterday(updatedAt)) {
+        yesterday++;
+      }
+      if (updatedAt.toDateString() === new Date().toDateString()) {
+        today++;
+      }
+    });
+    setYesterdayCount(yesterday);
+    setTodayCount(today);
+  }, [patients]);
 
   return (
     <div>
       <div className="flex flex-col md:flex-row w-full gap-4">
         <div className="flex flex-col gap-4 md:w-2/6 h-auto">
           <div className=" rounded-lg p-5 h-2/6 bg-[#ECECEC] flex flex-col items-center justify-center text-center gap-3">
-            <h1>Total Patients</h1>
-            <p>7,400</p>
+            <h1 className="text-xl font-bold">Total Patients</h1>
+            <p className="text-2xl font-semibold py-2">{patients.length}</p>
           </div>
           <div className="p-5 rounded-lg h-2/6 bg-[#ECECEC] flex flex-col items-center justify-center text-center gap-3">
-            <h1>Today's entries</h1>
-            <p>1,276</p>
+            <h1 className="text-xl font-bold">Today's entries</h1>
+            <p className="text-2xl font-semibold py-2">{todayCount}</p>
           </div>
           <div className="p-5 rounded-lg h-2/6 bg-[#ECECEC] flex flex-col items-center justify-center text-center gap-3">
-            <h1>Today's entries</h1>
-            <p>1,276</p>
+            <h1 className="text-xl font-bold">Yesterday's entries</h1>
+            <p className="text-2xl font-semibold py-2">{yesterdayCount}</p>
           </div>
         </div>
 
@@ -128,92 +199,91 @@ const DashboardData = () => {
               nice: 5,
             }}
           /> */}
+          Coming Soon
         </div>
       </div>
       <form method="POST">
-      <div className="flex flex-col py-8">
-        <div>
-          <h1 className="font-bold text-xl">Add new Patient:</h1>
-        </div>
-        
-        <div className="grid grid-cols-1 p-5 md:grid-cols-2 justify-center items-center w-full gap-5 md:gap-10">
+        <div className="flex flex-col py-8">
+          <div>
+            <h1 className="font-bold text-xl">Add new Patient:</h1>
+          </div>
 
-          <input
-            type="number"
-            name="aadharNumber"
-            value={patData.aadharNumber}
-            onChange={handlePatData}
-            placeholder="Aadhar Number"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-          <input
-            type="text"
-            name="name"
-            value={patData.name}
-            onChange={handlePatData}
-            placeholder="Name"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-          <input
-            type="email"
-            name="email"
-            value={patData.email}
-            onChange={handlePatData}
-            placeholder="Email"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-          <input
-            type="text"
-            name="guardianName"
-            value={patData.guardianName}
-            onChange={handlePatData}
-            placeholder="Guardian Name"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-          <input
-            type="number"
-            name="emergencyContact"
-            value={patData.emergencyContact}
-            onChange={handlePatData}
-            placeholder="Emergency Contact"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-          <input
-            type="text"
-            name="gender"
-            value={patData.gender}
-            onChange={handlePatData}
-            placeholder="Gender"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-          <input
-            type="number"
-            name="contact"
-            value={patData.contact}
-            onChange={handlePatData}
-            placeholder="Contact"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-          <input
-            type="password"
-            name="password"
-            value={patData.password}
-            onChange={handlePatData}
-            autoComplete="off"
-            placeholder="Set Password"
-            className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
-          ></input>
-
+          <div className="grid grid-cols-1 p-5 md:grid-cols-2 justify-center items-center w-full gap-5 md:gap-10">
+            <input
+              type="number"
+              name="aadharNumber"
+              value={patData.aadharNumber}
+              onChange={handlePatData}
+              placeholder="Aadhar Number"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+            <input
+              type="text"
+              name="name"
+              value={patData.name}
+              onChange={handlePatData}
+              placeholder="Name"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+            <input
+              type="email"
+              name="email"
+              value={patData.email}
+              onChange={handlePatData}
+              placeholder="Email"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+            <input
+              type="text"
+              name="guardianName"
+              value={patData.guardianName}
+              onChange={handlePatData}
+              placeholder="Guardian Name"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+            <input
+              type="number"
+              name="emergencyContact"
+              value={patData.emergencyContact}
+              onChange={handlePatData}
+              placeholder="Emergency Contact"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+            <input
+              type="text"
+              name="gender"
+              value={patData.gender}
+              onChange={handlePatData}
+              placeholder="Gender"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+            <input
+              type="number"
+              name="contact"
+              value={patData.contact}
+              onChange={handlePatData}
+              placeholder="Contact"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+            <input
+              type="password"
+              name="password"
+              value={patData.password}
+              onChange={handlePatData}
+              autoComplete="off"
+              placeholder="Set Password"
+              className="outline-none rounded-lg  px-3 py-2 border-2 bg-transparent border-black"
+            ></input>
+          </div>
+          <div className="flex items-center justify-center">
+            <button
+              onClick={sendPatData}
+              className="p-5 bg-[#662890]/80 text-white w-1/3  py-2 text-lg rounded-lg"
+            >
+              Add
+            </button>
+          </div>
         </div>
-        <div className="flex items-center justify-center">
-          <button
-            onClick={sendPatData}
-            className="p-5 bg-[#662890]/80 text-white w-1/3  py-2 text-lg rounded-lg"
-          >
-            Add
-          </button>
-        </div>
-      </div>
       </form>
     </div>
   );
