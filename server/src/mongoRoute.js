@@ -249,14 +249,14 @@ router.post("/addReport", async (req, res) => {
   }
 
   try {
-    const imgExists = await Report.findOne({ image: image });
+    // const imgExists = await Report.findOne({ image: image });
 
-    if (imgExists) {
-      return res
-        .status(422)
-        .json({ error: "Same report already Exists" });
-    }
-    else {
+    // if (imgExists) {
+    //   return res
+    //     .status(422)
+    //     .json({ error: "Same report already Exists" });
+    // }
+    // else {
       const report = new Report({
         patientId,
         aadharNumber,
@@ -276,7 +276,7 @@ router.post("/addReport", async (req, res) => {
       } else {
         res.status(500).json({ error: "failed to add report" });
       }
-    }
+    // }
   } catch (err) {
     console.log(err);
   }
