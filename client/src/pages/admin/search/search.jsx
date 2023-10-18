@@ -117,7 +117,7 @@ const Search = ({ dataReceived }) => {
       orgName,
     } = repData;
 
-    const res = await fetch("http://localhost:8000/addReport", {
+    const res = await fetch(reportUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

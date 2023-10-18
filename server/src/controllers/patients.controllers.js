@@ -2,7 +2,6 @@ const PatUser = require('../schema/patientSchema');
 
 async function getAllPatients(req, res) {
   const orgNameToFilter = req.query.orgName;
-  console.log("orgn", orgNameToFilter);
   const users = await PatUser.find({ orgName: orgNameToFilter });
   return res.status(200).json(users);
 }

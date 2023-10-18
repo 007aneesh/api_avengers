@@ -90,7 +90,7 @@ const Prescription = ({data}) => {
               <img
                 src={selectedData?.image}
                 alt="selectedImg"
-                className="h-auto"
+                className="h-auto w-full"
               />
             </div>
             <div className="flex flex-col">

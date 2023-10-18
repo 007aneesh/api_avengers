@@ -49,7 +49,7 @@ const DashboardData = ({dataReceived}) => {
       orgName
     } = patData;
 
-    const res1 = await fetch("http://localhost:8000/patRegister", {
+    const res1 = await fetch(serverUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
