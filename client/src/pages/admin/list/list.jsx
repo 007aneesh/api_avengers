@@ -31,9 +31,7 @@ const List = ({ dataReceived }) => {
           <button className="px-3 py-1 bg-[#EBEBEB] rounded-3xl">
             Sort&nbsp;By
           </button>
-          <button className="px-3 py-1 bg-[#EBEBEB] rounded-3xl">
-            Filter
-          </button>
+          <button className="px-3 py-1 bg-[#EBEBEB] rounded-3xl">Filter</button>
         </div>
       </div>
       <div className="flex flex-col">
@@ -73,7 +71,6 @@ const List = ({ dataReceived }) => {
                     {data.contact}
                   </h1>
                 </td>
-
               </tr>
             ))}
           </tbody>
@@ -82,7 +79,7 @@ const List = ({ dataReceived }) => {
       {selectedData && (
         <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl">
           <div className="flex flex-row w-full justify-between">
-            <h2 className="text-xl font-bold">{selectedData.type}</h2>
+            <h2 className="text-xl font-bold">{selectedData?.dataType}</h2>
             <button
               onClick={() => setSelectedData(null)}
               className="font-bold text-xl"
@@ -93,17 +90,17 @@ const List = ({ dataReceived }) => {
           <div className="w-full p-3">
             <div className="py-4">
               <img
-                src={selectedData.image}
+                src={selectedData?.image}
                 alt="selectedImg"
                 className="h-auto w-full px-10"
               />
             </div>
             <div className="flex flex-col">
               <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
-                {selectedData.description}
+                {selectedData?.description}
               </h1>
-              <p>Date Uploaded: {selectedData.updatedAt}</p>
-              <p>Uploaded by: {selectedData.doctor}</p>
+              <p>Date Uploaded: {selectedData?.updatedAt.substring(0, 10)}</p>
+              <p>Uploaded by: {selectedData?.signedBy}</p>
             </div>
           </div>
         </div>
