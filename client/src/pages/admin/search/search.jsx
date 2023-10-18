@@ -91,7 +91,7 @@ const Search = ({ dataReceived }) => {
 
   // Add Report
 
-  const reportUrl = `http://localhost:8000/addReport`;
+  const reportUrl = `${process.env.REACT_APP_BASEURL}/addReport`;
 
   // const [repImg, setRepImg] = useState();
 
@@ -117,7 +117,7 @@ const Search = ({ dataReceived }) => {
       orgName,
     } = repData;
 
-    const res = await fetch(reportUrl, {
+    const res = await fetch("http://localhost:8000/addReport", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
