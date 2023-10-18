@@ -7,7 +7,7 @@ export async function getAllPatients(){
 }
 
 export async function getAllReports(aadharNumber){
-    const response = await fetch(`${baseurl}/getAllReports`, {
+    const response = await fetch(`http://localhost:8000/getAllReports`, {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",

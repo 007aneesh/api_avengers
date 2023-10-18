@@ -268,6 +268,20 @@ router.post("/addReport", async (req, res) => {
       orgName,
     });
 
+    const patient = await PatUser.findOne({ aadharNumber });
+
+    // if (!patient) {
+    //   return res.status(404).json({ error: "Patient not found" });
+    // }
+
+    // Check if the orgName is already present in the patient's orgName array
+    if (patient.orgName.includes(orgName)) {
+    }
+    else{
+      patient.orgName.push(orgName);
+      await patient.save();
+    }
+
     const addReport = await report.save();
 
     if (addReport) {
