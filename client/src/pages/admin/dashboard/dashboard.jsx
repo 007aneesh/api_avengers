@@ -39,7 +39,7 @@ const UserDashboard = () => {
       case "Search Patient":
         return <Search dataReceived={dataReceived}/>;
       case "Patient List":
-        return <List />;
+        return <List dataReceived={dataReceived}/>;
       case "Settings":
         return <Settings />
       default:

@@ -66,7 +66,7 @@ const Search = ({ dataReceived }) => {
 
   // Add Report
 
-  const reportUrl = `${process.env.REACT_APP_BASEURL}/addReport`;
+  const reportUrl = `http://localhost:8000/addReport`;
 
   // const [repImg, setRepImg] = useState();
 

@@ -1,18 +1,19 @@
 const PatUser = require('../schema/patientSchema');
 
-async function getAllPatients(req, res){
-    const users = await PatUser.find();
-    return res.status(200).json(users);
+async function getAllPatients(req, res) {
+  const orgNameToFilter = req.query.orgName;
+  const users = await PatUser.find({ orgName: { $in: [orgNameToFilter] } });
+  return res.status(200).json(users);
 }
 
 async function getPatientById(req, res) {
   const patientId = req.params.patientId;
   const patient = await PatUser.findOne({ _id: patientId });
-
+  
   if (!patient) {
     return res.status(404).json({ message: "Patient not found" });
   }
-
+  
   return res.status(200).json(patient);
 }
 
