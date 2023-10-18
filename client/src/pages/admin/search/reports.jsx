@@ -42,16 +42,16 @@ const Reports = ({user}) => {
                 className="py-2 border-y-2 font-semibold border-black/10 cursor-pointer"
               >
                 <td className="py-3 text-center flex items-center justify-center text-xs md:text-sm text-black/60">
-                  <img src={data.image} alt="img" className="w-14 h-16" />
+                  <img src={data?.image} alt="img" className="w-14 h-16" />
                 </td>
                 <td className="py-3 flex-wrap">
                   <h1 className="text-center text-base truncate md:text-lg font-semibold text-black/60">
-                    {data.description}
+                    {data?.description}
                   </h1>
                 </td>
                 <td className="py-3 flex-wrap">
                   <h1 className="text-center text-sm truncate md:text-base font-semibold text-black/60">
-                    {data.dataType}
+                    {data?.dataType}
                   </h1>
                 </td>
                 <td className={`py-3 text-center text-black/60 font-semibold`}>
@@ -65,7 +65,7 @@ const Reports = ({user}) => {
       {selectedData && (
         <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl">
           <div className="flex flex-row w-full justify-between">
-            <h2 className="text-xl font-bold">{selectedData.type}</h2>
+            <h2 className="text-xl font-bold">{selectedData.dataType}</h2>
             <button
               onClick={() => setSelectedData(null)}
               className="font-bold text-xl"
@@ -76,7 +76,7 @@ const Reports = ({user}) => {
           <div className="w-full p-3">
             <div className="py-4">
               <img
-                src={selectedData.img}
+                src={selectedData.image}
                 alt="selectedImg"
                 className="h-auto"
               />
@@ -85,8 +85,8 @@ const Reports = ({user}) => {
               <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
                 {selectedData.description}
               </h1>
-              <p>Date Uploaded: {selectedData.date}</p>
-              <p>Uploaded by: {selectedData.doctor}</p>
+              <p>Date Uploaded: {selectedData?.updatedAt.substring(0, 10)}</p>
+              <p>Uploaded by: {selectedData?.signedBy}</p>
             </div>
           </div>
         </div>

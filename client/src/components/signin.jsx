@@ -235,21 +235,39 @@ const Signin = () => {
               <div className="my-5 w-screen flex flex-col items-center justify-center">
                 <div className="flex flex-col justify-center items-center mb-8">
                   {formNo === 1 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#444] text-center md:text-5xl ">
                         Signin to your Managed Data
                       </h1>
                     </div>
                   )}
                   {formNo === 2 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#666] mt-6 mb-6 text-center md:text-5xl ">
                         Sign in as an Organisation
                       </h1>
                     </div>
                   )}
                   {formNo === 3 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#666] mt-6 mb-6 text-center md:text-5xl ">
                         Sign in as a Patient
                       </h1>
@@ -257,7 +275,13 @@ const Signin = () => {
                   )}
                 </div>
                 {formNo === 1 && (
-                  <div className="formOne">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="formOne"
+                  >
                     <h1 className="optionTitle">Sign in as </h1>
 
                     <div className="options">
@@ -304,7 +328,13 @@ const Signin = () => {
                   </div>
                 )}
                 {formNo === 2 && (
-                  <div className="formOne">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="formOne"
+                  >
                     <div className="field">
                       <div className="leftformField mb-6">
                         <div className="formField">
@@ -352,7 +382,13 @@ const Signin = () => {
                   </div>
                 )}
                 {formNo === 3 && (
-                  <div className="formOne">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="formOne"
+                  >
                     <div className="field">
                       <div className="leftformField mb-6">
                         <div className="formField">
@@ -400,7 +436,13 @@ const Signin = () => {
                   </div>
                 )}
                 {formNo === 4 && (
-                  <div className="formOne">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="formOne"
+                  >
                     <div className="field">
                       <div className="leftformField mb-6">
                         <div className="pb-5">

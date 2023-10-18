@@ -241,6 +241,7 @@ router.post("/addReport", async (req, res) => {
   if (
     !patientId ||
     !aadharNumber ||
+    !image ||
     !description ||
     !dataType ||
     !signedBy ||

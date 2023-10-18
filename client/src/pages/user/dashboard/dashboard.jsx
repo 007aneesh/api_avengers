@@ -37,11 +37,11 @@ const UserDashboard = () => {
   const renderComponent = () => {
     switch (selectedButton) {
       case "Dashboard":
-        return <Data />;
+        return <Data data={data} />;
       case "Prescriptions":
-        return <Prescription />;
+        return <Prescription data={data} />;
       case "My Reports":
-        return <Report />;
+        return <Report data={data} />;
       case "My Profile":
         return <Profile data={data} setData={setData} />;
       default:

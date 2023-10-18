@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Logo from "../images/logo.webp";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -20,12 +21,12 @@ const Navbar = () => {
           <div
             className={`items-center gap-5 hidden md:flex font-semibold text-lg`}
           >
-            <Link to="/">
+            <Link to="/about" >
               <h1>About us</h1>
             </Link>
-            <Link to="/">
+            <HashLink smooth to="/#solutions">
               <h1>Solutions</h1>
-            </Link>
+            </HashLink>
             <Link to="/signin">
               <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
                 Sign In
@@ -41,12 +42,12 @@ const Navbar = () => {
             </button>
             {showMenu && (
               <div className="absolute top-full right-0 w-auto bg-white px-10 py-3 mt-1 shadow-2xl rounded-md">
-                <Link to="/" className="block mb-2">
+                <Link to="/about" className="block mb-2">
                   About us
                 </Link>
-                <Link to="/" className="block">
-                  Solutions
-                </Link>
+                <HashLink smooth to="/#solutions">
+                  <h1>Solutions</h1>
+                </HashLink>
                 <Link to="/signin">
                   <button className="border-[#3555ac] rounded-md lg:text-base font-medium text-[0.9rem] mt-2 border-2 px-2 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
                     Sign In

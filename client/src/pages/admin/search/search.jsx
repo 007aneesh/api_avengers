@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import img from "../../../images/user.webp";
 import Reports from "./reports";
+import { Web3Storage } from "web3.storage";
 const Search = ({ dataReceived }) => {
   const [data, setData] = useState(null);
 
@@ -14,6 +15,30 @@ const Search = ({ dataReceived }) => {
     signedBy: "",
     orgName: "",
   });
+
+
+  const client = new Web3Storage({
+    token: process.env.REACT_APP_WEBSTORAGETOKEN,
+  });
+
+  
+  const handleFileSelect = async (e) => {
+    const fileInput = e.target;
+
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+
+      // Use Web3Storage to upload the file and get the CID
+      const rootCid = await client.put([file]);
+
+      // Construct the image URL with the CID
+      const imgLoc = file.name;
+      const imageUrl = `https://dweb.link/ipfs/${rootCid}/${imgLoc}`;
+
+      // Update the state with the image URL
+      setRepData({ ...repData, image: imageUrl });
+    }
+  };
 
   const getData = async (aadharValue) => {
     if (!aadharValue) {
@@ -42,7 +67,7 @@ const Search = ({ dataReceived }) => {
         ...repData,
         patientId: patient?._id,
         aadharNumber: patient?.aadharNumber,
-        orgName: dataReceived.data.orgName,
+        orgName: dataReceived?.data.orgName,
       });
     } catch (err) {
       console.error("Error fetching data!");
@@ -333,16 +358,16 @@ const Search = ({ dataReceived }) => {
                     ></input>
                   </div>
 
-                  {/* <div className="flex flex-col w-full gap-y-1">
+                  <div className="flex flex-col w-full gap-y-1">
                     <label className="">Image:</label>
                     <input
                       name="image"
                       type="file"
-                      value={repData.image}
-                      onChange={handleRepData}
+                      id="fileInput"
+                      onChange={(e) => handleFileSelect(e)}
                       className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-none cursor-pointer"
                     ></input>
-                  </div> */}
+                  </div>
                 </div>
                 <div className="flex justify-center items-center w-full gap-5 py-4">
                   <button

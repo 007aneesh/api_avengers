@@ -4,9 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import { ColumnChart } from "eazychart-react";
 // import "eazychart-css";
-const DashboardData = () => {
+const DashboardData = ({dataReceived}) => {
   const serverUrl =
     `${process.env.REACT_APP_BASEURL}/patRegister`;
+
+  
 
   const [patData, setPatData] = useState({
     aadharNumber: "",
@@ -17,18 +19,24 @@ const DashboardData = () => {
     gender: "",
     contact: "",
     password: "",
+    orgName: "",
   });
+
+
 
   let name, value;
   const handlePatData = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setPatData({ ...patData, [name]: value });
+    setPatData({
+      ...patData,
+      [name]: value,
+      orgName: dataReceived?.data.orgName,
+    });
   };
 
   const sendPatData = async (e) => {
     e.preventDefault();
-
     let {
       aadharNumber,
       name,
@@ -38,6 +46,7 @@ const DashboardData = () => {
       gender,
       contact,
       password,
+      orgName
     } = patData;
 
     const res1 = await fetch(serverUrl, {
@@ -54,6 +63,7 @@ const DashboardData = () => {
         gender,
         contact,
         password,
+        orgName
       }),
     });
 
@@ -90,6 +100,7 @@ const DashboardData = () => {
         gender: "",
         contact: "",
         password: "",
+        orgName: ""
       });
     }
   };
@@ -113,14 +124,14 @@ const DashboardData = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const patients = await getAllPatients();
+        const patients = await getAllPatients(dataReceived?.data.orgName);
         setPatients(patients);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     }
     fetchData();
-  }, [patData]);
+  }, [patData, dataReceived?.data.orgName]);
 
   useEffect(() => {
     let today = 0;

@@ -1,41 +1,103 @@
 import React from 'react';
-import img from '../images/logo.webp';
-import img2 from '../images/heroImg.webp';
+import shield from "../images/saveguard.webp";
+import ehr from "../images/ehr.svg";
+import realtime from "../images/realtimedata.svg";
+import mobile from "../images/mobileAccess.webp";
 import '../components/style.css';
 
 
 const Solutions = () => {
     return (
-        <div id='solutions' className='solutions'>
-            <div className='leftimgSol'>
-                <img src={img} alt='img'/>
-                <div className='text'>
-                    <h2>Lorem ipsum dolor sit.</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quasi odio fuga, nisi reiciendis similique sapiente nobis earum debitis est. Rem doloribus, atque corporis harum quisquam adipisci unde asperiores, impedit hic esse explicabo excepturi dicta porro quam eveniet aspernatur rerum.</p>
-                </div>
-            </div>
-            <div className='rightimgSol'>
-                <div className='text'>
-                    <h2>Lorem ipsum dolor sit.</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quasi odio fuga, nisi reiciendis similique sapiente nobis earum debitis est. Rem doloribus, atque corporis harum quisquam adipisci unde asperiores, impedit hic esse explicabo excepturi dicta porro quam eveniet aspernatur rerum.</p>
-                </div>
-                <img src={img2} alt='img'/>
-            </div>
-            <div className='leftimgSol'>
-                <img src={img2} alt='img'/>
-                <div className='text'>
-                    <h2>Lorem ipsum dolor sit.</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quasi odio fuga, nisi reiciendis similique sapiente nobis earum debitis est. Rem doloribus, atque corporis harum quisquam adipisci unde asperiores, impedit hic esse explicabo excepturi dicta porro quam eveniet aspernatur rerum.</p>
-                </div>
-            </div>
-            <div className='rightimgSol'>
-                <div className='text'>
-                    <h2>Lorem ipsum dolor sit.</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quasi odio fuga, nisi reiciendis similique sapiente nobis earum debitis est. Rem doloribus, atque corporis harum quisquam adipisci unde asperiores, impedit hic esse explicabo excepturi dicta porro quam eveniet aspernatur rerum.</p>
-                </div>
-                <img src={img} alt='img'/>
-            </div>
+      <div
+        id="solutions"
+        className="flex flex-col items-center justify-center w-full gap-16 px-8 pt-5 lg:pt-0"
+      >
+        <div
+          data-aos="fade-up-right"
+          className="flex flex-col md:flex-row gap-y-5 justify-between items-center"
+        >
+          <img
+            src={shield}
+            alt="img"
+            className="w-[80%] pointer-events-none select-none  md:px-4 lg:px-20 md:w-[45%]"
+          />
+          <div className="md:px-4 lg:px-16">
+            <h2 className="text-center font-bold text-2xl mb-3 lg:mb-10 text-[#555] md:text-3xl lg:text-5xl leading-6 ">
+              Safeguarding Patient Information
+            </h2>
+            <p className="text-lg  font-semibold text-center text-[#555]">
+              We understand the critical importance of protecting patient data.
+              As a trusted Patient Data Management System, we prioritize data
+              security and privacy. We are committed to maintaining the highest
+              standards of data protection to ensure the confidentiality,
+              integrity, and availability of patient information.
+            </p>
+          </div>
         </div>
+        <div
+          data-aos="fade-up-left"
+          className="flex flex-col-reverse md:flex-row gap-y-5 justify-between items-center"
+        >
+          <div className="md:px-4 lg:px-16">
+            <h2 className="text-center font-bold text-2xl mb-3 lg:mb-10 text-[#555] md:text-3xl lg:text-5xl leading-6 ">
+              Electronic Health Records&nbsp;(EHR)
+            </h2>
+            <p className="text-lg  font-semibold text-center text-[#555]">
+              We offer a comprehensive Electronic Health Records (EHR) solution
+              that allows healthcare professionals to maintain accurate and
+              detailed patient records. This feature streamlines patient care,
+              reduces errors, and enhances overall patient management.
+            </p>
+          </div>
+          <img
+            src={ehr}
+            alt="img"
+            className="w-[80%] pointer-events-none select-none  md:w-[40%] md:px-4 lg:px-20"
+          />
+        </div>
+        <div
+          data-aos="fade-up-right"
+          className="flex flex-col md:flex-row gap-y-5 justify-between items-center"
+        >
+          <img
+            src={realtime}
+            alt="img"
+            className="w-[80%] pointer-events-none select-none md:w-[40%] md:px-4 lg:px-20"
+          />
+          <div className="md:px-4 lg:px-16">
+            <h2 className="text-center font-bold text-2xl mb-3 lg:mb-10 text-[#555] md:text-3xl lg:text-5xl leading-6 ">
+              Real-time Data Access
+            </h2>
+            <p className="text-lg  lg:px-5 font-semibold text-center text-[#555]">
+              Our platform offers real-time access to patient data, empowering
+              healthcare providers with the latest information at their
+              fingertips. This leads to faster decision-making and more
+              personalized patient care.
+            </p>
+          </div>
+        </div>
+        <div
+          data-aos="fade-up-left"
+          className="flex flex-col-reverse md:flex-row gap-y-5 justify-between items-center"
+        >
+          <div className="md:px-4 lg:px-16">
+            <h2 className="text-center font-bold text-2xl mb-3 lg:mb-10 text-[#555] md:text-3xl lg:text-5xl leading-6 ">
+              Mobile Accessibility
+            </h2>
+            <p className="text-lg lg:px-5 font-semibold text-center text-[#555]">
+              Our solutions are accessible on mobile devices, allowing
+              healthcare professionals to manage patient data on the go. This
+              flexibility ensures efficient patient care even outside the
+              office.
+            </p>
+          </div>
+          <img
+            src={mobile}
+            alt="img"
+            className="w-[80%] pointer-events-none select-none  md:w-[40%] md:px-4 lg:px-20"
+          />
+        </div>
+      </div>
     );
 }
 

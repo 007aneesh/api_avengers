@@ -161,7 +161,13 @@ const Onboarding = () => {
               <div className="my-5 w-screen flex flex-col items-center justify-center">
                 <div className="flex flex-col justify-center items-center mb-8">
                   {formNo === 1 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                         Ready to Manage Your Health Data?
                       </h1>
@@ -171,28 +177,52 @@ const Onboarding = () => {
                     </div>
                   )}
                   {formNo === 2 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                         Organisation Details
                       </h1>
                     </div>
                   )}
                   {formNo === 4 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                         Terms and Conditions
                       </h1>
                     </div>
                   )}
                   {formNo === 5 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                         Review your Details
                       </h1>
                     </div>
                   )}
                   {formNo === 6 && (
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="300"
+                      data-aos-offset="0"
+                      className="flex flex-col items-center justify-center text-center"
+                    >
                       <h1 className="text-3xl font-extrabold font-sans text-[#666] text-center md:text-5xl ">
                         Checkout Details
                       </h1>
@@ -200,7 +230,13 @@ const Onboarding = () => {
                   )}
                 </div>
                 {formNo === 1 && (
-                  <div className="formOne">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="formOne"
+                  >
                     <div className="field">
                       <div className="leftformField">
                         <div className="formField">
@@ -284,7 +320,13 @@ const Onboarding = () => {
                   </div>
                 )}
                 {formNo === 2 && (
-                  <div className="formOne">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="formOne"
+                  >
                     <div className="field">
                       <div className="leftformField">
                         <div className="formField">
@@ -368,7 +410,12 @@ const Onboarding = () => {
                   </div>
                 )}
                 {formNo === 3 && (
-                  <div>
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                  >
                     <Plans
                       next={next}
                       orgData={orgData}
@@ -377,7 +424,13 @@ const Onboarding = () => {
                   </div>
                 )}
                 {formNo === 4 && (
-                  <div className="flex flex-col items-center justify-center w-screen">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="flex flex-col items-center justify-center w-screen"
+                  >
                     <div className="check">
                       <p>
                         Apache License Version 2.0, January 2004
@@ -608,7 +661,13 @@ const Onboarding = () => {
                   </div>
                 )}
                 {formNo === 5 && (
-                  <div className="formOne">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="formOne"
+                  >
                     <div className="field">
                       <div className="leftformField">
                         <div className="formField">
@@ -746,7 +805,13 @@ const Onboarding = () => {
                   </div>
                 )}
                 {formNo === 6 && (
-                  <div className="checkout">
+                  <div
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0"
+                    className="checkout"
+                  >
                     <div className="checkDetails">
                       <div className="leftDetails">
                         <p>Organisation Name</p>

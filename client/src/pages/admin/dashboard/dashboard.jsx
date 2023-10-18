@@ -35,7 +35,7 @@ const UserDashboard = () => {
   const renderComponent = () => {
     switch (selectedButton) {
       case "Dashboard":
-        return <Data />;
+        return <Data dataReceived={dataReceived} />;
       case "Search Patient":
         return <Search dataReceived={dataReceived}/>;
       case "Patient List":
@@ -91,7 +91,7 @@ const UserDashboard = () => {
               
             </div>
             <div>
-              <h1>Welcome, {dataReceived?.userName ? dataReceived?.userName : "Admin"} </h1>
+              <h1>Welcome, {dataReceived?.data.userName ? dataReceived?.data.userName : "Admin"} </h1>
             </div>
           </div>
           {[
