@@ -43,10 +43,6 @@ const patientSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    orgName: {
-      type: [String],
-      default: [],
-    },
     tokens: [
       {
         token: {
