@@ -97,7 +97,7 @@ const About = () => {
                     <svg
                       stroke="currentColor"
                       fill="currentColor"
-                      stroke-width="0"
+                      strokeWidth="0"
                       viewBox="0 0 496 512"
                       className="w-6 h-6 text-gray-400 hover:text-gray-100"
                       height="1em"
@@ -117,7 +117,7 @@ const About = () => {
                     <svg
                       stroke="currentColor"
                       fill="currentColor"
-                      stroke-width="0"
+                      strokeWidth="0"
                       viewBox="0 0 448 512"
                       className="w-6 h-6 text-gray-400 hover:text-gray-100"
                       height="1em"
@@ -154,7 +154,7 @@ const About = () => {
                     <svg
                       stroke="currentColor"
                       fill="currentColor"
-                      stroke-width="0"
+                      strokeWidth="0"
                       viewBox="0 0 496 512"
                       className="w-6 h-6 text-gray-400 hover:text-gray-100"
                       height="1em"
@@ -174,7 +174,7 @@ const About = () => {
                     <svg
                       stroke="currentColor"
                       fill="currentColor"
-                      stroke-width="0"
+                      strokeWidth="0"
                       viewBox="0 0 448 512"
                       className="w-6 h-6 text-gray-400 hover:text-gray-100"
                       height="1em"
