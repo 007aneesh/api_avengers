@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import {AiOutlineClose} from "react-icons/ai";
-const List = () => {
+const List = ({dataReceived}) => {
     const [selectedData, setSelectedData] = useState(null);
     const [list, setList] = useState([]);
-    const getPatientList = async () =>{
+    const getPatientList = async (orgName) =>{
       try {
-        const response = await fetch("http://localhost:8000/getAllPatients");
-
+        const response = await fetch(`http://localhost:8000/getAllPatients?orgName=${orgName}`);
+        
         const data = await response.json();
-
+        
         setList(data); 
       } catch (error) {
         console.error("Error fetching data!");
       }
     }
     useEffect( () => {
-      getPatientList();
+      const org = dataReceived.data.orgName;
+      getPatientList(org);
     }, [])
     const handleTableRowClick = (data) => {
       setSelectedData(data);
