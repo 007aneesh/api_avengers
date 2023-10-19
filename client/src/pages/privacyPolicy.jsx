@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import docImg from "../images/docT&C.png";
 const PrivacyPolicy = () => {
   useEffect(() => {
@@ -38,7 +38,8 @@ const PrivacyPolicy = () => {
             <p>
               These terms and conditions of Use (hereinafter referred as “Terms
               of Usage”) describe and govern the User&apos;s use of the content
-              and services offered by <span className='font-semibold'>VITAL VAULT</span>.
+              and services offered by{" "}
+              <span className="font-semibold">VITAL VAULT</span>.
             </p>
           </div>
           <div className="updation text-xs md:text-sm lg:text-base mb-4">
@@ -95,94 +96,93 @@ const PrivacyPolicy = () => {
             <h1 className="font-semibold text-sm md:text-base mb-1">
               REGISTRATION AND ELIGIBILITY
             </h1>
-            <p>
-              <ul className="list-disc">
-                <li className="py-1">
-                  The User of the Website must be a person who can form legally
-                  binding contracts under Indian Contract Act, 1872. A minor
-                  under the age of eighteen (18) in most jurisdiction, are not
-                  permitted to avail the services provided on the Website
-                  without a legal guardian in accordance with the applicable
-                  laws. The Website would not be held responsible for any misuse
-                  that may occur by virtue of any person including a minor using
-                  the services provided through the Website.
-                </li>
-                <li className="py-1">
-                  For the User to avail the services, the User will be directed
-                  to Register as a Member on the Website whereby You (User)
-                  agree to provide update, current and accurate information
-                  while filling up the sign-in form. All information that you
-                  fill and provide to the Website and all updates thereto are
-                  referred to in these Terms of Usage as “Registration Data“.
-                </li>
-                <li className="py-1">
-                  An account could be created by you through the Website ID
-                  (Your Phone Number) and password (OTP) or other log - in ID
-                  and password which can include a facebook, gmail or any other
-                  valid email ID. The User while creating an account hereby
-                  represents and warrants that all the information provided by
-                  the User is current, accurate and complete and that the User
-                  will maintain the accuracy and keep the information updated
-                  from time to time. Use of another User’s account information
-                  for availing the services is expressly prohibited. If in case
-                  it is found that the information so supplied on the Website is
-                  inaccurate, incomplete, untrue and not current, the Website
-                  has the right to suspend or terminate the User’s account and
-                  restrict/refuse the use of the Website by such User in future.
-                </li>
-                <li className="py-1">
-                  The right to use this Website is personal to the User and is
-                  not transferable to any other person or entity. The User would
-                  be responsible for protecting the confidentiality of User’s
-                  passwords and other information required for the purposes of
-                  registration. The User would be fully responsible for all the
-                  activities that occur under the User’s account with the
-                  Website. The Website cannot and will not be liable for any
-                  loss or damage arising from the User’s failure to maintain
-                  secrecy and confidentiality. The User shall notify the Website
-                  immediately if they become aware of any unauthorized use of
-                  their Account(s) or breach of any security. The User must log
-                  out from its account at the end of the session.
-                </li>
-                <li className="py-1">
-                  The User while availing any service shall be informed whether
-                  the service so rendered is personal to the Website or is
-                  available from a Third party. The Website shall have no
-                  control or monitoring on the information disseminated to any
-                  third party via the Website.
-                </li>
-                <li className="py-1">
-                  The User agrees, understands and confirms that his/ her
-                  personal data including without limitation to details relating
-                  to debit card/ credit card transmitted over the Internet may
-                  be susceptible to misuse, hacking, theft and/ or fraud and
-                  that the Website or the Payment Service Provider(s) have no
-                  control over such matters.
-                </li>
-                <li className="py-1">
-                  The Website does not permit the use of the Services by any
-                  User under the following conditions: -
-                  <ul className="list-disc px-3 py-1">
-                    <li className="py-1">
-                      If the User is a resident of any jurisdiction that may
-                      prohibit the use of the Services rendered by the Website.
-                    </li>
-                    <li className="py-1">
-                      If the User is a resident of any State/Country that
-                      prohibits by way of law, regulation, treaty or
-                      administrative act for entering into trade relations
-                      or/and Due to any religious practices.
-                    </li>
-                    <li className="py-1">Due to any religious practices.</li>
-                    <li className="py-1">
-                      If the User has created multiple accounts using various
-                      mobile numbers. The User may not have more than one active
-                      account with the Website.
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </p>
+
+            <ul className="list-disc">
+              <li className="py-1">
+                The User of the Website must be a person who can form legally
+                binding contracts under Indian Contract Act, 1872. A minor under
+                the age of eighteen (18) in most jurisdiction, are not permitted
+                to avail the services provided on the Website without a legal
+                guardian in accordance with the applicable laws. The Website
+                would not be held responsible for any misuse that may occur by
+                virtue of any person including a minor using the services
+                provided through the Website.
+              </li>
+              <li className="py-1">
+                For the User to avail the services, the User will be directed to
+                Register as a Member on the Website whereby You (User) agree to
+                provide update, current and accurate information while filling
+                up the sign-in form. All information that you fill and provide
+                to the Website and all updates thereto are referred to in these
+                Terms of Usage as “Registration Data“.
+              </li>
+              <li className="py-1">
+                An account could be created by you through the Website ID (Your
+                Phone Number) and password (OTP) or other log - in ID and
+                password which can include a facebook, gmail or any other valid
+                email ID. The User while creating an account hereby represents
+                and warrants that all the information provided by the User is
+                current, accurate and complete and that the User will maintain
+                the accuracy and keep the information updated from time to time.
+                Use of another User’s account information for availing the
+                services is expressly prohibited. If in case it is found that
+                the information so supplied on the Website is inaccurate,
+                incomplete, untrue and not current, the Website has the right to
+                suspend or terminate the User’s account and restrict/refuse the
+                use of the Website by such User in future.
+              </li>
+              <li className="py-1">
+                The right to use this Website is personal to the User and is not
+                transferable to any other person or entity. The User would be
+                responsible for protecting the confidentiality of User’s
+                passwords and other information required for the purposes of
+                registration. The User would be fully responsible for all the
+                activities that occur under the User’s account with the Website.
+                The Website cannot and will not be liable for any loss or damage
+                arising from the User’s failure to maintain secrecy and
+                confidentiality. The User shall notify the Website immediately
+                if they become aware of any unauthorized use of their Account(s)
+                or breach of any security. The User must log out from its
+                account at the end of the session.
+              </li>
+              <li className="py-1">
+                The User while availing any service shall be informed whether
+                the service so rendered is personal to the Website or is
+                available from a Third party. The Website shall have no control
+                or monitoring on the information disseminated to any third party
+                via the Website.
+              </li>
+              <li className="py-1">
+                The User agrees, understands and confirms that his/ her personal
+                data including without limitation to details relating to debit
+                card/ credit card transmitted over the Internet may be
+                susceptible to misuse, hacking, theft and/ or fraud and that the
+                Website or the Payment Service Provider(s) have no control over
+                such matters.
+              </li>
+              <li className="py-1">
+                The Website does not permit the use of the Services by any User
+                under the following conditions: -
+                <ul className="list-disc px-3 py-1">
+                  <li className="py-1">
+                    If the User is a resident of any jurisdiction that may
+                    prohibit the use of the Services rendered by the Website.
+                  </li>
+                  <li className="py-1">
+                    If the User is a resident of any State/Country that
+                    prohibits by way of law, regulation, treaty or
+                    administrative act for entering into trade relations or/and
+                    Due to any religious practices.
+                  </li>
+                  <li className="py-1">Due to any religious practices.</li>
+                  <li className="py-1">
+                    If the User has created multiple accounts using various
+                    mobile numbers. The User may not have more than one active
+                    account with the Website.
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
           <div className="updation text-xs md:text-sm md:px-5 lg:text-base mb-4">
             <h1 className="font-semibold text-sm md:text-base mb-1">
@@ -214,6 +214,6 @@ const PrivacyPolicy = () => {
       </div>
     </div>
   );
-}
+};
 
-export default PrivacyPolicy
+export default PrivacyPolicy;

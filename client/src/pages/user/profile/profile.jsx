@@ -17,6 +17,7 @@ const UserData = ({data, setData}) => {
     });
   };
 
+
   const updateData = (e) =>{
     e.preventDefault();
 
