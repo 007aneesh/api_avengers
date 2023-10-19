@@ -10,7 +10,7 @@ const appApi = require('./routes/appRoutes/appAPI');
 // Middleware
 app.use(
   cors({
-    origin: ["https://api-avengers-frontend.vercel.app/"],
+    origin: ["https://api-avengers-frontend.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   })
