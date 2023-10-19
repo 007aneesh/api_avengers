@@ -5,11 +5,9 @@ import { HashLink } from "react-router-hash-link";
 import "../components/style.css"
 const Hero = () => {
   return (
-    <div className="pt-20 lg:pt-0 h-screen md:h-auto lg:h-screen flex flex-col items-center justify-start lg:justify-center">
+    <div className="pt-20 lg:pt-0 h-screen md:h-auto  lg:h-screen flex flex-col items-center justify-start lg:justify-center">
       <div
-        data-aos="flip-left"
-        data-aos-duration="800"
-        data-aos-easing="ease-in-out"
+        data-aos="fade-down"
         className="flex flex-col justify-center"
       >
         <div className="flex flex-col md:flex-row w-full py-4 px-8 gap-8 md:gap-6 md:py-8 md:px-16 lg:p-16 justify-center md:items-center">

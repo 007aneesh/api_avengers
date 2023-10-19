@@ -13,7 +13,8 @@ const Solutions = () => {
         className="flex flex-col items-center justify-center w-full gap-16 px-8 pt-5 lg:pt-0"
       >
         <div
-          data-aos="fade-up-right"
+          data-aos="fade-up"
+          data-aos-duration="1000"
           className="flex flex-col md:flex-row gap-y-5 justify-between items-center"
         >
           <img
@@ -35,7 +36,8 @@ const Solutions = () => {
           </div>
         </div>
         <div
-          data-aos="fade-up-left"
+          data-aos="fade-up"
+          data-aos-duration="1000"
           className="flex flex-col-reverse md:flex-row gap-y-5 justify-between items-center"
         >
           <div className="md:px-4 lg:px-16">
@@ -56,7 +58,8 @@ const Solutions = () => {
           />
         </div>
         <div
-          data-aos="fade-up-right"
+          data-aos="fade-up"
+          data-aos-duration="1000"
           className="flex flex-col md:flex-row gap-y-5 justify-between items-center"
         >
           <img
@@ -77,7 +80,8 @@ const Solutions = () => {
           </div>
         </div>
         <div
-          data-aos="fade-up-left"
+          data-aos="fade-up"
+          data-aos-duration="1000"
           className="flex flex-col-reverse md:flex-row gap-y-5 justify-between items-center"
         >
           <div className="md:px-4 lg:px-16">
