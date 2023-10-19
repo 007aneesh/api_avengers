@@ -85,15 +85,17 @@ const UserData = ({data}) => {
               <img
                 src={selectedData?.image}
                 alt="selectedImg"
-                className="h-auto"
+                className="h-auto w-full"
               />
             </div>
             <div className="flex flex-col">
-              <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
+              <h1 className="flex justify-center items-center text-[#333] font-bold text-2xl text-center pb-5">
                 {selectedData?.description}
               </h1>
-              <p>Date Uploaded: {selectedData?.updatedAt.substring(0, 10)}</p>
-              <p>Uploaded by: {selectedData?.signedBy}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Report Type: </b> {selectedData?.dataType}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Date Uploaded:</b> {selectedData?.updatedAt.substring(0, 10)}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Uploaded by:</b> {selectedData?.signedBy}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Organisation:</b> {selectedData?.orgName}</p>
             </div>
           </div>
         </div>

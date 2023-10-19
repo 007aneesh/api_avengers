@@ -11,11 +11,20 @@ import phonepe from "../images/phonepe.webp";
 import bhimupi from "../images/bhimupi.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ClipLoader } from "react-spinners";
 
 const Onboarding = () => {
   const navigate = useNavigate();
   const formArray = [1, 2, 3, 4, 5];
   const [formNo, setFormNo] = useState(formArray[0]);
+
+  const [loading, setLoading] = useState(false);
+
+  const override = {
+    paddingTop: '5px',
+  };
+
+
   const next = (form) => {
     setFormNo(form + 1);
   };
@@ -78,7 +87,7 @@ const Onboarding = () => {
       state,
       planSelected,
     } = orgData;
-
+    setLoading(true);
     const res = await fetch(serverUrl, {
       method: "POST",
       headers: {
@@ -102,7 +111,7 @@ const Onboarding = () => {
     });
 
     const data = await res.json();
-
+    setLoading(false);
     if (res.status === 422 || !data) {
       toast.error("Invalid Registration", {
         position: "top-right",
@@ -854,10 +863,15 @@ const Onboarding = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={sendOrgData}>
-                          <p>Proceed</p>
-                          <i className="bx bx-right-arrow-alt"></i>
-                        </button>
+                        {loading ? (
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.2rem 1rem' }}>
+                            <ClipLoader color='#fff' css={override} />
+                          </div>
+                        ) :
+                          <button disabled={loading} onClick={sendOrgData}>
+                            <p>Proceed</p>
+                            <i className="bx bx-right-arrow-alt"></i>
+                          </button>}
                       </div>
                     </div>
                   </div>

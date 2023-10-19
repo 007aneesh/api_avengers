@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import { getAllPatients } from "../../../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ClipLoader } from "react-spinners";
 // import { ColumnChart } from "eazychart-react";
 // import "eazychart-css";
-const DashboardData = ({dataReceived}) => {
+const DashboardData = ({ dataReceived }) => {
   const serverUrl =
     `${process.env.REACT_APP_BASEURL}/patRegister`;
 
-  
+  const [loading, setLoading] = useState(false);
+
+  const override = {
+    paddingTop: '5px',
+  };
+
+
 
   const [patData, setPatData] = useState({
     aadharNumber: "",
@@ -48,7 +55,7 @@ const DashboardData = ({dataReceived}) => {
       password,
       orgName
     } = patData;
-
+    setLoading(true);
     const res1 = await fetch(serverUrl, {
       method: "POST",
       headers: {
@@ -68,7 +75,7 @@ const DashboardData = ({dataReceived}) => {
     });
 
     const data = await res1.json();
-
+    setLoading(false);
     if (res1.status === 422 || !data) {
       toast.error("Invalid Registration", {
         position: "top-right",
@@ -320,12 +327,17 @@ const DashboardData = ({dataReceived}) => {
             ></input>
           </div>
           <div className="flex items-center justify-center">
-            <button
-              onClick={sendPatData}
-              className="p-5 bg-[#662890]/80 text-white w-1/3  py-2 text-lg rounded-lg"
-            >
-              Add
-            </button>
+            {loading ? (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.2rem 1rem' }}>
+                <ClipLoader color='#662890' css={override} />
+              </div>
+            ) :
+              <button
+                onClick={sendPatData}
+                className="p-5 bg-[#662890]/80 text-white w-1/3  py-2 text-lg rounded-lg"
+              >
+                Add
+              </button>}
           </div>
         </div>
       </form>

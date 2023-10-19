@@ -148,6 +148,7 @@
 .formButtons .buttonTwo{
     /* border: 1px solid #111; */
     padding: 0.5rem 2rem;
+    width: 8.78rem;
     font-size: 1rem;
     font-weight: 500;
     background-color: #3555ac;
@@ -174,6 +175,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100%;
     padding: 0.5rem 2rem;
 }
 

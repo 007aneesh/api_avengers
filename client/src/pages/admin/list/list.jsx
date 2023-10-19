@@ -34,7 +34,7 @@ const List = ({ dataReceived }) => {
           <button className="px-3 py-1 bg-[#EBEBEB] rounded-3xl">Filter</button>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col overflow-scroll">
         <table className="w-full">
           <thead className="mb-3 border-b-2 bg-[#000000]/10 border-gray-400">
             <tr className="py-3">
@@ -96,11 +96,13 @@ const List = ({ dataReceived }) => {
               />
             </div>
             <div className="flex flex-col">
-              <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
+              {/* <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
                 {selectedData?.description}
-              </h1>
-              <p>Date Uploaded: {selectedData?.updatedAt.substring(0, 10)}</p>
-              <p>Uploaded by: {selectedData?.signedBy}</p>
+              </h1> */}
+              <p className='py-2 text-lg text-[#555]'><b>Patient Name:</b> {selectedData?.name}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Patient E-Mail:</b> {selectedData?.email}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Patient Contact:</b> {selectedData?.contact}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Patient Guardian Name:</b> {selectedData?.guardianName}</p>
             </div>
           </div>
         </div>

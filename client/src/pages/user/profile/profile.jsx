@@ -151,7 +151,7 @@ const UserData = ({data, setData}) => {
         <div className="flex w-full items-center justify-center mt-2">
           <button
             type="button"
-            onClick={() => updateData()}
+            onClick={(e) => updateData(e)}
             className="px-7 bg-[#662890]/80 text-white  py-2 text-lg rounded-lg"
           >
             Save
