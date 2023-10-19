@@ -23,6 +23,10 @@ db.once("open", () => {
   console.log("Connected to MongoDB successfully!");
 });
 
+app.get("/", (req, res)=>{
+  res.json("Hello");
+})
+
 app.use(mongoRoute);
 
 // create server
