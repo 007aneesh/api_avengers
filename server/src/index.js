@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 
 const mongoRoute = require("./mongoRoute");
 
-
 //require dotenv
 require("dotenv").config();
 
@@ -25,7 +24,6 @@ db.once("open", () => {
 });
 
 app.use(mongoRoute);
-
 
 // create server
 const server = http.createServer(app);
