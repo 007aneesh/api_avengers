@@ -3,11 +3,18 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-
 const appApi = require('./routes/appRoutes/appAPI');
 
+
+
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://api-avengers-frontend.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true
+  })
+);
 app.use(express.json());
 app.use(bodyParser.json());
 
