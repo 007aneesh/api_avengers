@@ -11,10 +11,10 @@ const Search = ({ dataReceived }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const [toastShown, setToastShown] = useState(false);
+  // const [toastShown, setToastShown] = useState(false);
 
   const override = {
-    paddingTop: '5px',
+    paddingTop: "5px",
   };
 
   const [aadharNo, setAadhar] = useState("");
@@ -28,11 +28,9 @@ const Search = ({ dataReceived }) => {
     orgName: "",
   });
 
-
   const client = new Web3Storage({
     token: process.env.REACT_APP_WEBSTORAGETOKEN,
   });
-
 
   const handleFileSelect = async (e) => {
     const fileInput = e.target;
@@ -71,7 +69,7 @@ const Search = ({ dataReceived }) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:8000/patientbyaadhar/${aadhar}`
+        `${process.env.REACT_APP_BASEURL}/patientbyaadhar/${aadhar}`
       );
       const patient = await response.json();
       setData(patient);
@@ -131,7 +129,7 @@ const Search = ({ dataReceived }) => {
       orgName,
     } = repData;
     setLoading(true);
-    const res = await fetch("http://localhost:8000/addReport", {
+    const res = await fetch(reportUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -150,7 +148,6 @@ const Search = ({ dataReceived }) => {
     const data = await res.json();
     setLoading(false);
     if (res.status === 422 || !data) {
-
       toast.error("Report not Added", {
         position: "top-right",
         autoClose: 4000,
@@ -161,9 +158,7 @@ const Search = ({ dataReceived }) => {
         progress: undefined,
         theme: "light",
       });
-
     } else {
-
       toast.success("Report added Successfully", {
         position: "top-right",
         autoClose: 4000,
@@ -184,7 +179,6 @@ const Search = ({ dataReceived }) => {
         signedBy: "",
         orgName: "",
       });
-
 
       // navigate("/admin", { state: orgData });
     }
@@ -221,17 +215,25 @@ const Search = ({ dataReceived }) => {
                 className="outline-none rounded-lg w-2/4 px-3 py-2 border-2 bg-transparent border-black"
               ></input>
               {loading ? (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.2rem 1rem' }}>
-                  <ClipLoader color='#662890' css={override} />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "0.2rem 1rem",
+                  }}
+                >
+                  <ClipLoader color="#662890" css={override} />
                 </div>
-              ) :
+              ) : (
                 <button
                   disabled={loading}
                   onClick={search}
                   className="px-7 w-[8rem] bg-[#662890]/80 text-white  py-2 text-lg rounded-lg"
                 >
                   Search
-                </button>}
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -325,7 +327,10 @@ const Search = ({ dataReceived }) => {
                       </div>
                     </div>
                     <div className="flex flex-col gap-y-3">
-                      <div key="contact" className="flex flex-col w-full gap-y-1">
+                      <div
+                        key="contact"
+                        className="flex flex-col w-full gap-y-1"
+                      >
                         <label className="">Contact:</label>
                         <input
                           readOnly
@@ -335,7 +340,10 @@ const Search = ({ dataReceived }) => {
                           className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-black"
                         ></input>
                       </div>
-                      <div key="gender" className="flex flex-col gap-y-1 w-full">
+                      <div
+                        key="gender"
+                        className="flex flex-col gap-y-1 w-full"
+                      >
                         <label className="">Gender:</label>
                         <div className="flex flex-row border-black border-2 rounded-lg ">
                           <input
@@ -427,29 +435,36 @@ const Search = ({ dataReceived }) => {
 
                     <div className="flex flex-col w-full gap-y-1">
                       <label className="">Image:</label>
-                        <input
-                          name="image"
-                          type="file"
-                          id="fileInput"
-                          onChange={(e) => handleFileSelect(e)}
-                          className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-none cursor-pointer"
-                        ></input>
+                      <input
+                        name="image"
+                        type="file"
+                        id="fileInput"
+                        onChange={(e) => handleFileSelect(e)}
+                        className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-none cursor-pointer"
+                      ></input>
                     </div>
                   </div>
                   <div className="flex justify-center items-center w-full gap-5 py-4">
-
                     {loading ? (
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.2rem 1rem' }}>
-                        <ClipLoader color='#662890' css={override} />
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          padding: "0.2rem 1rem",
+                        }}
+                      >
+                        <ClipLoader color="#662890" css={override} />
                       </div>
-                    ) :
+                    ) : (
                       <button
                         disabled={loading}
                         onClick={sendReport}
                         className="px-7 bg-[#662890]/80 text-white  py-2 text-lg rounded-lg"
                       >
                         Add Report
-                      </button>}
+                      </button>
+                    )}
                   </div>
                 </div>
                 <hr />

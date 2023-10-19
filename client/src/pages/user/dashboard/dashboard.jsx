@@ -92,13 +92,16 @@ const UserDashboard = () => {
       image: `https://dweb.link/ipfs/${rootCid}/${imgLoc}`,
     };
 
-    fetch(`http://localhost:8000/patient/${patientId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedData),
-    })
+    fetch(
+      `${process.env.REACT_APP_BASEURL}/patient/${patientId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -127,7 +130,7 @@ const UserDashboard = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/patient/${patientId}`
+        `${process.env.REACT_APP_BASEURL}/patient/${patientId}`
       );
       const user = await response.json();
       setData(user);

@@ -277,8 +277,7 @@ router.post("/addReport", async (req, res) => {
 
     // Check if the orgName is already present in the patient's orgName array
     if (patient.orgName.includes(orgName)) {
-    }
-    else{
+    } else {
       patient.orgName.push(orgName);
       await patient.save();
     }

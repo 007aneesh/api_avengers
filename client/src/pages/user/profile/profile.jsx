@@ -25,7 +25,7 @@ const UserData = ({data, setData}) => {
       ...data
     };
 
-    fetch(`http://localhost:8000/patient/${patientId}`, {
+    fetch(`${process.env.REACT_APP_BASEURL}/patient/${patientId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

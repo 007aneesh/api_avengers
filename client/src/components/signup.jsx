@@ -40,7 +40,7 @@ const Onboarding = () => {
   };
 
   const serverUrl =
-    process.env.REACT_APP_API_URL || "http://localhost:8000/orgRegister";
+    `${process.env.REACT_APP_BASEURL}/orgRegister`;
 
   const [orgData, setOrgData] = useState({
     userName: "",

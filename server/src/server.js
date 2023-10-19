@@ -30,7 +30,7 @@ app.use(mongoRoute);
 // create server
 const server = http.createServer(app);
 // Start the server
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

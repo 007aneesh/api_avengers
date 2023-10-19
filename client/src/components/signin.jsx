@@ -108,10 +108,10 @@ const Signin = () => {
   });
 
   const patientUrl =
-    process.env.REACT_APP_PATIENT_URL || "http://localhost:8000/patLogin";
+    `${process.env.REACT_APP_BASEURL}/patLogin`;
 
   const adminUrl =
-    process.env.REACT_APP_ADMIN_URL || "http://localhost:8000/orgLogin";
+    `${process.env.REACT_APP_BASEURL}/orgLogin`;
 
   const sendOrgData = async () => {
 

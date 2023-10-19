@@ -6,7 +6,9 @@ const List = ({ dataReceived }) => {
   const orgName = dataReceived?.data.orgName;
   const getPatientList = async (orgName) => {
     try {
-      const response = await fetch(`http://localhost:8000/getAllPatients?orgName=${orgName}`);
+      const response = await fetch(
+        `${process.env.REACT_APP_BASEURL}/getAllPatients?orgName=${orgName}`
+      );
 
       const data = await response.json();
 
