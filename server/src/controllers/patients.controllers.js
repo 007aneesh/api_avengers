@@ -3,6 +3,10 @@ const PatUser = require('../schema/patientSchema');
 async function getAllPatients(req, res) {
   const orgNameToFilter = req.query.orgName;
   const users = await PatUser.find({ orgName: orgNameToFilter });
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   return res.status(200).json(users);
 }
 
@@ -14,8 +18,15 @@ async function getPatientById(req, res) {
     return res.status(404).json({ message: "Patient not found" });
   }
 
+  // Add the 'Access-Control-Allow-Origin' header
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
+
   return res.status(200).json(patient);
 }
+
 
 async function getPatientByIAadhar(req, res) {
   const aadhar = req.params.aadharNumber;
@@ -25,6 +36,11 @@ async function getPatientByIAadhar(req, res) {
   if (!patient) {
     return res.status(404).json({ message: "Patient not found" });
   }
+
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
 
   return res.status(200).json(patient);
 }
@@ -43,6 +59,11 @@ async function updatePatientById(req, res) {
     if (!patient) {
       return res.status(404).json({ message: "Patient not found" });
     }
+
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://api-avengers-frontend.vercel.app"
+    );
 
     return res.status(200).json(patient);
   } catch (error) {

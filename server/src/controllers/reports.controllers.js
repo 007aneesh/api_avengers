@@ -6,6 +6,10 @@ async function getAllReports(req, res){
         aadharNumber: aadharNumber
     });
     if(reports){
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://api-avengers-frontend.vercel.app"
+        );
         res.send(reports);
     }else{
         res.status(401).send('No Reports Found');

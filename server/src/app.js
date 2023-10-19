@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: ["https://api-avengers-frontend.vercel.app"],
     methods: ["POST", "GET"],
-    credentials: true
+    credentials: true,
   })
 );
 app.use(express.json());
