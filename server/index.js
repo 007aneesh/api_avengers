@@ -1,8 +1,8 @@
 const http = require("http");
-const app = require("./app");
+const app = require("./src/app");
 const mongoose = require("mongoose");
 
-const mongoRoute = require("./mongoRoute");
+const mongoRoute = require("./src/mongoRoute");
 
 //require dotenv
 require("dotenv").config();
