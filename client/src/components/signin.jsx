@@ -101,6 +101,40 @@ const Signin = () => {
     registrationNo: "",
     password: "",
   });
+  const checkOrgData = () => {
+    if (orgData.registrationNo === "" || orgData.password === "") {
+      toast.error("Fields cannot be Empty", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    else {
+      getOTP();
+    }
+  };
+  const checkPatData = () => {
+    if (patientData.aadharNumber === "" || patientData.password === "") {
+      toast.error("Fields cannot be Empty", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    else {
+      getOTP();
+    }
+  };
 
   const [patientData, setPatientData] = useState({
     aadharNumber: "",
@@ -129,7 +163,6 @@ const Signin = () => {
     });
 
     const data = await res.json();
-
     if (res.status === 400 || !data) {
       toast.error("Invalid Credentials", {
         position: "top-right",
@@ -143,6 +176,13 @@ const Signin = () => {
       });
       setOtp("");
       setLoading(false);
+      setFormNo(2);
+      setOrgData(
+        {
+          registrationNo: "",
+          password: "",
+        }
+      )
     } else {
       toast.success("LOGIN Successful", {
         position: "top-right",
@@ -193,6 +233,13 @@ const Signin = () => {
       });
       setOtp("");
       setLoading(false);
+      setFormNo(3);
+      setPatientData(
+        {
+          aadharNumber: "",
+          password: "",
+        }
+      )
     } else {
       toast.success("LOGIN Successful", {
         position: "top-right",
@@ -386,7 +433,7 @@ const Signin = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => getOTP()}>
+                        <button type="button" onClick={() => checkOrgData()}>
                           <p>Get OTP</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>
@@ -440,7 +487,7 @@ const Signin = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => getOTP()}>
+                        <button type="button" onClick={() => checkPatData()}>
                           <p>Get OTP</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>

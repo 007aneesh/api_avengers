@@ -72,13 +72,11 @@ router.post("/patLogin", async (req, res) => {
   try {
     let token;
     const { aadharNumber, password } = req.body;
-
     if (!aadharNumber || !password) {
       return res.status(400).json({ error: "plz fill data" });
     }
 
     const patientLogin = await PatUser.findOne({ aadharNumber: aadharNumber });
-
     if (patientLogin) {
       const isMatch = await bcrypt.compare(password, patientLogin.password);
 
@@ -101,7 +99,7 @@ router.post("/patLogin", async (req, res) => {
         });
       }
     } else {
-      res.json({ message: "User not found!!" });
+      res.status(400).json({ message: "User not found!!" });
     }
   } catch (err) {
     console.log(err);
@@ -212,7 +210,7 @@ router.post("/orgLogin", async (req, res) => {
         });
       }
     } else {
-      res.json({ message: "ORG not found!!" });
+      res.status(400).json({ message: "ORG not found!!" });
     }
   } catch (err) {
     console.log(err);
