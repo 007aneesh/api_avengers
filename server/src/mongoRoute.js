@@ -84,20 +84,13 @@ router.post("/patLogin", async (req, res) => {
 
       token = await patientLogin.generateAuthToken();
 
-      const eightHours = 8 * 60 * 60 * 1000;
-      const expirationTime = new Date(Date.now() + eightHours);
-
-      res.cookie("jwtoken", token, {
-        expires: expirationTime,
-        httpOnly: true,
-      });
-
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" });
       } else {
         res.json({
           message: "Patient login successfully",
           patientId: patientLogin._id,
+          token: token,
         });
       }
     } else {
@@ -220,7 +213,7 @@ router.post("/orgLogin", async (req, res) => {
 });
 
 router.get("/dashboard/patient/:patientId", authenticate, (req, res) => {
-  res.send(req.rootUser);
+  res.send(req.params.patientId);
 });
 
 module.exports = router;

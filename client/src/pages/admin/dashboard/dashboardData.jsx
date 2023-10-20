@@ -38,7 +38,7 @@ const DashboardData = ({ dataReceived }) => {
     setPatData({
       ...patData,
       [name]: value,
-      orgName: dataReceived?.data.orgName,
+      orgName: dataReceived?.orgName,
     });
   };
 
@@ -131,14 +131,14 @@ const DashboardData = ({ dataReceived }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const patients = await getAllPatients(dataReceived?.data.orgName);
+        const patients = await getAllPatients(dataReceived?.orgName);
         setPatients(patients);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     }
     fetchData();
-  }, [patData, dataReceived?.data.orgName]);
+  }, [patData, dataReceived?.orgName]);
 
   useEffect(() => {
     let today = 0;

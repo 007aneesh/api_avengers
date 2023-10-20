@@ -32,14 +32,14 @@ const Prescription = ({data}) => {
           <button className="px-3 py-1 bg-[#EBEBEB] rounded-3xl">Filter</button>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full overflow-x-scroll">
         <table className="w-full">
           <thead className="mb-3 border-b-2 bg-[#000000]/10 border-gray-400">
             <tr className="py-3">
               <th className="px-2 py-3">Image</th>
-              <th className="px-3 py-3">Description</th>
+              <th className="px-4 py-3">Description</th>
               <th className="px-3 py-3">Type</th>
-              <th className="px-3 py-3">Date</th>
+              <th className="px-4 py-3">Date</th>
             </tr>
           </thead>
           <tbody className="py-3">
@@ -57,7 +57,7 @@ const Prescription = ({data}) => {
                   />
                 </td>
                 <td className="py-3 flex-wrap">
-                  <h1 className="text-center text-base truncate md:text-lg font-semibold text-black/60">
+                  <h1 className="text-center text-sm truncate md:text-lg font-semibold text-black/60">
                     {data?.description}
                   </h1>
                 </td>
@@ -66,7 +66,7 @@ const Prescription = ({data}) => {
                     {data?.dataType}
                   </h1>
                 </td>
-                <td className={`py-3 text-center text-black/60 font-semibold`}>
+                <td className={`py-3 text-sm text-center text-black/60 font-semibold`}>
                   {data?.updatedAt.substring(0, 10)}
                 </td>
               </tr>

@@ -10,7 +10,7 @@ const Solutions = () => {
     return (
       <div
         id="solutions"
-        className="flex flex-col items-center justify-center w-full gap-16 px-8 pt-5 lg:pt-0"
+        className="flex flex-col items-center justify-center w-full gap-16 px-8 pt-20"
       >
         <div
           data-aos="fade-up"

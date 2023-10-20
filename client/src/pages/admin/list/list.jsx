@@ -3,7 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 const List = ({ dataReceived }) => {
   const [selectedData, setSelectedData] = useState(null);
   const [list, setList] = useState([]);
-  const orgName = dataReceived?.data.orgName;
+  const orgName = dataReceived?.orgName;
   const getPatientList = async (orgName) => {
     try {
       const response = await fetch(

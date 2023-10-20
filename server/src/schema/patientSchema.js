@@ -72,7 +72,9 @@ patientSchema.pre("save", async function (next) {
 
 patientSchema.methods.generateAuthToken = async function () {
   try {
-    let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
+    let token = jwt.sign({ _id: this._id, email: this.email }, process.env.SECRET_KEY, {
+      expiresIn: "1h",
+    });
     this.tokens = this.tokens.concat({
       token: token,
     });
