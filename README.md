@@ -1,6 +1,6 @@
 <div align='center'>
   <a href='https://github.com/007aneesh/api_avengers'>
-    <img style="width: 250px" src='https://bafybeih7tjr7ikqqaun5vsg6oue5afsspodqk5pq5b4wrdjysjxggz5o3a.ipfs.w3s.link/logo.webp'>
+    <img style="width: 250px" src='https://bafybeicmgtgtnsa7ydi5budpddlp72emunsrskm3a4gqek3urc3z2esucm.ipfs.w3s.link/logo2.webp'>
   </a>
   <h1>Vital Vault</h1>  
 </div>
