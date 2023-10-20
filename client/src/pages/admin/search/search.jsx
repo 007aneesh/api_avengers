@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 const Search = ({ dataReceived }) => {
   const [data, setData] = useState(null);
 
+  const [imgLoading, setImgLoading] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
   // const [toastShown, setToastShown] = useState(false);
@@ -23,7 +25,7 @@ const Search = ({ dataReceived }) => {
     aadharNumber: "",
     image: "",
     description: "",
-    dataType: "",
+    dataType: "prescription",
     signedBy: "",
     orgName: "",
   });
@@ -35,18 +37,21 @@ const Search = ({ dataReceived }) => {
   const handleFileSelect = async (e) => {
     const fileInput = e.target;
 
+    setImgLoading(true);
+
     if (fileInput.files.length > 0) {
       const file = fileInput.files[0];
       // Use Web3Storage to upload the file and get the CID
       const rootCid = await client.put([file]);
 
       // Construct the image URL with the CID
-      const imgLoc = file.name;
+      const imgLoc = await file.name;
       const imageUrl = `https://dweb.link/ipfs/${rootCid}/${imgLoc}`;
 
       // Update the state with the image URL
       setRepData({ ...repData, image: imageUrl });
     }
+    setImgLoading(false);
   };
 
   const getData = async (aadharValue) => {
@@ -77,7 +82,7 @@ const Search = ({ dataReceived }) => {
         ...repData,
         patientId: patient?._id,
         aadharNumber: patient?.aadharNumber,
-        orgName: dataReceived?.data.orgName,
+        orgName: dataReceived?.orgName,
       });
       setLoading(false);
     } catch (err) {
@@ -148,7 +153,7 @@ const Search = ({ dataReceived }) => {
     const data = await res.json();
     setLoading(false);
     if (res.status === 422 || !data) {
-      toast.error("Report not Added", {
+      toast.error("Please fill all details!", {
         position: "top-right",
         autoClose: 4000,
         hideProgressBar: false,
@@ -175,12 +180,10 @@ const Search = ({ dataReceived }) => {
         aadharNumber: "",
         image: "",
         description: "",
-        dataType: "",
+        dataType: "prescription",
         signedBy: "",
         orgName: "",
       });
-
-      // navigate("/admin", { state: orgData });
     }
   };
 
@@ -435,13 +438,34 @@ const Search = ({ dataReceived }) => {
 
                     <div className="flex flex-col w-full gap-y-1">
                       <label className="">Image:</label>
-                      <input
-                        name="image"
-                        type="file"
-                        id="fileInput"
-                        onChange={(e) => handleFileSelect(e)}
-                        className="outline-none rounded-lg w-full px-3 py-2 border-2 bg-transparent border-none cursor-pointer"
-                      ></input>
+                      {imgLoading ? (
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "0.2rem 1rem",
+                          }}
+                        >
+                          <ClipLoader color="#662890" css={override} />
+                        </div>
+                      ) : (
+                        <div className="flex items-center justify-start">
+                          <label
+                            className="bg-[#662890]/80 px-3 flex items-center justify-center w-[8rem] text-white  py-2 text-lg rounded-lg"
+                            htmlFor="file-input"
+                          >
+                            {repData?.image ? "Selected" : "Select File"}
+                          </label>
+                          <input
+                            name="image"
+                            type="file"
+                            id="file-input"
+                            onChange={(e) => handleFileSelect(e)}
+                            className="outline-none hidden rounded-lg w-full px-3 py-2 border-2 bg-transparent border-none cursor-pointer"
+                          ></input>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="flex justify-center items-center w-full gap-5 py-4">

@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ClipLoader } from "react-spinners";
 
-const Signin = () => {
+const Signin = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   const formArray = [1, 2, 3, 4];
@@ -21,9 +21,8 @@ const Signin = () => {
   const [loading, setLoading] = useState(false);
 
   const override = {
-    paddingTop: '5px',
+    paddingTop: "5px",
   };
-
 
   const pre = () => {
     if (formNo === 1) {
@@ -141,14 +140,11 @@ const Signin = () => {
     password: "",
   });
 
-  const patientUrl =
-    `${process.env.REACT_APP_BASEURL}/patLogin`;
+  const patientUrl = `${process.env.REACT_APP_BASEURL}/patLogin`;
 
-  const adminUrl =
-    `${process.env.REACT_APP_BASEURL}/orgLogin`;
+  const adminUrl = `${process.env.REACT_APP_BASEURL}/orgLogin`;
 
   const sendOrgData = async () => {
-
     const { registrationNo, password } = orgData;
     setLoading(true);
     const res = await fetch(adminUrl, {
@@ -163,6 +159,10 @@ const Signin = () => {
     });
 
     const data = await res.json();
+
+    setIsAuthenticated(true);
+    localStorage.setItem("admin", registrationNo);
+
     if (res.status === 400 || !data) {
       toast.error("Invalid Credentials", {
         position: "top-right",
@@ -195,9 +195,8 @@ const Signin = () => {
         theme: "light",
       });
       setTimeout(() => {
-        navigate("/admin", { state: data });
+        navigate(`/admin/${registrationNo}`, { state: registrationNo });
       }, 1000);
-
     }
   };
 
@@ -216,9 +215,12 @@ const Signin = () => {
     });
 
     const data = await res.json();
+    setIsAuthenticated(true);
     const patientId = data.patientId;
+    const token = data.token;
 
-
+    localStorage.setItem("token", token);
+    localStorage.setItem("patientId", patientId);
 
     if (res.status === 400 || !data) {
       toast.error("Invalid Credentials", {
@@ -252,19 +254,12 @@ const Signin = () => {
         theme: "light",
       });
       setTimeout(() => {
-
         navigate(`/dashboard/patient/${patientId}`, {
           state: patientId,
         });
       }, 1000);
-
-
-
-
     }
   };
-
-
 
   return (
     <>
@@ -375,10 +370,11 @@ const Signin = () => {
                         <button
                           onClick={() => next(formNo)}
                           disabled={dis()}
-                          className={`${isorgChecked || ispatChecked
-                            ? "bg-[#3555ac] text-white"
-                            : "bg-gray-500"
-                            }`}
+                          className={`${
+                            isorgChecked || ispatChecked
+                              ? "bg-[#3555ac] text-white"
+                              : "bg-gray-500"
+                          }`}
                         >
                           <p>Next</p>
                           <i className="bx bx-right-arrow-alt"></i>
@@ -533,13 +529,22 @@ const Signin = () => {
                       </div>
                       <div className="buttonTwo">
                         {loading ? (
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.2rem 1rem' }}>
-                            <ClipLoader color='#fff' css={override} />
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "0.2rem 1rem",
+                            }}
+                          >
+                            <ClipLoader color="#fff" css={override} />
                           </div>
-                        ) : <button disabled={loading} onClick={(e) => submit(e)}>
-                          <p>Submit</p>
-                          <i className="bx bx-right-arrow-alt"></i>
-                        </button>}
+                        ) : (
+                          <button disabled={loading} onClick={(e) => submit(e)}>
+                            <p>Submit</p>
+                            <i className="bx bx-right-arrow-alt"></i>
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

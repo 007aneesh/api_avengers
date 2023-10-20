@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../../images/logo.webp";
 import { AiOutlineClose, AiFillSetting } from "react-icons/ai";
 import { FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";
@@ -15,14 +15,35 @@ const UserDashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const dataReceived  = location.state;
+  const registrationNo = location.state;
 
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
   };
   const [selectedButton, setSelectedButton] = React.useState("Dashboard");
 
-  
+  const [dataReceived, setData] = useState(null);
+  const isDataFetched = useRef(false);
+
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASEURL}/admin/${registrationNo}`
+      );
+      const user = await response.json();
+      setData(user);
+      isDataFetched.current = true;
+    } catch (error) {
+      console.log("Error fetching data!");
+    }
+  };
+
+
+  useEffect(() => {
+    if (!isDataFetched.current) {
+      getData();
+    }
+  });
 
   const handleButtonClick = (text) => {
     setSelectedButton(text);
@@ -91,7 +112,7 @@ const UserDashboard = () => {
               
             </div>
             <div>
-              <h1>Welcome, {dataReceived?.data.userName ? dataReceived?.data.userName : "Admin"} </h1>
+              <h1>Welcome, {dataReceived?.userName ? dataReceived?.userName : "Admin"} </h1>
             </div>
           </div>
           {[
