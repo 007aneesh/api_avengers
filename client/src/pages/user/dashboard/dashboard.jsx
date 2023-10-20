@@ -31,6 +31,7 @@ const UserDashboard = () => {
   };
 
   const handleSignOut = () => {
+    localStorage.clear();
     navigate("/");
   };
 
