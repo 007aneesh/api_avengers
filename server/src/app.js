@@ -8,11 +8,20 @@ const appApi = require('./routes/appRoutes/appAPI');
 
 
 // Middleware
+// app.use(
+//   cors({
+//     origin: ["https://api-avengers-frontend.vercel.app"],
+//     methods: ["POST", "GET"],
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: ["https://api-avengers-frontend.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true,
+    origin: "https://api-avengers-frontend.vercel.app", 
+    methods: "GET,PUT,PATCH,POST,DELETE",
+    credentials: true, 
+    optionsSuccessStatus: 204, 
   })
 );
 app.use(express.json());
