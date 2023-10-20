@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import Logo from "../images/logo.webp";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-const Navbar = () => {
+const Navbar = ({ isAuthenticated, isAdmin }) => {
   const [showMenu, setShowMenu] = useState(false);
-
+  const navigate = useNavigate();
+  let patientId;
+  let data;
+  if(isAdmin){
+    data = localStorage.getItem("admin");
+  }else{
+    patientId = localStorage.getItem("patientId");
+  }
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -21,17 +28,43 @@ const Navbar = () => {
           <div
             className={`items-center gap-5 hidden md:flex font-semibold text-lg`}
           >
-            <Link to="/about" >
+            <Link to="/about">
               <h1>About us</h1>
             </Link>
             <HashLink smooth to="/#solutions">
               <h1>Solutions</h1>
             </HashLink>
-            <Link to="/signin">
-              <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
-                Sign In
-              </button>
-            </Link>
+            {isAuthenticated ? (
+              isAdmin ? (
+                <button
+                  onClick={() =>
+                    navigate(`/admin/${data}`, {
+                      state: data,
+                    })
+                  }
+                  className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]"
+                >
+                  Sign In
+                </button>
+              ) : (
+                <button
+                  onClick={() =>
+                    navigate(`/dashboard/patient/${patientId}`, {
+                      state: patientId,
+                    })
+                  }
+                  className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]"
+                >
+                  Sign In
+                </button>
+              )
+            ) : (
+              <Link to="/signin">
+                <button className="border-[#3555ac] rounded-md lg:text-base font-medium border-2 px-3 py-1 hover: bg-[#3555ac] transition transform ease-in-out duration-500 text-white hover:bg-transparent hover:text-[#3555ac]">
+                  Sign In
+                </button>
+              </Link>
+            )}
           </div>
           <div className="flex items-center relative">
             <button
