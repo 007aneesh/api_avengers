@@ -31,7 +31,7 @@ const UserData = ({data}) => {
           <button className="px-3 py-1 bg-[#EBEBEB] rounded-3xl">Filter</button>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col overflow-y-scroll">
         <table className="w-full">
           <thead className="mb-3 border-b-2 bg-[#000000]/10 border-gray-400">
             <tr className="py-3">
@@ -70,7 +70,7 @@ const UserData = ({data}) => {
         </table>
       </div>
       {selectedData && (
-        <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl">
+        <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl overflow-x-scroll">
           <div className="flex flex-row w-full justify-between">
             <h2 className="text-xl font-bold">{selectedData?.dataType}</h2>
             <button
