@@ -12,7 +12,7 @@ import Prescription from "../prescriptions/prescription";
 import Report from "../reports/report";
 import Profile from "../profile/profile";
 import { Web3Storage } from "web3.storage";
-const UserDashboard = () => {
+const UserDashboard = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   // const { patientId } = useParams();
   const location = useLocation();
@@ -32,6 +32,7 @@ const UserDashboard = () => {
 
   const handleSignOut = () => {
     localStorage.clear();
+    setIsAuthenticated(false);
     navigate("/");
   };
 
@@ -93,16 +94,13 @@ const UserDashboard = () => {
       image: `https://dweb.link/ipfs/${rootCid}/${imgLoc}`,
     };
 
-    fetch(
-      `${process.env.REACT_APP_BASEURL}/patient/${patientId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedData),
-      }
-    )
+    fetch(`${process.env.REACT_APP_BASEURL}/patient/${patientId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

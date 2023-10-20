@@ -63,7 +63,7 @@ function App() {
           path="/admin/:registrationNo"
           element={
             <ProtectedRoute user={isAuthenticated}>
-              <Admin />
+              <Admin setIsAuthenticated={setIsAuthenticated} />
             </ProtectedRoute>
           }
         />
@@ -71,7 +71,7 @@ function App() {
           path="/dashboard/patient/:patientId"
           element={
             <ProtectedRoute user={isAuthenticated}>
-              <Dashboard />
+              <Dashboard setIsAuthenticated={setIsAuthenticated} />
             </ProtectedRoute>
           }
         />
