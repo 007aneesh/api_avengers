@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../../images/logo.webp";
 import { AiOutlineClose, AiFillSetting } from "react-icons/ai";
 import { FaPowerOff, FaAngleDoubleRight } from "react-icons/fa";
@@ -11,24 +11,46 @@ import Data from "./dashboardData";
 import Search from "../search/search";
 import List from "../list/list";
 import Settings from "../settings/setting";
-const UserDashboard = () => {
+const UserDashboard = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const dataReceived  = location.state;
+  const registrationNo = location.state;
 
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
   };
   const [selectedButton, setSelectedButton] = React.useState("Dashboard");
 
-  
+  const [dataReceived, setData] = useState(null);
+  const isDataFetched = useRef(false);
+
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASEURL}/admin/${registrationNo}`
+      );
+      const user = await response.json();
+      setData(user);
+      isDataFetched.current = true;
+    } catch (error) {
+      console.log("Error fetching data!");
+    }
+  };
+
+  useEffect(() => {
+    if (!isDataFetched.current) {
+      getData();
+    }
+  });
 
   const handleButtonClick = (text) => {
     setSelectedButton(text);
   };
 
   const handleSignOut = () => {
+    localStorage.clear();
+    setIsAuthenticated(false);
     navigate("/");
   };
 
@@ -37,21 +59,15 @@ const UserDashboard = () => {
       case "Dashboard":
         return <Data dataReceived={dataReceived} />;
       case "Search Patient":
-        return <Search dataReceived={dataReceived}/>;
+        return <Search dataReceived={dataReceived} />;
       case "Patient List":
-        return <List dataReceived={dataReceived}/>;
+        return <List dataReceived={dataReceived} />;
       case "Settings":
-        return <Settings />
+        return <Settings />;
       default:
         return <Data />;
     }
   };
-
-  
-
-  
-
-  
 
   return (
     <>
@@ -62,7 +78,7 @@ const UserDashboard = () => {
         >
           <BiMenuAltLeft />
         </span>
-        
+
         <div className="sidebar shadow-2xl transition ease-in-out duration-500 fixed top-0 bottom-0 lg:left-0 left-[-300px]  w-[300px] overflow-y-auto text-center bg-white">
           <div className="text-black text-xl bg-[#ECECEC] px-2">
             <div className="p-2  flex items-center justify-between border-none outline-none">
@@ -82,16 +98,14 @@ const UserDashboard = () => {
           <div className="py-2.5 mt-3 relative flex flex-col items-center justify-center text-xl font-sans font-bold rounded-md px-6">
             <div className="relative mb-1">
               <div className="relative rounded-full w-24 h-24 p-3">
-                <img
-                  src={img}
-                  alt="admin"
-                  className="w-full h-full mb-2"
-                />
+                <img src={img} alt="admin" className="w-full h-full mb-2" />
               </div>
-              
             </div>
             <div>
-              <h1>Welcome, {dataReceived?.data.userName ? dataReceived?.data.userName : "Admin"} </h1>
+              <h1>
+                Welcome,{" "}
+                {dataReceived?.userName ? dataReceived?.userName : "Admin"}{" "}
+              </h1>
             </div>
           </div>
           {[

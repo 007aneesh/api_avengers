@@ -1,6 +1,9 @@
 const http = require("http");
 const app = require("./src/app");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
 
 const mongoRoute = require("./src/mongoRoute");
 

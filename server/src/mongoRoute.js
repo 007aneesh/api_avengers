@@ -33,11 +33,15 @@ router.post("/patRegister", async (req, res) => {
   ) {
     return res.status(422).json({ error: "plzz fill the fields properly" });
   }
-
+res.setHeader(
+  "Access-Control-Allow-Origin",
+  "https://api-avengers-frontend.vercel.app"
+);
   try {
     const patientExists = await PatUser.findOne({ aadharNumber: aadharNumber });
 
     if (patientExists) {
+      
       return res.status(422).json({ error: "Aadhar already exists" });
     }
 
@@ -69,6 +73,10 @@ router.post("/patRegister", async (req, res) => {
 // patient login route
 
 router.post("/patLogin", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   try {
     let token;
     const { aadharNumber, password } = req.body;
@@ -82,20 +90,13 @@ router.post("/patLogin", async (req, res) => {
 
       token = await patientLogin.generateAuthToken();
 
-      const eightHours = 8 * 60 * 60 * 1000;
-      const expirationTime = new Date(Date.now() + eightHours);
-
-      res.cookie("jwtoken", token, {
-        expires: expirationTime,
-        httpOnly: true,
-      });
-
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" });
       } else {
         res.json({
           message: "Patient login successfully",
           patientId: patientLogin._id,
+          token: token,
         });
       }
     } else {
@@ -109,6 +110,10 @@ router.post("/patLogin", async (req, res) => {
 // Organisation Registration Route
 
 router.post("/orgRegister", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   const {
     userName,
     email,
@@ -188,6 +193,10 @@ router.post("/orgRegister", async (req, res) => {
 // Organisation Login Route
 
 router.post("/orgLogin", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   try {
     const { registrationNo, password } = req.body;
 
@@ -218,7 +227,7 @@ router.post("/orgLogin", async (req, res) => {
 });
 
 router.get("/dashboard/patient/:patientId", authenticate, (req, res) => {
-  res.send(req.rootUser);
+  res.send(req.params.patientId);
 });
 
 module.exports = router;
@@ -226,6 +235,10 @@ module.exports = router;
 // Adding Report
 
 router.post("/addReport", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   const {
     patientId,
     aadharNumber,
