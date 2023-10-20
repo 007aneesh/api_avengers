@@ -33,11 +33,15 @@ router.post("/patRegister", async (req, res) => {
   ) {
     return res.status(422).json({ error: "plzz fill the fields properly" });
   }
-
+res.setHeader(
+  "Access-Control-Allow-Origin",
+  "https://api-avengers-frontend.vercel.app"
+);
   try {
     const patientExists = await PatUser.findOne({ aadharNumber: aadharNumber });
 
     if (patientExists) {
+      
       return res.status(422).json({ error: "Aadhar already exists" });
     }
 
@@ -69,6 +73,10 @@ router.post("/patRegister", async (req, res) => {
 // patient login route
 
 router.post("/patLogin", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   try {
     let token;
     const { aadharNumber, password } = req.body;
@@ -102,6 +110,10 @@ router.post("/patLogin", async (req, res) => {
 // Organisation Registration Route
 
 router.post("/orgRegister", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   const {
     userName,
     email,
@@ -181,6 +193,10 @@ router.post("/orgRegister", async (req, res) => {
 // Organisation Login Route
 
 router.post("/orgLogin", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   try {
     const { registrationNo, password } = req.body;
 
@@ -219,6 +235,10 @@ module.exports = router;
 // Adding Report
 
 router.post("/addReport", async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://api-avengers-frontend.vercel.app"
+  );
   const {
     patientId,
     aadharNumber,
