@@ -100,6 +100,40 @@ const Signin = ({ setIsAuthenticated }) => {
     registrationNo: "",
     password: "",
   });
+  const checkOrgData = () => {
+    if (orgData.registrationNo === "" || orgData.password === "") {
+      toast.error("Fields cannot be Empty", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    else {
+      getOTP();
+    }
+  };
+  const checkPatData = () => {
+    if (patientData.aadharNumber === "" || patientData.password === "") {
+      toast.error("Fields cannot be Empty", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    else {
+      getOTP();
+    }
+  };
 
   const [patientData, setPatientData] = useState({
     aadharNumber: "",
@@ -125,6 +159,7 @@ const Signin = ({ setIsAuthenticated }) => {
     });
 
     const data = await res.json();
+
     setIsAuthenticated(true);
     localStorage.setItem("admin", registrationNo);
 
@@ -141,6 +176,13 @@ const Signin = ({ setIsAuthenticated }) => {
       });
       setOtp("");
       setLoading(false);
+      setFormNo(2);
+      setOrgData(
+        {
+          registrationNo: "",
+          password: "",
+        }
+      )
     } else {
       toast.success("LOGIN Successful", {
         position: "top-right",
@@ -193,6 +235,13 @@ const Signin = ({ setIsAuthenticated }) => {
       });
       setOtp("");
       setLoading(false);
+      setFormNo(3);
+      setPatientData(
+        {
+          aadharNumber: "",
+          password: "",
+        }
+      )
     } else {
       toast.success("LOGIN Successful", {
         position: "top-right",
@@ -380,7 +429,7 @@ const Signin = ({ setIsAuthenticated }) => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => getOTP()}>
+                        <button type="button" onClick={() => checkOrgData()}>
                           <p>Get OTP</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>
@@ -434,7 +483,7 @@ const Signin = ({ setIsAuthenticated }) => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => getOTP()}>
+                        <button type="button" onClick={() => checkPatData()}>
                           <p>Get OTP</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>

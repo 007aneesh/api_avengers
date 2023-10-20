@@ -39,6 +39,42 @@ const Onboarding = () => {
     setIsChecked(!isChecked);
   };
 
+  const checkDataOne = (formNo) => {
+    if (orgData.userName === "" || orgData.email === "" || orgData.contactNo === "" || orgData.secContact === "" || orgData.password === "" || orgData.cpassword === "") {
+      toast.error("Fields cannot be Empty", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    else {
+      next(formNo);
+    }
+  };
+
+  const checkDataTwo = (formNo) => {
+    if (orgData.orgName === "" || orgData.registrationNo === "" || orgData.address === "" || orgData.pinCode === "" || orgData.city === "" || orgData.state === "") {
+      toast.error("Fields cannot be Empty", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    else {
+      next(formNo);
+    }
+  };
+
   const serverUrl =
     `${process.env.REACT_APP_BASEURL}/orgRegister`;
 
@@ -320,7 +356,7 @@ const Onboarding = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => next(formNo)}>
+                        <button type="button" onClick={() => checkDataOne(formNo)}>
                           <p>Next</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>
@@ -410,7 +446,7 @@ const Onboarding = () => {
                         </button>
                       </div>
                       <div className="buttonTwo">
-                        <button onClick={() => next(formNo)}>
+                        <button type="button" onClick={() => checkDataTwo(formNo)}>
                           <p>Next</p>
                           <i className="bx bx-right-arrow-alt"></i>
                         </button>
