@@ -79,7 +79,7 @@ const List = ({ dataReceived }) => {
         </table>
       </div>
       {selectedData && (
-        <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl">
+        <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl overflow-x-scroll">
           <div className="flex flex-row w-full justify-between">
             <h2 className="text-xl font-bold">{selectedData?.dataType}</h2>
             <button

@@ -34,6 +34,7 @@ const Report = ({data}) => {
           <button className="px-3 py-1 bg-[#EBEBEB] rounded-3xl">Filter</button>
         </div>
       </div>
+
       <div className="flex flex-col w-full overflow-x-scroll">
         <table className="w-full">
           <thead className="mb-3 border-b-2 bg-[#000000]/10 border-gray-400">
@@ -77,7 +78,7 @@ const Report = ({data}) => {
         </table>
       </div>
       {selectedData && (
-        <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl">
+        <div className="fixed w-full md:w-[400px] top-0 right-0 bottom-0 bg-white p-4 shadow-2xl overflow-x-scroll">
           <div className="flex flex-row w-full justify-between">
             <h2 className="text-xl font-bold">{selectedData?.dataType}</h2>
             <button
@@ -96,11 +97,13 @@ const Report = ({data}) => {
               />
             </div>
             <div className="flex flex-col">
-              <h1 className="flex justify-center items-center font-bold text-xl text-center pb-5">
-                {selectedData.description}
+              <h1 className="flex justify-center items-center text-[#333] font-bold text-2xl text-center pb-5">
+                {selectedData?.description}
               </h1>
-              <p>Date Uploaded: {selectedData?.updatedAt.substring(0, 10)}</p>
-              <p>Uploaded by: {selectedData?.signedBy}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Report Type: </b> {selectedData?.dataType}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Date Uploaded:</b> {selectedData?.updatedAt.substring(0, 10)}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Uploaded by:</b> {selectedData?.signedBy}</p>
+              <p className='py-2 text-lg text-[#555]'><b>Organisation:</b> {selectedData?.orgName}</p>
             </div>
           </div>
         </div>
