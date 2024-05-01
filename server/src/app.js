@@ -19,7 +19,7 @@ const appApi = require('./routes/appRoutes/appAPI');
 app.use(
   cors({
     origin: "*", 
-    methods: "GET,PUT,PATCH,POST,DELETE",
+    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
     credentials: true, 
     optionsSuccessStatus: 204, 
   })
