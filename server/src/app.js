@@ -20,8 +20,7 @@ app.use(
   cors({
     origin: "*", 
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
-    credentials: true, 
-    optionsSuccessStatus: 204, 
+    credentials: true,
   })
 );
 app.use(express.json());
