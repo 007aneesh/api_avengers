@@ -35,7 +35,8 @@ router.post("/patRegister", async (req, res) => {
   }
 res.setHeader(
   "Access-Control-Allow-Origin",
-  "https://api-avengers-frontend.vercel.app"
+  // "https://api-avengers-frontend.vercel.app"
+  "*"
 );
   try {
     const patientExists = await PatUser.findOne({ aadharNumber: aadharNumber });
@@ -75,7 +76,8 @@ res.setHeader(
 router.post("/patLogin", async (req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://api-avengers-frontend.vercel.app"
+    // "https://api-avengers-frontend.vercel.app"
+  "*"
   );
   try {
     let token;
@@ -112,7 +114,8 @@ router.post("/patLogin", async (req, res) => {
 router.post("/orgRegister", async (req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://api-avengers-frontend.vercel.app"
+    // "https://api-avengers-frontend.vercel.app"
+  "*"
   );
   const {
     userName,
@@ -195,7 +198,8 @@ router.post("/orgRegister", async (req, res) => {
 router.post("/orgLogin", async (req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://api-avengers-frontend.vercel.app"
+    // "https://api-avengers-frontend.vercel.app"
+  "*"
   );
   try {
     const { registrationNo, password } = req.body;
@@ -237,7 +241,8 @@ module.exports = router;
 router.post("/addReport", async (req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://api-avengers-frontend.vercel.app"
+    // "https://api-avengers-frontend.vercel.app"
+  "*"
   );
   const {
     patientId,
