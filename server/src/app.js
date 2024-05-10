@@ -11,7 +11,7 @@ const appApi = require('./routes/appRoutes/appAPI');
 // app.use(
 //   cors({
 //     origin: ["https://api-avengers-frontend.vercel.app"],
-//     methods: ["POST", "GET"],
+//     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
 //     credentials: true,
 //   })
 // );
