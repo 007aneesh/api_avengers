@@ -15,7 +15,7 @@ const UserDashboard = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const registrationNo = location.state;
+  const registrationNo = location.state?.registrationNo;
 
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
