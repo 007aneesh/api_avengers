@@ -171,7 +171,7 @@ const Onboarding = () => {
         theme: "light",
       });
       setTimeout(() => {
-        navigate("/admin", { state: orgData });
+        navigate(`/admin/${orgData?.registrationNo}`, { state: orgData?.registrationNo });
       }, 1000);
     }
   };
