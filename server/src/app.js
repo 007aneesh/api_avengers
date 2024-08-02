@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: ["https://api-avengers-frontend.vercel.app"],
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
-    credentials: true,
+    // credentials: true,
   })
 );
 
