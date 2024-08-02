@@ -179,7 +179,7 @@ router.post("/orgRegister", async (req, res) => {
       if (orgRegister) {
         res.status(201).json({
           message: "organisation register successfully",
-          registrationNo: orgExists.registrationNo,
+          registrationNo: orgRegister.registrationNo,
         });
       } else {
         res.status(500).json({ error: "failed to register" });
