@@ -15,7 +15,7 @@ const UserDashboard = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const registrationNo = location.state;
+  const registrationNo = location.state?.registrationNo;
   console.log("admin: " , registrationNo);
 
   const open = () => {
