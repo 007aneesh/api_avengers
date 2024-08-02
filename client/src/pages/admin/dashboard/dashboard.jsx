@@ -16,7 +16,6 @@ const UserDashboard = ({ setIsAuthenticated }) => {
   const location = useLocation();
 
   const registrationNo = location.state;
-  console.log("admin: " , registrationNo);
 
   const open = () => {
     document.querySelector(".sidebar").classList.toggle("left-[-300px]");
